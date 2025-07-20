@@ -1,4 +1,4 @@
-package com.example.piliplus
+package com.example.piliplusx
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine

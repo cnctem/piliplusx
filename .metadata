@@ -4,8 +4,8 @@
 # This file should be version controlled.
 
 version:
-  revision: 4b12645012342076800eb701bcdfe18f87da21cf
-  channel: stable
+  revision: 9329ab0ff099f62cb4983ac71c62e9aa8e8d4c62
+  channel: 3.7.12-ohos-1.0.4
 
 project_type: app
 
@@ -13,26 +13,11 @@ project_type: app
 migration:
   platforms:
     - platform: root
-      create_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-      base_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-    - platform: android
-      create_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-      base_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-    - platform: ios
-      create_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-      base_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-    - platform: linux
-      create_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-      base_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-    - platform: macos
-      create_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-      base_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-    - platform: web
-      create_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-      base_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-    - platform: windows
-      create_revision: 4b12645012342076800eb701bcdfe18f87da21cf
-      base_revision: 4b12645012342076800eb701bcdfe18f87da21cf
+      create_revision: 9329ab0ff099f62cb4983ac71c62e9aa8e8d4c62
+      base_revision: 9329ab0ff099f62cb4983ac71c62e9aa8e8d4c62
+    - platform: ohos
+      create_revision: 9329ab0ff099f62cb4983ac71c62e9aa8e8d4c62
+      base_revision: 9329ab0ff099f62cb4983ac71c62e9aa8e8d4c62
 
   # User provided section
 
