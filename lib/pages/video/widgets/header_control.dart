@@ -167,7 +167,7 @@ class HeaderControlState extends State<HeaderControl> {
                   leading: const Icon(Icons.hourglass_top_outlined, size: 20),
                   title: const Text('定时关闭', style: titleStyle),
                 ),
-                ListTile(
+                ListTile( // 重载视频
                   dense: true,
                   onTap: () => {
                     Get.back(),
@@ -178,7 +178,151 @@ class HeaderControlState extends State<HeaderControl> {
                   leading: const Icon(Icons.refresh_outlined, size: 20),
                   title: const Text('重载视频', style: titleStyle),
                 ),
+                // const SizedBox(height: 10),
+                // const Padding(
+                //   padding: EdgeInsets.symmetric(horizontal: 16),
+                //   child: Text('播放顺序', style: titleStyle),
+                // ),
+                // SingleChildScrollView(
+                //   scrollDirection: Axis.horizontal,
+                //   padding: const EdgeInsets.symmetric(horizontal: 16),
+                //   child: Row(
+                //     spacing: 10,
+                //     children: [
+                //       Obx(
+                //         () => ActionRowLineItem(
+                //           text: PlayRepeat.pause.desc,
+                //           selectStatus: widget.controller.playRepeat == PlayRepeat.pause,
+                //           onTap: () => widget.controller.setPlayRepeat(PlayRepeat.pause),
+                //         ),
+                //       ),
+                //       Obx(
+                //         () => ActionRowLineItem(
+                //           text: PlayRepeat.listOrder.desc,
+                //           selectStatus: widget.controller.playRepeat == PlayRepeat.listOrder,
+                //           onTap: () => widget.controller.setPlayRepeat(PlayRepeat.listOrder),
+                //         ),
+                //       ),
+                //       Obx(
+                //         () => ActionRowLineItem(
+                //           text: PlayRepeat.singleCycle.desc,
+                //           selectStatus: widget.controller.playRepeat == PlayRepeat.singleCycle,
+                //           onTap: () => widget.controller.setPlayRepeat(PlayRepeat.singleCycle),
+                //         ),
+                //       ),
+                //       Obx(
+                //         () => ActionRowLineItem(
+                //           text: PlayRepeat.listCycle.desc,
+                //           selectStatus: widget.controller.playRepeat == PlayRepeat.listCycle,
+                //           onTap: () => widget.controller.setPlayRepeat(PlayRepeat.listCycle),
+                //         ),
+                //       ),
+                //       Obx(
+                //         () => ActionRowLineItem(
+                //           text: PlayRepeat.autoPlayRelated.desc,
+                //           selectStatus: widget.controller.playRepeat == PlayRepeat.autoPlayRelated,
+                //           onTap: () => widget.controller.setPlayRepeat(PlayRepeat.autoPlayRelated),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 ListTile(
+                  dense: true,
+                  onTap: () => {Get.back(), showSetRepeat()},
+                  leading: const Icon(Icons.repeat, size: 20),
+                  title: const Text('播放顺序', style: titleStyle),
+                  subtitle: Text(widget.controller.playRepeat.desc,
+                      style: subTitleStyle),
+                ),
+                SingleChildScrollView( 
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    spacing: 10,
+                    children: [
+                      Obx(
+                        () => ActionRowLineItem(
+                          iconData: Icons.play_circle_outline,
+                          onTap: widget.controller.setContinuePlayInBackground,
+                          text: " 后台播放 ",
+                          selectStatus:
+                              widget.controller.continuePlayInBackground.value,
+                        ),
+                      ),
+                      Obx(
+                        () => ActionRowLineItem(
+                          iconData: Icons.headphones,
+                          onTap: () {
+                            widget.controller.onlyPlayAudio.value =
+                                !widget.controller.onlyPlayAudio.value;
+                            widget.videoDetailCtr.playerInit();
+                          },
+                          text: " 听视频 ",
+                          selectStatus: widget.controller.onlyPlayAudio.value,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
+                SingleChildScrollView( 
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    spacing: 10,
+                    children: [
+                      Obx(
+                        () => ActionRowLineItem(
+                          iconData: Icons.flip,
+                          onTap: () => widget.controller.flipX.value =
+                              !widget.controller.flipX.value,
+                          text: " 左右翻转 ",
+                          selectStatus: widget.controller.flipX.value,
+                        ),
+                      ),
+                      Obx(
+                        () => ActionRowLineItem(
+                          icon: Transform.rotate(
+                            angle: pi / 2,
+                            child: Icon(
+                              Icons.flip,
+                              size: 13,
+                              color: widget.controller.flipY.value
+                                  ? theme.colorScheme.onSecondaryContainer
+                                  : theme.colorScheme.outline,
+                            ),
+                          ),
+                          onTap: () {
+                            widget.controller.flipY.value =
+                                !widget.controller.flipY.value;
+                          },
+                          text: " 上下翻转 ",
+                          selectStatus: widget.controller.flipY.value,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                ListTile(
+                  dense: true,
+                  onTap: () => {Get.back(), showSetVideoQa()},
+                  leading: const Icon(Icons.play_circle_outline, size: 20),
+                  title: const Text('选择画质', style: titleStyle),
+                  subtitle: Text('当前画质 ${videoDetailCtr.currentVideoQa.desc}',
+                      style: subTitleStyle),
+                ),
+                if (videoDetailCtr.currentAudioQa != null)
+                  ListTile(
+                    dense: true,
+                    onTap: () => {Get.back(), showSetAudioQa()},
+                    leading: const Icon(Icons.album_outlined, size: 20),
+                    title: const Text('选择音质', style: titleStyle),
+                    subtitle: Text(
+                        '当前音质 ${videoDetailCtr.currentAudioQa!.desc}',
+                        style: subTitleStyle),
+                  ),
+                ListTile( // 超分辨率
                   dense: true,
                   leading: const Icon(Icons.stay_current_landscape_outlined,
                       size: 20),
@@ -241,7 +385,7 @@ class HeaderControlState extends State<HeaderControl> {
                     ],
                   ),
                 ),
-                ListTile(
+                ListTile( // CDN 设置
                   dense: true,
                   title: const Text('CDN 设置', style: titleStyle),
                   leading: const Icon(MdiIcons.cloudPlusOutline, size: 20),
@@ -270,83 +414,6 @@ class HeaderControlState extends State<HeaderControl> {
                     }
                   },
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    spacing: 10,
-                    children: [
-                      Obx(
-                        () => ActionRowLineItem(
-                          iconData: Icons.flip,
-                          onTap: () => widget.controller.flipX.value =
-                              !widget.controller.flipX.value,
-                          text: " 左右翻转 ",
-                          selectStatus: widget.controller.flipX.value,
-                        ),
-                      ),
-                      Obx(
-                        () => ActionRowLineItem(
-                          icon: Transform.rotate(
-                            angle: pi / 2,
-                            child: Icon(
-                              Icons.flip,
-                              size: 13,
-                              color: widget.controller.flipY.value
-                                  ? theme.colorScheme.onSecondaryContainer
-                                  : theme.colorScheme.outline,
-                            ),
-                          ),
-                          onTap: () {
-                            widget.controller.flipY.value =
-                                !widget.controller.flipY.value;
-                          },
-                          text: " 上下翻转 ",
-                          selectStatus: widget.controller.flipY.value,
-                        ),
-                      ),
-                      Obx(
-                        () => ActionRowLineItem(
-                          iconData: Icons.headphones,
-                          onTap: () {
-                            widget.controller.onlyPlayAudio.value =
-                                !widget.controller.onlyPlayAudio.value;
-                            widget.videoDetailCtr.playerInit();
-                          },
-                          text: " 听视频 ",
-                          selectStatus: widget.controller.onlyPlayAudio.value,
-                        ),
-                      ),
-                      Obx(
-                        () => ActionRowLineItem(
-                          iconData: Icons.play_circle_outline,
-                          onTap: widget.controller.setContinuePlayInBackground,
-                          text: " 后台播放 ",
-                          selectStatus:
-                              widget.controller.continuePlayInBackground.value,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                ListTile(
-                  dense: true,
-                  onTap: () => {Get.back(), showSetVideoQa()},
-                  leading: const Icon(Icons.play_circle_outline, size: 20),
-                  title: const Text('选择画质', style: titleStyle),
-                  subtitle: Text('当前画质 ${videoDetailCtr.currentVideoQa.desc}',
-                      style: subTitleStyle),
-                ),
-                if (videoDetailCtr.currentAudioQa != null)
-                  ListTile(
-                    dense: true,
-                    onTap: () => {Get.back(), showSetAudioQa()},
-                    leading: const Icon(Icons.album_outlined, size: 20),
-                    title: const Text('选择音质', style: titleStyle),
-                    subtitle: Text(
-                        '当前音质 ${videoDetailCtr.currentAudioQa!.desc}',
-                        style: subTitleStyle),
-                  ),
                 ListTile(
                   dense: true,
                   onTap: () => {Get.back(), showSetDecodeFormats()},
@@ -354,14 +421,6 @@ class HeaderControlState extends State<HeaderControl> {
                   title: const Text('解码格式', style: titleStyle),
                   subtitle: Text(
                       '当前解码格式 ${videoDetailCtr.currentDecodeFormats.description}',
-                      style: subTitleStyle),
-                ),
-                ListTile(
-                  dense: true,
-                  onTap: () => {Get.back(), showSetRepeat()},
-                  leading: const Icon(Icons.repeat, size: 20),
-                  title: const Text('播放顺序', style: titleStyle),
-                  subtitle: Text(widget.controller.playRepeat.desc,
                       style: subTitleStyle),
                 ),
                 ListTile(

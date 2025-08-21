@@ -53,9 +53,9 @@ class _MediaPageState extends CommonPageState<MediaPage, MediaController>
             ListTile(
               leading: null,
               title: Padding(
-                padding: const EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 25),
                 child: Text(
-                  '媒体库',
+                  '[ 媒体库 ]',
                   style: TextStyle(
                     fontSize: theme.textTheme.titleLarge!.fontSize,
                     fontWeight: FontWeight.bold,
@@ -67,16 +67,17 @@ class _MediaPageState extends CommonPageState<MediaPage, MediaController>
                 onPressed: () => Get.toNamed('/setting'),
                 icon: const Icon(
                   Icons.settings_outlined,
-                  size: 20,
+                  size: 25,
                 ),
               ),
             ),
+            const SizedBox(height: 20),
             for (var item in controller.list)
               ListTile(
                 onTap: item.onTap,
                 dense: true,
                 leading: Padding(
-                  padding: const EdgeInsets.only(left: 15),
+                  padding: const EdgeInsets.only(left: 20),
                   child: Icon(
                     item.icon,
                     color: primary,
@@ -87,7 +88,7 @@ class _MediaPageState extends CommonPageState<MediaPage, MediaController>
                 minLeadingWidth: 0,
                 title: Text(
                   item.title,
-                  style: const TextStyle(fontSize: 15),
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
             Obx(
