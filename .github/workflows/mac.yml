@@ -36,11 +36,11 @@ jobs:
       - name: Prepare Upload
         run: |
           npm install --global create-dmg
-          create-dmg build/macos/Build/Products/Release/PiliPlusX.app
+          create-dmg build/macos/Build/Products/Release/PiliPlus.app
         continue-on-error: true
 
       - name: Rename DMG
-        run: mv PiliPlusX*.dmg PiliPlusX_macos_${{ env.version }}.dmg
+        run: mv PiliPlus*.dmg PiliPlusX_macos_${{ env.version }}.dmg
 
       - name: Release
         if: ${{ github.event.inputs.tag != '' }}
