@@ -40,7 +40,7 @@ jobs:
         continue-on-error: true
 
       - name: Rename DMG
-        run: mv PiliPlus*.dmg PiliPlusX_macos_${{ env.version }}.dmg
+        run: mv PiliPlusX*.dmg PiliPlusX_macos_$version.dmg
 
       - name: Release
         if: ${{ github.event.inputs.tag != '' }}
