@@ -39,8 +39,8 @@ jobs:
           create-dmg build/macos/Build/Products/Release/PiliPlusX.app
         continue-on-error: true
 
-      # - name: Rename DMG
-      #   run: mv PiliPlusX*.dmg PiliPlusX_macos_${{ env.version }}.dmg
+      - name: Rename DMG
+        run: mv PiliPlusX*.dmg PiliPlusX_macos_${{ env.version }}.dmg
 
       - name: Release
         if: ${{ github.event.inputs.tag != '' }}
