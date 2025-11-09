@@ -31,12 +31,14 @@ jobs:
         run: lib/scripts/build.ps1
 
       - name: Build Mac
-        run: flutter build macos --release --dart-define-from-file=pili_release.json
+        run: |
+          flutter build macos --release --dart-define-from-file=pili_release.json
+          mv build/macos/Build/Products/Release/PiliPlus.app build/macos/Build/Products/Release/PiliPlusX.app
 
       - name: Prepare Upload
         run: |
           npm install --global create-dmg
-          create-dmg build/macos/Build/Products/Release/PiliPlus.app
+          create-dmg build/macos/Build/Products/Release/PiliPlusX.app
         continue-on-error: true
 
       - name: Rename DMG
