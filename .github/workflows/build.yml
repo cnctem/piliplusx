@@ -105,7 +105,7 @@ jobs:
               run: |
                   for file in build/app/outputs/flutter-apk/app-*-release.apk; do
                     abi=$(echo "$file" | sed -E 's|.*app-(.*)-release\.apk|\1|')
-                    mv "$file" "PiliPlus_android_${{ env.version }}_${abi}.apk"
+                    mv "$file" "PiliPlusX_android_${{ env.version }}_${abi}.apk"
                   done
               shell: bash
 
@@ -116,28 +116,28 @@ jobs:
                   tag_name: ${{ github.event.inputs.tag }}
                   name: ${{ github.event.inputs.tag }}
                   files: |
-                      PiliPlus_android_*.apk
+                      PiliPlusX_android_*.apk
 
             - name: 上传
               uses: actions/upload-artifact@v4
               with:
                   name: Android_arm64-v8a
                   path: |
-                      PiliPlus_android_*_arm64-v8a.apk
+                      PiliPlusX_android_*_arm64-v8a.apk
 
             - name: 上传
               uses: actions/upload-artifact@v4
               with:
                   name: Android_armeabi-v7a
                   path: |
-                      PiliPlus_android_*_armeabi-v7a.apk
+                      PiliPlusX_android_*_armeabi-v7a.apk
 
             - name: 上传
               uses: actions/upload-artifact@v4
               with:
                   name: Android_x86_64
                   path: |
-                      PiliPlus_android_*_x86_64.apk
+                      PiliPlusX_android_*_x86_64.apk
 
     ios:
         if: ${{ github.event_name == 'pull_request' || github.event.inputs.build_ios == 'true' }}
@@ -153,16 +153,16 @@ jobs:
         with:
             tag: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || '' }}
 
-    win_x64:
-        if: ${{ github.event_name == 'pull_request' || github.event.inputs.build_win_x64 == 'true' }}
-        uses: ./.github/workflows/win_x64.yml
-        permissions: write-all
-        with:
-            tag: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || '' }}
+    # win_x64:
+    #     if: ${{ github.event_name == 'pull_request' || github.event.inputs.build_win_x64 == 'true' }}
+    #     uses: ./.github/workflows/win_x64.yml
+    #     permissions: write-all
+    #     with:
+    #         tag: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || '' }}
 
-    linux_x64:
-        if: ${{ github.event_name == 'pull_request' || github.event.inputs.build_linux_x64 == 'true' }}
-        uses: ./.github/workflows/linux_x64.yml
-        permissions: write-all
-        with:
-            tag: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || '' }}
+    # linux_x64:
+    #     if: ${{ github.event_name == 'pull_request' || github.event.inputs.build_linux_x64 == 'true' }}
+    #     uses: ./.github/workflows/linux_x64.yml
+    #     permissions: write-all
+    #     with:
+    #         tag: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || '' }}
