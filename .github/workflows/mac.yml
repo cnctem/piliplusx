@@ -36,11 +36,11 @@ jobs:
       - name: Prepare Upload
         run: |
           npm install --global create-dmg
-          create-dmg build/macos/Build/Products/Release/PiliPlusX.app
+          create-dmg --volname "PiliPlusX" --window-size 800 600 --icon-size 100 --app-drop-link 600 300 build/macos/Build/Products/Release/PiliPlusX.app ./PiliPlusX.dmg
         continue-on-error: true
 
       - name: Rename DMG
-        run: mv PiliPlusX*.dmg PiliPlusX_macos_$version.dmg
+        run: mv PiliPlusX*.dmg PiliPlusX_macos_${{ env.version }}.dmg
 
       - name: Release
         if: ${{ github.event.inputs.tag != '' }}
@@ -49,7 +49,7 @@ jobs:
           tag_name: ${{ github.event.inputs.tag }}
           name: ${{ github.event.inputs.tag }}
           files: |
-            PiliPlusX_macos_*.dmg
+            PiliPlusX_macos_${{ env.version }}.dmg
 
       - name: Upload macos release
         uses: actions/upload-artifact@v4
