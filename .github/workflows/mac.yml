@@ -49,7 +49,7 @@ jobs:
           tag_name: ${{ github.event.inputs.tag }}
           name: ${{ github.event.inputs.tag }}
           files: |
-            PiliPlusX_macos_*.dmg
+            PiliPlusX_macos_${{ env.version }}.dmg
 
       - name: Upload macos release
         uses: actions/upload-artifact@v4
