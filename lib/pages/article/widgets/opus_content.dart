@@ -191,12 +191,10 @@ class OpusContent extends StatelessWidget {
                 return Hero(
                   tag: pic.url!,
                   child: GestureDetector(
-                    onTap: () {
-                      PageUtils.imageView(
-                        imgList: [SourceModel(url: pic.url!)],
-                        quality: 60,
-                      );
-                    },
+                    onTap: () => PageUtils.imageView(
+                      imgList: [SourceModel(url: pic.url!)],
+                      quality: 60,
+                    ),
                     child: Center(
                       child: CachedNetworkImage(
                         width: width,

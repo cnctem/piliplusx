@@ -3,13 +3,13 @@ import 'package:PiliPlus/http/loading_state.dart';
 import 'package:PiliPlus/models_new/live/live_area_list/area_item.dart';
 import 'package:PiliPlus/models_new/live/live_area_list/area_list.dart';
 import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
+import 'package:PiliPlus/utils/accounts.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
 class LiveAreaController
     extends CommonListController<List<AreaList>?, AreaList> {
-  AccountService accountService = Get.find<AccountService>();
+  late final isLogin = Accounts.main.isLogin;
 
   late final isEditing = false.obs;
   late final favInfo = {};
@@ -17,7 +17,7 @@ class LiveAreaController
   @override
   void onInit() {
     super.onInit();
-    if (accountService.isLogin.value) {
+    if (isLogin) {
       queryFavTags();
     }
     queryData();
@@ -25,7 +25,7 @@ class LiveAreaController
 
   @override
   Future<void> onRefresh() {
-    if (accountService.isLogin.value) {
+    if (isLogin) {
       queryFavTags();
     }
     return super.onRefresh();

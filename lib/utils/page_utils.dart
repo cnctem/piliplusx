@@ -77,7 +77,7 @@ abstract class PageUtils {
       );
     } else if (context.mounted) {
       UserModel? userModel = await Navigator.of(context).push(
-        GetPageRoute(page: () => const ContactPage()),
+        GetPageRoute(page: ContactPage.new),
       );
       if (userModel != null) {
         selectedIndex = 0;
@@ -319,7 +319,6 @@ abstract class PageUtils {
       context: context,
       useSafeArea: true,
       isScrollControlled: true,
-      sheetAnimationStyle: const AnimationStyle(curve: Curves.ease),
       constraints: BoxConstraints(
         maxWidth: min(640, context.mediaQueryShortestSide),
       ),
@@ -707,7 +706,7 @@ abstract class PageUtils {
     }
   }
 
-  static void toVideoPage({
+  static Future? toVideoPage({
     VideoType videoType = VideoType.ugc,
     int? aid,
     String? bvid,
@@ -719,7 +718,6 @@ abstract class PageUtils {
     String? title,
     int? progress,
     Map? extraArguments,
-    int? id,
     bool off = false,
   }) {
     final arguments = {
@@ -737,17 +735,15 @@ abstract class PageUtils {
       ...?extraArguments,
     };
     if (off) {
-      Get.offNamed(
+      return Get.offNamed(
         '/videoV',
         arguments: arguments,
-        id: id,
         preventDuplicates: false,
       );
     } else {
-      Get.toNamed(
+      return Get.toNamed(
         '/videoV',
         arguments: arguments,
-        id: id,
         preventDuplicates: false,
       );
     }

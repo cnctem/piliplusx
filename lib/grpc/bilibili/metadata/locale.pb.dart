@@ -75,7 +75,6 @@ class Locale extends $pb.GeneratedMessage {
   static Locale create() => Locale._();
   @$core.override
   Locale createEmptyInstance() => create();
-  static $pb.PbList<Locale> createRepeated() => $pb.PbList<Locale>();
   @$core.pragma('dart2js:noInline')
   static Locale getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Locale>(create);
@@ -194,7 +193,6 @@ class LocaleIds extends $pb.GeneratedMessage {
   static LocaleIds create() => LocaleIds._();
   @$core.override
   LocaleIds createEmptyInstance() => create();
-  static $pb.PbList<LocaleIds> createRepeated() => $pb.PbList<LocaleIds>();
   @$core.pragma('dart2js:noInline')
   static LocaleIds getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LocaleIds>(create);

@@ -143,7 +143,9 @@ abstract class SettingBoxKey {
       silentDownImg = 'silentDownImg',
       showMemberShop = 'showMemberShop',
       enablePlayAll = 'enablePlayAll',
-      enableTapDm = 'enableTapDm';
+      enableTapDm = 'enableTapDm',
+      setSystemBrightness = 'setSystemBrightness',
+      downloadPath = 'downloadPath';
 
   static const String minimizeOnExit = 'minimizeOnExit',
       windowSize = 'windowSize',

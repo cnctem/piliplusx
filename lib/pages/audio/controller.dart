@@ -339,6 +339,12 @@ class AudioController extends GetxController
     );
     if (res.isSuccess) {
       hasLike.value = newVal;
+      try {
+        audioItem.value!.stat
+          ..hasLike_7 = newVal
+          ..like += newVal ? 1 : -1;
+        audioItem.refresh();
+      } catch (_) {}
       SmartDialog.showToast(res.data.message);
     } else {
       res.toast();
@@ -362,6 +368,12 @@ class AudioController extends GetxController
       if (data.coinOk && !hasCoin) {
         coinNum.value = 2;
         GlobalData().afterCoin(2);
+        try {
+          audioItem.value!.stat
+            ..hasCoin_8 = true
+            ..coin += 2;
+          audioItem.refresh();
+        } catch (_) {}
       }
       hasFav.value = true;
       if (!hasCoin) {
@@ -412,10 +424,22 @@ class AudioController extends GetxController
       thumbUp: coinWithLike,
     );
     if (res.isSuccess) {
-      if (coinWithLike) {
+      final updateLike = !hasLike.value && coinWithLike;
+      if (updateLike) {
         hasLike.value = true;
       }
       coinNum.value += coin;
+      try {
+        final stat = audioItem.value!.stat
+          ..hasCoin_8 = true
+          ..coin += coin;
+        if (updateLike) {
+          stat
+            ..hasLike_7 = true
+            ..like += 1;
+        }
+        audioItem.refresh();
+      } catch (_) {}
       GlobalData().afterCoin(coin);
     } else {
       res.toast();
@@ -600,7 +624,9 @@ class AudioController extends GetxController
     final audioItem = playlist![index];
     final item = audioItem.item;
     oid = item.oid;
-    this.subId = subId ?? item.subId;
+    this.subId =
+        subId ??
+        (item.subId.isNotEmpty ? item.subId : [audioItem.parts.first.subId]);
     itemType = item.itemType;
     _queryPlayUrl().then((res) {
       if (res) {
@@ -633,9 +659,12 @@ class AudioController extends GetxController
 
   @override
   void updateFavCount(int count) {
-    audioItem
-      ..value?.stat.favourite += count
-      ..refresh();
+    try {
+      audioItem.value!.stat
+        ..hasFav = count > 0
+        ..favourite += count;
+      audioItem.refresh();
+    } catch (_) {}
   }
 
   Future<void> loadPrev(BuildContext context) async {

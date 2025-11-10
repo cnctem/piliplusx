@@ -9,8 +9,8 @@ import 'package:PiliPlus/models_new/fav/fav_folder/data.dart';
 import 'package:PiliPlus/models_new/video/video_detail/data.dart';
 import 'package:PiliPlus/models_new/video/video_detail/stat_detail.dart';
 import 'package:PiliPlus/models_new/video/video_tag/data.dart';
+import 'package:PiliPlus/pages/video/controller.dart';
 import 'package:PiliPlus/pages/video/introduction/ugc/widgets/triple_mixin.dart';
-import 'package:PiliPlus/services/account_service.dart';
 import 'package:PiliPlus/utils/accounts.dart';
 import 'package:PiliPlus/utils/global_data.dart';
 import 'package:PiliPlus/utils/id_utils.dart';
@@ -42,7 +42,7 @@ abstract class CommonIntroController extends GetxController
     }
   }
 
-  AccountService accountService = Get.find<AccountService>();
+  late final isLogin = Accounts.main.isLogin;
 
   StatDetail? getStat();
 
@@ -67,6 +67,8 @@ abstract class CommonIntroController extends GetxController
   Timer? timer;
 
   late final RxInt cid;
+
+  late final videoDetailCtr = Get.find<VideoDetailController>(tag: heroTag);
 
   @override
   void onInit() {

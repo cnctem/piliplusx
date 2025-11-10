@@ -60,8 +60,6 @@ class BasicRenderSpec extends $pb.GeneratedMessage {
   static BasicRenderSpec create() => BasicRenderSpec._();
   @$core.override
   BasicRenderSpec createEmptyInstance() => create();
-  static $pb.PbList<BasicRenderSpec> createRepeated() =>
-      $pb.PbList<BasicRenderSpec>();
   @$core.pragma('dart2js:noInline')
   static BasicRenderSpec getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<BasicRenderSpec>(create);
@@ -125,7 +123,6 @@ class ColorConfig extends $pb.GeneratedMessage {
   static ColorConfig create() => ColorConfig._();
   @$core.override
   ColorConfig createEmptyInstance() => create();
-  static $pb.PbList<ColorConfig> createRepeated() => $pb.PbList<ColorConfig>();
   @$core.pragma('dart2js:noInline')
   static ColorConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ColorConfig>(create);
@@ -202,7 +199,6 @@ class ColorSpec extends $pb.GeneratedMessage {
   static ColorSpec create() => ColorSpec._();
   @$core.override
   ColorSpec createEmptyInstance() => create();
-  static $pb.PbList<ColorSpec> createRepeated() => $pb.PbList<ColorSpec>();
   @$core.pragma('dart2js:noInline')
   static ColorSpec getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ColorSpec>(create);
@@ -267,8 +263,6 @@ class LayerGeneralSpec extends $pb.GeneratedMessage {
   static LayerGeneralSpec create() => LayerGeneralSpec._();
   @$core.override
   LayerGeneralSpec createEmptyInstance() => create();
-  static $pb.PbList<LayerGeneralSpec> createRepeated() =>
-      $pb.PbList<LayerGeneralSpec>();
   @$core.pragma('dart2js:noInline')
   static LayerGeneralSpec getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<LayerGeneralSpec>(create);
@@ -353,8 +347,6 @@ class MaskProperty extends $pb.GeneratedMessage {
   static MaskProperty create() => MaskProperty._();
   @$core.override
   MaskProperty createEmptyInstance() => create();
-  static $pb.PbList<MaskProperty> createRepeated() =>
-      $pb.PbList<MaskProperty>();
   @$core.pragma('dart2js:noInline')
   static MaskProperty getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MaskProperty>(create);
@@ -435,8 +427,6 @@ class NativeDrawRes extends $pb.GeneratedMessage {
   static NativeDrawRes create() => NativeDrawRes._();
   @$core.override
   NativeDrawRes createEmptyInstance() => create();
-  static $pb.PbList<NativeDrawRes> createRepeated() =>
-      $pb.PbList<NativeDrawRes>();
   @$core.pragma('dart2js:noInline')
   static NativeDrawRes getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<NativeDrawRes>(create);
@@ -528,8 +518,6 @@ class PositionSpec extends $pb.GeneratedMessage {
   static PositionSpec create() => PositionSpec._();
   @$core.override
   PositionSpec createEmptyInstance() => create();
-  static $pb.PbList<PositionSpec> createRepeated() =>
-      $pb.PbList<PositionSpec>();
   @$core.pragma('dart2js:noInline')
   static PositionSpec getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PositionSpec>(create);
@@ -605,7 +593,6 @@ class RemoteRes extends $pb.GeneratedMessage {
   static RemoteRes create() => RemoteRes._();
   @$core.override
   RemoteRes createEmptyInstance() => create();
-  static $pb.PbList<RemoteRes> createRepeated() => $pb.PbList<RemoteRes>();
   @$core.pragma('dart2js:noInline')
   static RemoteRes getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RemoteRes>(create);
@@ -696,8 +683,6 @@ class ResourceSource extends $pb.GeneratedMessage {
   static ResourceSource create() => ResourceSource._();
   @$core.override
   ResourceSource createEmptyInstance() => create();
-  static $pb.PbList<ResourceSource> createRepeated() =>
-      $pb.PbList<ResourceSource>();
   @$core.pragma('dart2js:noInline')
   static ResourceSource getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ResourceSource>(create);
@@ -804,7 +789,6 @@ class SizeSpec extends $pb.GeneratedMessage {
   static SizeSpec create() => SizeSpec._();
   @$core.override
   SizeSpec createEmptyInstance() => create();
-  static $pb.PbList<SizeSpec> createRepeated() => $pb.PbList<SizeSpec>();
   @$core.pragma('dart2js:noInline')
   static SizeSpec getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SizeSpec>(create);

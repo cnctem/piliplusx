@@ -66,8 +66,6 @@ class BorderConfig extends $pb.GeneratedMessage {
   static BorderConfig create() => BorderConfig._();
   @$core.override
   BorderConfig createEmptyInstance() => create();
-  static $pb.PbList<BorderConfig> createRepeated() =>
-      $pb.PbList<BorderConfig>();
   @$core.pragma('dart2js:noInline')
   static BorderConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<BorderConfig>(create);
@@ -148,8 +146,6 @@ class CommentDoubleClickConfig extends $pb.GeneratedMessage {
   static CommentDoubleClickConfig create() => CommentDoubleClickConfig._();
   @$core.override
   CommentDoubleClickConfig createEmptyInstance() => create();
-  static $pb.PbList<CommentDoubleClickConfig> createRepeated() =>
-      $pb.PbList<CommentDoubleClickConfig>();
   @$core.pragma('dart2js:noInline')
   static CommentDoubleClickConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<CommentDoubleClickConfig>(create);
@@ -236,8 +232,6 @@ class FollowActionConfig extends $pb.GeneratedMessage {
   static FollowActionConfig create() => FollowActionConfig._();
   @$core.override
   FollowActionConfig createEmptyInstance() => create();
-  static $pb.PbList<FollowActionConfig> createRepeated() =>
-      $pb.PbList<FollowActionConfig>();
   @$core.pragma('dart2js:noInline')
   static FollowActionConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FollowActionConfig>(create);
@@ -365,8 +359,6 @@ class FollowIconConfig extends $pb.GeneratedMessage {
   static FollowIconConfig create() => FollowIconConfig._();
   @$core.override
   FollowIconConfig createEmptyInstance() => create();
-  static $pb.PbList<FollowIconConfig> createRepeated() =>
-      $pb.PbList<FollowIconConfig>();
   @$core.pragma('dart2js:noInline')
   static FollowIconConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FollowIconConfig>(create);
@@ -462,7 +454,6 @@ class GyroConfig extends $pb.GeneratedMessage {
   static GyroConfig create() => GyroConfig._();
   @$core.override
   GyroConfig createEmptyInstance() => create();
-  static $pb.PbList<GyroConfig> createRepeated() => $pb.PbList<GyroConfig>();
   @$core.pragma('dart2js:noInline')
   static GyroConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<GyroConfig>(create);
@@ -529,8 +520,6 @@ class GyroscopeContentV2 extends $pb.GeneratedMessage {
   static GyroscopeContentV2 create() => GyroscopeContentV2._();
   @$core.override
   GyroscopeContentV2 createEmptyInstance() => create();
-  static $pb.PbList<GyroscopeContentV2> createRepeated() =>
-      $pb.PbList<GyroscopeContentV2>();
   @$core.pragma('dart2js:noInline')
   static GyroscopeContentV2 getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<GyroscopeContentV2>(create);
@@ -602,8 +591,6 @@ class GyroscopeEntityV2 extends $pb.GeneratedMessage {
   static GyroscopeEntityV2 create() => GyroscopeEntityV2._();
   @$core.override
   GyroscopeEntityV2 createEmptyInstance() => create();
-  static $pb.PbList<GyroscopeEntityV2> createRepeated() =>
-      $pb.PbList<GyroscopeEntityV2>();
   @$core.pragma('dart2js:noInline')
   static GyroscopeEntityV2 getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<GyroscopeEntityV2>(create);
@@ -671,7 +658,6 @@ class Interaction extends $pb.GeneratedMessage {
   static Interaction create() => Interaction._();
   @$core.override
   Interaction createEmptyInstance() => create();
-  static $pb.PbList<Interaction> createRepeated() => $pb.PbList<Interaction>();
   @$core.pragma('dart2js:noInline')
   static Interaction getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<Interaction>(create);
@@ -766,8 +752,6 @@ class LiveAnimeConfig extends $pb.GeneratedMessage {
   static LiveAnimeConfig create() => LiveAnimeConfig._();
   @$core.override
   LiveAnimeConfig createEmptyInstance() => create();
-  static $pb.PbList<LiveAnimeConfig> createRepeated() =>
-      $pb.PbList<LiveAnimeConfig>();
   @$core.pragma('dart2js:noInline')
   static LiveAnimeConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<LiveAnimeConfig>(create);
@@ -856,8 +840,6 @@ class LiveAnimeItem extends $pb.GeneratedMessage {
   static LiveAnimeItem create() => LiveAnimeItem._();
   @$core.override
   LiveAnimeItem createEmptyInstance() => create();
-  static $pb.PbList<LiveAnimeItem> createRepeated() =>
-      $pb.PbList<LiveAnimeItem>();
   @$core.pragma('dart2js:noInline')
   static LiveAnimeItem getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<LiveAnimeItem>(create);
@@ -980,8 +962,6 @@ class LiveTextConfig extends $pb.GeneratedMessage {
   static LiveTextConfig create() => LiveTextConfig._();
   @$core.override
   LiveTextConfig createEmptyInstance() => create();
-  static $pb.PbList<LiveTextConfig> createRepeated() =>
-      $pb.PbList<LiveTextConfig>();
   @$core.pragma('dart2js:noInline')
   static LiveTextConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<LiveTextConfig>(create);
@@ -1095,7 +1075,6 @@ class NFTImageV2 extends $pb.GeneratedMessage {
   static NFTImageV2 create() => NFTImageV2._();
   @$core.override
   NFTImageV2 createEmptyInstance() => create();
-  static $pb.PbList<NFTImageV2> createRepeated() => $pb.PbList<NFTImageV2>();
   @$core.pragma('dart2js:noInline')
   static NFTImageV2 getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<NFTImageV2>(create);
@@ -1154,8 +1133,6 @@ class PhysicalOrientationAnimation extends $pb.GeneratedMessage {
       PhysicalOrientationAnimation._();
   @$core.override
   PhysicalOrientationAnimation createEmptyInstance() => create();
-  static $pb.PbList<PhysicalOrientationAnimation> createRepeated() =>
-      $pb.PbList<PhysicalOrientationAnimation>();
   @$core.pragma('dart2js:noInline')
   static PhysicalOrientationAnimation getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PhysicalOrientationAnimation>(create);
@@ -1231,8 +1208,6 @@ class PhysicalOrientationV2 extends $pb.GeneratedMessage {
   static PhysicalOrientationV2 create() => PhysicalOrientationV2._();
   @$core.override
   PhysicalOrientationV2 createEmptyInstance() => create();
-  static $pb.PbList<PhysicalOrientationV2> createRepeated() =>
-      $pb.PbList<PhysicalOrientationV2>();
   @$core.pragma('dart2js:noInline')
   static PhysicalOrientationV2 getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PhysicalOrientationV2>(create);
@@ -1310,8 +1285,6 @@ class WebLiveAnimeConfig extends $pb.GeneratedMessage {
   static WebLiveAnimeConfig create() => WebLiveAnimeConfig._();
   @$core.override
   WebLiveAnimeConfig createEmptyInstance() => create();
-  static $pb.PbList<WebLiveAnimeConfig> createRepeated() =>
-      $pb.PbList<WebLiveAnimeConfig>();
   @$core.pragma('dart2js:noInline')
   static WebLiveAnimeConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<WebLiveAnimeConfig>(create);

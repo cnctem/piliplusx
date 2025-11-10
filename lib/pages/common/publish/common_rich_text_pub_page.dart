@@ -82,7 +82,10 @@ abstract class CommonRichTextPubPageState<T extends CommonRichTextPubPage>
     ).colorScheme.secondaryContainer.withValues(alpha: 0.5);
 
     void onClear() {
-      pathList.removeAt(index);
+      final path = pathList.removeAt(index);
+      if (Utils.isMobile) {
+        File(path).tryDel();
+      }
       if (pathList.isEmpty && editController.rawText.trim().isEmpty) {
         enablePublish.value = false;
       }
@@ -148,8 +151,9 @@ abstract class CommonRichTextPubPageState<T extends CommonRichTextPubPage>
 
   Future<void> onCropImage(int index) async {
     late final colorScheme = ColorScheme.of(context);
-    CroppedFile? croppedFile = await ImageCropper.platform.cropImage(
-      sourcePath: pathList[index],
+    final sourcePath = pathList[index];
+    final croppedFile = await ImageCropper.platform.cropImage(
+      sourcePath: sourcePath,
       uiSettings: [
         AndroidUiSettings(
           toolbarTitle: '裁剪',
@@ -161,6 +165,7 @@ abstract class CommonRichTextPubPageState<T extends CommonRichTextPubPage>
       ],
     );
     if (croppedFile != null) {
+      File(sourcePath).tryDel();
       pathList[index] = croppedFile.path;
     }
   }

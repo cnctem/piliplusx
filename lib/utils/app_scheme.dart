@@ -7,6 +7,9 @@ import 'package:PiliPlus/http/search.dart';
 import 'package:PiliPlus/models/common/fav_type.dart';
 import 'package:PiliPlus/models/common/video/source_type.dart';
 import 'package:PiliPlus/pages/audio/view.dart';
+import 'package:PiliPlus/pages/fan/view.dart';
+import 'package:PiliPlus/pages/follow/view.dart';
+import 'package:PiliPlus/pages/follow_type/followed/view.dart';
 import 'package:PiliPlus/pages/live/view.dart';
 import 'package:PiliPlus/pages/rank/view.dart';
 import 'package:PiliPlus/pages/subscription_detail/view.dart';
@@ -486,13 +489,13 @@ abstract final class PiliScheme {
       }) {
         switch (type) {
           case 'follow':
-            Get.toNamed('/follow?mid=$mid');
+            FollowPage.toFollowPage(mid: mid);
             break;
           case 'fans':
-            Get.toNamed('/fan?mid=$mid');
+            FansPage.toFansPage(mid: mid);
             break;
           case 'followed':
-            Get.toNamed('/followed?mid=$mid');
+            FollowedPage.toFollowedPage(mid: mid);
             break;
           default:
             PageUtils.toDupNamed('/member?mid=$mid', off: off);

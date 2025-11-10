@@ -19,7 +19,6 @@ import 'package:PiliPlus/models_new/video/video_detail/episode.dart'
 import 'package:PiliPlus/models_new/video/video_detail/stat_detail.dart';
 import 'package:PiliPlus/pages/common/common_intro_controller.dart';
 import 'package:PiliPlus/pages/dynamics_repost/view.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
 import 'package:PiliPlus/pages/video/pay_coins/view.dart';
 import 'package:PiliPlus/pages/video/reply/controller.dart';
 import 'package:PiliPlus/plugin/pl_player/models/play_repeat.dart';
@@ -66,7 +65,7 @@ class PgcIntroController extends CommonIntroController {
     super.onInit();
 
     if (isPgc) {
-      if (accountService.isLogin.value) {
+      if (isLogin) {
         queryIsFollowed();
         if (epId != null) {
           queryPgcLikeCoinFav();
@@ -101,7 +100,7 @@ class PgcIntroController extends CommonIntroController {
   // （取消）点赞
   @override
   Future<void> actionLikeVideo() async {
-    if (!accountService.isLogin.value) {
+    if (!isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }
@@ -119,7 +118,7 @@ class PgcIntroController extends CommonIntroController {
   // 投币
   @override
   void actionCoinVideo() {
-    if (!accountService.isLogin.value) {
+    if (!isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }
@@ -294,7 +293,7 @@ class PgcIntroController extends CommonIntroController {
       this.epId = epId;
       this.bvid = bvid;
 
-      final videoDetailCtr = Get.find<VideoDetailController>(tag: heroTag)
+      videoDetailCtr
         ..plPlayerController.pause()
         ..makeHeartBeat()
         ..onReset()
@@ -316,7 +315,7 @@ class PgcIntroController extends CommonIntroController {
         } catch (_) {}
       }
 
-      if (isPgc && accountService.isLogin.value) {
+      if (isPgc && isLogin) {
         queryPgcLikeCoinFav();
       }
 
@@ -364,9 +363,6 @@ class PgcIntroController extends CommonIntroController {
   @override
   bool prevPlay() {
     final episodes = pgcItem.episodes!;
-    VideoDetailController videoDetailCtr = Get.find<VideoDetailController>(
-      tag: heroTag,
-    );
     int currentIndex = episodes.indexWhere(
       (e) => e.cid == videoDetailCtr.cid.value,
     );
@@ -388,9 +384,7 @@ class PgcIntroController extends CommonIntroController {
   bool nextPlay() {
     try {
       final episodes = pgcItem.episodes!;
-      VideoDetailController videoDetailCtr = Get.find<VideoDetailController>(
-        tag: heroTag,
-      );
+
       PlayRepeat playRepeat = videoDetailCtr.plPlayerController.playRepeat;
 
       int currentIndex = episodes.indexWhere(
@@ -418,7 +412,7 @@ class PgcIntroController extends CommonIntroController {
   @override
   Future<void> actionTriple() async {
     feedBack();
-    if (!accountService.isLogin.value) {
+    if (!isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }

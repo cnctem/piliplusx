@@ -20,13 +20,26 @@ class FansPage extends StatefulWidget {
 
   @override
   State<FansPage> createState() => _FansPageState();
+
+  static void toFansPage({dynamic mid, String? name}) {
+    if (mid == null) {
+      return;
+    }
+    Get.toNamed(
+      '/fan',
+      arguments: {
+        'mid': Utils.safeToInt(mid),
+        'name': name,
+      },
+    );
+  }
 }
 
 class _FansPageState extends FollowTypePageState<FansPage> {
   @override
   late final FansController controller = Get.put(
     FansController(widget.showName),
-    tag: Get.parameters['mid'],
+    tag: Get.arguments?['mid']?.toString() ?? Utils.generateRandomString(8),
   );
   late final flag = widget.onSelect == null && controller.isOwner;
 

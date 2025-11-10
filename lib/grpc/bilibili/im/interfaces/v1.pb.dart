@@ -61,7 +61,6 @@ class DummyReq extends $pb.GeneratedMessage {
   static DummyReq create() => DummyReq._();
   @$core.override
   DummyReq createEmptyInstance() => create();
-  static $pb.PbList<DummyReq> createRepeated() => $pb.PbList<DummyReq>();
   @$core.pragma('dart2js:noInline')
   static DummyReq getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DummyReq>(create);
@@ -109,7 +108,6 @@ class DummyRsp extends $pb.GeneratedMessage {
   static DummyRsp create() => DummyRsp._();
   @$core.override
   DummyRsp createEmptyInstance() => create();
-  static $pb.PbList<DummyRsp> createRepeated() => $pb.PbList<DummyRsp>();
   @$core.pragma('dart2js:noInline')
   static DummyRsp getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DummyRsp>(create);
@@ -165,7 +163,6 @@ class EmotionInfo extends $pb.GeneratedMessage {
   static EmotionInfo create() => EmotionInfo._();
   @$core.override
   EmotionInfo createEmptyInstance() => create();
-  static $pb.PbList<EmotionInfo> createRepeated() => $pb.PbList<EmotionInfo>();
   @$core.pragma('dart2js:noInline')
   static EmotionInfo getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<EmotionInfo>(create);
@@ -251,8 +248,6 @@ class GetUserCosmoStateReq extends $pb.GeneratedMessage {
   static GetUserCosmoStateReq create() => GetUserCosmoStateReq._();
   @$core.override
   GetUserCosmoStateReq createEmptyInstance() => create();
-  static $pb.PbList<GetUserCosmoStateReq> createRepeated() =>
-      $pb.PbList<GetUserCosmoStateReq>();
   @$core.pragma('dart2js:noInline')
   static GetUserCosmoStateReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<GetUserCosmoStateReq>(create);
@@ -329,8 +324,6 @@ class GetUserCosmoStateRsp extends $pb.GeneratedMessage {
   static GetUserCosmoStateRsp create() => GetUserCosmoStateRsp._();
   @$core.override
   GetUserCosmoStateRsp createEmptyInstance() => create();
-  static $pb.PbList<GetUserCosmoStateRsp> createRepeated() =>
-      $pb.PbList<GetUserCosmoStateRsp>();
   @$core.pragma('dart2js:noInline')
   static GetUserCosmoStateRsp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<GetUserCosmoStateRsp>(create);
@@ -423,8 +416,6 @@ class HasLikeState extends $pb.GeneratedMessage {
   static HasLikeState create() => HasLikeState._();
   @$core.override
   HasLikeState createEmptyInstance() => create();
-  static $pb.PbList<HasLikeState> createRepeated() =>
-      $pb.PbList<HasLikeState>();
   @$core.pragma('dart2js:noInline')
   static HasLikeState getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<HasLikeState>(create);
@@ -482,7 +473,6 @@ class MsgDetail extends $pb.GeneratedMessage {
   static MsgDetail create() => MsgDetail._();
   @$core.override
   MsgDetail createEmptyInstance() => create();
-  static $pb.PbList<MsgDetail> createRepeated() => $pb.PbList<MsgDetail>();
   @$core.pragma('dart2js:noInline')
   static MsgDetail getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgDetail>(create);
@@ -551,8 +541,6 @@ class MsgFeedUnreadRsp extends $pb.GeneratedMessage {
   static MsgFeedUnreadRsp create() => MsgFeedUnreadRsp._();
   @$core.override
   MsgFeedUnreadRsp createEmptyInstance() => create();
-  static $pb.PbList<MsgFeedUnreadRsp> createRepeated() =>
-      $pb.PbList<MsgFeedUnreadRsp>();
   @$core.pragma('dart2js:noInline')
   static MsgFeedUnreadRsp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MsgFeedUnreadRsp>(create);
@@ -605,8 +593,6 @@ class NewTotalUnread extends $pb.GeneratedMessage {
   static NewTotalUnread create() => NewTotalUnread._();
   @$core.override
   NewTotalUnread createEmptyInstance() => create();
-  static $pb.PbList<NewTotalUnread> createRepeated() =>
-      $pb.PbList<NewTotalUnread>();
   @$core.pragma('dart2js:noInline')
   static NewTotalUnread getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<NewTotalUnread>(create);
@@ -671,8 +657,6 @@ class ReqAckAssisMsg extends $pb.GeneratedMessage {
   static ReqAckAssisMsg create() => ReqAckAssisMsg._();
   @$core.override
   ReqAckAssisMsg createEmptyInstance() => create();
-  static $pb.PbList<ReqAckAssisMsg> createRepeated() =>
-      $pb.PbList<ReqAckAssisMsg>();
   @$core.pragma('dart2js:noInline')
   static ReqAckAssisMsg getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqAckAssisMsg>(create);
@@ -734,8 +718,6 @@ class ReqAckSessions extends $pb.GeneratedMessage {
   static ReqAckSessions create() => ReqAckSessions._();
   @$core.override
   ReqAckSessions createEmptyInstance() => create();
-  static $pb.PbList<ReqAckSessions> createRepeated() =>
-      $pb.PbList<ReqAckSessions>();
   @$core.pragma('dart2js:noInline')
   static ReqAckSessions getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqAckSessions>(create);
@@ -802,8 +784,6 @@ class ReqBatRmSess extends $pb.GeneratedMessage {
   static ReqBatRmSess create() => ReqBatRmSess._();
   @$core.override
   ReqBatRmSess createEmptyInstance() => create();
-  static $pb.PbList<ReqBatRmSess> createRepeated() =>
-      $pb.PbList<ReqBatRmSess>();
   @$core.pragma('dart2js:noInline')
   static ReqBatRmSess getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqBatRmSess>(create);
@@ -844,8 +824,6 @@ class ReqCloseClearUnreadUI extends $pb.GeneratedMessage {
   static ReqCloseClearUnreadUI create() => ReqCloseClearUnreadUI._();
   @$core.override
   ReqCloseClearUnreadUI createEmptyInstance() => create();
-  static $pb.PbList<ReqCloseClearUnreadUI> createRepeated() =>
-      $pb.PbList<ReqCloseClearUnreadUI>();
   @$core.pragma('dart2js:noInline')
   static ReqCloseClearUnreadUI getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqCloseClearUnreadUI>(create);
@@ -886,8 +864,6 @@ class ReqGetDiscussListInImPage extends $pb.GeneratedMessage {
   static ReqGetDiscussListInImPage create() => ReqGetDiscussListInImPage._();
   @$core.override
   ReqGetDiscussListInImPage createEmptyInstance() => create();
-  static $pb.PbList<ReqGetDiscussListInImPage> createRepeated() =>
-      $pb.PbList<ReqGetDiscussListInImPage>();
   @$core.pragma('dart2js:noInline')
   static ReqGetDiscussListInImPage getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqGetDiscussListInImPage>(create);
@@ -940,7 +916,6 @@ class ReqGetMsg extends $pb.GeneratedMessage {
   static ReqGetMsg create() => ReqGetMsg._();
   @$core.override
   ReqGetMsg createEmptyInstance() => create();
-  static $pb.PbList<ReqGetMsg> createRepeated() => $pb.PbList<ReqGetMsg>();
   @$core.pragma('dart2js:noInline')
   static ReqGetMsg getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReqGetMsg>(create);
@@ -1038,8 +1013,6 @@ class ReqGetSessions extends $pb.GeneratedMessage {
   static ReqGetSessions create() => ReqGetSessions._();
   @$core.override
   ReqGetSessions createEmptyInstance() => create();
-  static $pb.PbList<ReqGetSessions> createRepeated() =>
-      $pb.PbList<ReqGetSessions>();
   @$core.pragma('dart2js:noInline')
   static ReqGetSessions getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqGetSessions>(create);
@@ -1181,8 +1154,6 @@ class ReqGetSpecificSessions extends $pb.GeneratedMessage {
   static ReqGetSpecificSessions create() => ReqGetSpecificSessions._();
   @$core.override
   ReqGetSpecificSessions createEmptyInstance() => create();
-  static $pb.PbList<ReqGetSpecificSessions> createRepeated() =>
-      $pb.PbList<ReqGetSpecificSessions>();
   @$core.pragma('dart2js:noInline')
   static ReqGetSpecificSessions getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqGetSpecificSessions>(create);
@@ -1235,8 +1206,6 @@ class ReqGroupAssisMsg extends $pb.GeneratedMessage {
   static ReqGroupAssisMsg create() => ReqGroupAssisMsg._();
   @$core.override
   ReqGroupAssisMsg createEmptyInstance() => create();
-  static $pb.PbList<ReqGroupAssisMsg> createRepeated() =>
-      $pb.PbList<ReqGroupAssisMsg>();
   @$core.pragma('dart2js:noInline')
   static ReqGroupAssisMsg getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqGroupAssisMsg>(create);
@@ -1304,7 +1273,6 @@ class ReqLikeMsg extends $pb.GeneratedMessage {
   static ReqLikeMsg create() => ReqLikeMsg._();
   @$core.override
   ReqLikeMsg createEmptyInstance() => create();
-  static $pb.PbList<ReqLikeMsg> createRepeated() => $pb.PbList<ReqLikeMsg>();
   @$core.pragma('dart2js:noInline')
   static ReqLikeMsg getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqLikeMsg>(create);
@@ -1372,7 +1340,6 @@ class ReqLiveInfo extends $pb.GeneratedMessage {
   static ReqLiveInfo create() => ReqLiveInfo._();
   @$core.override
   ReqLiveInfo createEmptyInstance() => create();
-  static $pb.PbList<ReqLiveInfo> createRepeated() => $pb.PbList<ReqLiveInfo>();
   @$core.pragma('dart2js:noInline')
   static ReqLiveInfo getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqLiveInfo>(create);
@@ -1437,8 +1404,6 @@ class ReqMsgHasLike extends $pb.GeneratedMessage {
   static ReqMsgHasLike create() => ReqMsgHasLike._();
   @$core.override
   ReqMsgHasLike createEmptyInstance() => create();
-  static $pb.PbList<ReqMsgHasLike> createRepeated() =>
-      $pb.PbList<ReqMsgHasLike>();
   @$core.pragma('dart2js:noInline')
   static ReqMsgHasLike getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqMsgHasLike>(create);
@@ -1500,8 +1465,6 @@ class ReqNewSessions extends $pb.GeneratedMessage {
   static ReqNewSessions create() => ReqNewSessions._();
   @$core.override
   ReqNewSessions createEmptyInstance() => create();
-  static $pb.PbList<ReqNewSessions> createRepeated() =>
-      $pb.PbList<ReqNewSessions>();
   @$core.pragma('dart2js:noInline')
   static ReqNewSessions getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqNewSessions>(create);
@@ -1588,8 +1551,6 @@ class ReqRelationSync extends $pb.GeneratedMessage {
   static ReqRelationSync create() => ReqRelationSync._();
   @$core.override
   ReqRelationSync createEmptyInstance() => create();
-  static $pb.PbList<ReqRelationSync> createRepeated() =>
-      $pb.PbList<ReqRelationSync>();
   @$core.pragma('dart2js:noInline')
   static ReqRelationSync getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqRelationSync>(create);
@@ -1654,8 +1615,6 @@ class ReqRemoveSession extends $pb.GeneratedMessage {
   static ReqRemoveSession create() => ReqRemoveSession._();
   @$core.override
   ReqRemoveSession createEmptyInstance() => create();
-  static $pb.PbList<ReqRemoveSession> createRepeated() =>
-      $pb.PbList<ReqRemoveSession>();
   @$core.pragma('dart2js:noInline')
   static ReqRemoveSession getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqRemoveSession>(create);
@@ -1749,7 +1708,6 @@ class ReqSendMsg extends $pb.GeneratedMessage {
   static ReqSendMsg create() => ReqSendMsg._();
   @$core.override
   ReqSendMsg createEmptyInstance() => create();
-  static $pb.PbList<ReqSendMsg> createRepeated() => $pb.PbList<ReqSendMsg>();
   @$core.pragma('dart2js:noInline')
   static ReqSendMsg getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqSendMsg>(create);
@@ -1849,8 +1807,6 @@ class ReqSessionDetail extends $pb.GeneratedMessage {
   static ReqSessionDetail create() => ReqSessionDetail._();
   @$core.override
   ReqSessionDetail createEmptyInstance() => create();
-  static $pb.PbList<ReqSessionDetail> createRepeated() =>
-      $pb.PbList<ReqSessionDetail>();
   @$core.pragma('dart2js:noInline')
   static ReqSessionDetail getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqSessionDetail>(create);
@@ -1925,8 +1881,6 @@ class ReqSessionDetails extends $pb.GeneratedMessage {
   static ReqSessionDetails create() => ReqSessionDetails._();
   @$core.override
   ReqSessionDetails createEmptyInstance() => create();
-  static $pb.PbList<ReqSessionDetails> createRepeated() =>
-      $pb.PbList<ReqSessionDetails>();
   @$core.pragma('dart2js:noInline')
   static ReqSessionDetails getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqSessionDetails>(create);
@@ -2003,8 +1957,6 @@ class ReqSessionMsg extends $pb.GeneratedMessage {
   static ReqSessionMsg create() => ReqSessionMsg._();
   @$core.override
   ReqSessionMsg createEmptyInstance() => create();
-  static $pb.PbList<ReqSessionMsg> createRepeated() =>
-      $pb.PbList<ReqSessionMsg>();
   @$core.pragma('dart2js:noInline')
   static ReqSessionMsg getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqSessionMsg>(create);
@@ -2152,7 +2104,6 @@ class ReqSetTop extends $pb.GeneratedMessage {
   static ReqSetTop create() => ReqSetTop._();
   @$core.override
   ReqSetTop createEmptyInstance() => create();
-  static $pb.PbList<ReqSetTop> createRepeated() => $pb.PbList<ReqSetTop>();
   @$core.pragma('dart2js:noInline')
   static ReqSetTop getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReqSetTop>(create);
@@ -2247,8 +2198,6 @@ class ReqShareList extends $pb.GeneratedMessage {
   static ReqShareList create() => ReqShareList._();
   @$core.override
   ReqShareList createEmptyInstance() => create();
-  static $pb.PbList<ReqShareList> createRepeated() =>
-      $pb.PbList<ReqShareList>();
   @$core.pragma('dart2js:noInline')
   static ReqShareList getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqShareList>(create);
@@ -2319,8 +2268,6 @@ class ReqShowClearUnreadUI extends $pb.GeneratedMessage {
   static ReqShowClearUnreadUI create() => ReqShowClearUnreadUI._();
   @$core.override
   ReqShowClearUnreadUI createEmptyInstance() => create();
-  static $pb.PbList<ReqShowClearUnreadUI> createRepeated() =>
-      $pb.PbList<ReqShowClearUnreadUI>();
   @$core.pragma('dart2js:noInline')
   static ReqShowClearUnreadUI getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqShowClearUnreadUI>(create);
@@ -2403,8 +2350,6 @@ class ReqSingleUnread extends $pb.GeneratedMessage {
   static ReqSingleUnread create() => ReqSingleUnread._();
   @$core.override
   ReqSingleUnread createEmptyInstance() => create();
-  static $pb.PbList<ReqSingleUnread> createRepeated() =>
-      $pb.PbList<ReqSingleUnread>();
   @$core.pragma('dart2js:noInline')
   static ReqSingleUnread getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqSingleUnread>(create);
@@ -2489,8 +2434,6 @@ class ReqSpecificSingleUnread extends $pb.GeneratedMessage {
   static ReqSpecificSingleUnread create() => ReqSpecificSingleUnread._();
   @$core.override
   ReqSpecificSingleUnread createEmptyInstance() => create();
-  static $pb.PbList<ReqSpecificSingleUnread> createRepeated() =>
-      $pb.PbList<ReqSpecificSingleUnread>();
   @$core.pragma('dart2js:noInline')
   static ReqSpecificSingleUnread getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqSpecificSingleUnread>(create);
@@ -2539,7 +2482,6 @@ class ReqSyncAck extends $pb.GeneratedMessage {
   static ReqSyncAck create() => ReqSyncAck._();
   @$core.override
   ReqSyncAck createEmptyInstance() => create();
-  static $pb.PbList<ReqSyncAck> createRepeated() => $pb.PbList<ReqSyncAck>();
   @$core.pragma('dart2js:noInline')
   static ReqSyncAck getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqSyncAck>(create);
@@ -2613,8 +2555,6 @@ class ReqTotalUnread extends $pb.GeneratedMessage {
   static ReqTotalUnread create() => ReqTotalUnread._();
   @$core.override
   ReqTotalUnread createEmptyInstance() => create();
-  static $pb.PbList<ReqTotalUnread> createRepeated() =>
-      $pb.PbList<ReqTotalUnread>();
   @$core.pragma('dart2js:noInline')
   static ReqTotalUnread getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqTotalUnread>(create);
@@ -2730,8 +2670,6 @@ class ReqUpdateAck extends $pb.GeneratedMessage {
   static ReqUpdateAck create() => ReqUpdateAck._();
   @$core.override
   ReqUpdateAck createEmptyInstance() => create();
-  static $pb.PbList<ReqUpdateAck> createRepeated() =>
-      $pb.PbList<ReqUpdateAck>();
   @$core.pragma('dart2js:noInline')
   static ReqUpdateAck getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqUpdateAck>(create);
@@ -2811,8 +2749,6 @@ class ReqUpdateIntercept extends $pb.GeneratedMessage {
   static ReqUpdateIntercept create() => ReqUpdateIntercept._();
   @$core.override
   ReqUpdateIntercept createEmptyInstance() => create();
-  static $pb.PbList<ReqUpdateIntercept> createRepeated() =>
-      $pb.PbList<ReqUpdateIntercept>();
   @$core.pragma('dart2js:noInline')
   static ReqUpdateIntercept getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqUpdateIntercept>(create);
@@ -2887,8 +2823,6 @@ class ReqUpdateTotalUnread extends $pb.GeneratedMessage {
   static ReqUpdateTotalUnread create() => ReqUpdateTotalUnread._();
   @$core.override
   ReqUpdateTotalUnread createEmptyInstance() => create();
-  static $pb.PbList<ReqUpdateTotalUnread> createRepeated() =>
-      $pb.PbList<ReqUpdateTotalUnread>();
   @$core.pragma('dart2js:noInline')
   static ReqUpdateTotalUnread getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ReqUpdateTotalUnread>(create);
@@ -2938,8 +2872,6 @@ class RspCloseClearUnreadUI extends $pb.GeneratedMessage {
   static RspCloseClearUnreadUI create() => RspCloseClearUnreadUI._();
   @$core.override
   RspCloseClearUnreadUI createEmptyInstance() => create();
-  static $pb.PbList<RspCloseClearUnreadUI> createRepeated() =>
-      $pb.PbList<RspCloseClearUnreadUI>();
   @$core.pragma('dart2js:noInline')
   static RspCloseClearUnreadUI getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspCloseClearUnreadUI>(create);
@@ -2988,8 +2920,6 @@ class RspGetDiscussListInImPage extends $pb.GeneratedMessage {
   static RspGetDiscussListInImPage create() => RspGetDiscussListInImPage._();
   @$core.override
   RspGetDiscussListInImPage createEmptyInstance() => create();
-  static $pb.PbList<RspGetDiscussListInImPage> createRepeated() =>
-      $pb.PbList<RspGetDiscussListInImPage>();
   @$core.pragma('dart2js:noInline')
   static RspGetDiscussListInImPage getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspGetDiscussListInImPage>(create);
@@ -3038,7 +2968,6 @@ class RspGetMsg extends $pb.GeneratedMessage {
   static RspGetMsg create() => RspGetMsg._();
   @$core.override
   RspGetMsg createEmptyInstance() => create();
-  static $pb.PbList<RspGetMsg> createRepeated() => $pb.PbList<RspGetMsg>();
   @$core.pragma('dart2js:noInline')
   static RspGetMsg getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RspGetMsg>(create);
@@ -3091,7 +3020,6 @@ class RspLiveInfo extends $pb.GeneratedMessage {
   static RspLiveInfo create() => RspLiveInfo._();
   @$core.override
   RspLiveInfo createEmptyInstance() => create();
-  static $pb.PbList<RspLiveInfo> createRepeated() => $pb.PbList<RspLiveInfo>();
   @$core.pragma('dart2js:noInline')
   static RspLiveInfo getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspLiveInfo>(create);
@@ -3162,8 +3090,6 @@ class RspMsgHasLike extends $pb.GeneratedMessage {
   static RspMsgHasLike create() => RspMsgHasLike._();
   @$core.override
   RspMsgHasLike createEmptyInstance() => create();
-  static $pb.PbList<RspMsgHasLike> createRepeated() =>
-      $pb.PbList<RspMsgHasLike>();
   @$core.pragma('dart2js:noInline')
   static RspMsgHasLike getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspMsgHasLike>(create);
@@ -3213,8 +3139,6 @@ class RspMyGroupUnread extends $pb.GeneratedMessage {
   static RspMyGroupUnread create() => RspMyGroupUnread._();
   @$core.override
   RspMyGroupUnread createEmptyInstance() => create();
-  static $pb.PbList<RspMyGroupUnread> createRepeated() =>
-      $pb.PbList<RspMyGroupUnread>();
   @$core.pragma('dart2js:noInline')
   static RspMyGroupUnread getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspMyGroupUnread>(create);
@@ -3286,8 +3210,6 @@ class RspRelationSync extends $pb.GeneratedMessage {
   static RspRelationSync create() => RspRelationSync._();
   @$core.override
   RspRelationSync createEmptyInstance() => create();
-  static $pb.PbList<RspRelationSync> createRepeated() =>
-      $pb.PbList<RspRelationSync>();
   @$core.pragma('dart2js:noInline')
   static RspRelationSync getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspRelationSync>(create);
@@ -3379,7 +3301,6 @@ class RspSendMsg extends $pb.GeneratedMessage {
   static RspSendMsg create() => RspSendMsg._();
   @$core.override
   RspSendMsg createEmptyInstance() => create();
-  static $pb.PbList<RspSendMsg> createRepeated() => $pb.PbList<RspSendMsg>();
   @$core.pragma('dart2js:noInline')
   static RspSendMsg getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspSendMsg>(create);
@@ -3479,8 +3400,6 @@ class RspSessionDetails extends $pb.GeneratedMessage {
   static RspSessionDetails create() => RspSessionDetails._();
   @$core.override
   RspSessionDetails createEmptyInstance() => create();
-  static $pb.PbList<RspSessionDetails> createRepeated() =>
-      $pb.PbList<RspSessionDetails>();
   @$core.pragma('dart2js:noInline')
   static RspSessionDetails getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspSessionDetails>(create);
@@ -3544,8 +3463,6 @@ class RspSessionMsg extends $pb.GeneratedMessage {
   static RspSessionMsg create() => RspSessionMsg._();
   @$core.override
   RspSessionMsg createEmptyInstance() => create();
-  static $pb.PbList<RspSessionMsg> createRepeated() =>
-      $pb.PbList<RspSessionMsg>();
   @$core.pragma('dart2js:noInline')
   static RspSessionMsg getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspSessionMsg>(create);
@@ -3647,7 +3564,6 @@ class RspSessions extends $pb.GeneratedMessage {
   static RspSessions create() => RspSessions._();
   @$core.override
   RspSessions createEmptyInstance() => create();
-  static $pb.PbList<RspSessions> createRepeated() => $pb.PbList<RspSessions>();
   @$core.pragma('dart2js:noInline')
   static RspSessions getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspSessions>(create);
@@ -3741,8 +3657,6 @@ class RspShareList extends $pb.GeneratedMessage {
   static RspShareList create() => RspShareList._();
   @$core.override
   RspShareList createEmptyInstance() => create();
-  static $pb.PbList<RspShareList> createRepeated() =>
-      $pb.PbList<RspShareList>();
   @$core.pragma('dart2js:noInline')
   static RspShareList getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspShareList>(create);
@@ -3804,8 +3718,6 @@ class RspShowClearUnreadUI extends $pb.GeneratedMessage {
   static RspShowClearUnreadUI create() => RspShowClearUnreadUI._();
   @$core.override
   RspShowClearUnreadUI createEmptyInstance() => create();
-  static $pb.PbList<RspShowClearUnreadUI> createRepeated() =>
-      $pb.PbList<RspShowClearUnreadUI>();
   @$core.pragma('dart2js:noInline')
   static RspShowClearUnreadUI getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspShowClearUnreadUI>(create);
@@ -3890,8 +3802,6 @@ class RspSingleUnread extends $pb.GeneratedMessage {
   static RspSingleUnread create() => RspSingleUnread._();
   @$core.override
   RspSingleUnread createEmptyInstance() => create();
-  static $pb.PbList<RspSingleUnread> createRepeated() =>
-      $pb.PbList<RspSingleUnread>();
   @$core.pragma('dart2js:noInline')
   static RspSingleUnread getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspSingleUnread>(create);
@@ -4012,8 +3922,6 @@ class RspSpecificSingleUnread extends $pb.GeneratedMessage {
   static RspSpecificSingleUnread create() => RspSpecificSingleUnread._();
   @$core.override
   RspSpecificSingleUnread createEmptyInstance() => create();
-  static $pb.PbList<RspSpecificSingleUnread> createRepeated() =>
-      $pb.PbList<RspSpecificSingleUnread>();
   @$core.pragma('dart2js:noInline')
   static RspSpecificSingleUnread getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspSpecificSingleUnread>(create);
@@ -4064,7 +3972,6 @@ class RspSyncAck extends $pb.GeneratedMessage {
   static RspSyncAck create() => RspSyncAck._();
   @$core.override
   RspSyncAck createEmptyInstance() => create();
-  static $pb.PbList<RspSyncAck> createRepeated() => $pb.PbList<RspSyncAck>();
   @$core.pragma('dart2js:noInline')
   static RspSyncAck getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspSyncAck>(create);
@@ -4134,8 +4041,6 @@ class RspTotalUnread extends $pb.GeneratedMessage {
   static RspTotalUnread create() => RspTotalUnread._();
   @$core.override
   RspTotalUnread createEmptyInstance() => create();
-  static $pb.PbList<RspTotalUnread> createRepeated() =>
-      $pb.PbList<RspTotalUnread>();
   @$core.pragma('dart2js:noInline')
   static RspTotalUnread getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspTotalUnread>(create);
@@ -4238,8 +4143,6 @@ class RspUpdateTotalUnread extends $pb.GeneratedMessage {
   static RspUpdateTotalUnread create() => RspUpdateTotalUnread._();
   @$core.override
   RspUpdateTotalUnread createEmptyInstance() => create();
-  static $pb.PbList<RspUpdateTotalUnread> createRepeated() =>
-      $pb.PbList<RspUpdateTotalUnread>();
   @$core.pragma('dart2js:noInline')
   static RspUpdateTotalUnread getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RspUpdateTotalUnread>(create);
@@ -4313,8 +4216,6 @@ class SessionSingleUnreadRsp extends $pb.GeneratedMessage {
   static SessionSingleUnreadRsp create() => SessionSingleUnreadRsp._();
   @$core.override
   SessionSingleUnreadRsp createEmptyInstance() => create();
-  static $pb.PbList<SessionSingleUnreadRsp> createRepeated() =>
-      $pb.PbList<SessionSingleUnreadRsp>();
   @$core.pragma('dart2js:noInline')
   static SessionSingleUnreadRsp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SessionSingleUnreadRsp>(create);
@@ -4451,8 +4352,6 @@ class ShareSessionInfo extends $pb.GeneratedMessage {
   static ShareSessionInfo create() => ShareSessionInfo._();
   @$core.override
   ShareSessionInfo createEmptyInstance() => create();
-  static $pb.PbList<ShareSessionInfo> createRepeated() =>
-      $pb.PbList<ShareSessionInfo>();
   @$core.pragma('dart2js:noInline')
   static ShareSessionInfo getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ShareSessionInfo>(create);
@@ -4538,8 +4437,6 @@ class SimpleSession extends $pb.GeneratedMessage {
   static SimpleSession create() => SimpleSession._();
   @$core.override
   SimpleSession createEmptyInstance() => create();
-  static $pb.PbList<SimpleSession> createRepeated() =>
-      $pb.PbList<SimpleSession>();
   @$core.pragma('dart2js:noInline')
   static SimpleSession getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SimpleSession>(create);
@@ -4620,8 +4517,6 @@ class SingleDiscussInImPage extends $pb.GeneratedMessage {
   static SingleDiscussInImPage create() => SingleDiscussInImPage._();
   @$core.override
   SingleDiscussInImPage createEmptyInstance() => create();
-  static $pb.PbList<SingleDiscussInImPage> createRepeated() =>
-      $pb.PbList<SingleDiscussInImPage>();
   @$core.pragma('dart2js:noInline')
   static SingleDiscussInImPage getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SingleDiscussInImPage>(create);
@@ -4732,8 +4627,6 @@ class SysMsgInterfaceLastMsgRsp extends $pb.GeneratedMessage {
   static SysMsgInterfaceLastMsgRsp create() => SysMsgInterfaceLastMsgRsp._();
   @$core.override
   SysMsgInterfaceLastMsgRsp createEmptyInstance() => create();
-  static $pb.PbList<SysMsgInterfaceLastMsgRsp> createRepeated() =>
-      $pb.PbList<SysMsgInterfaceLastMsgRsp>();
   @$core.pragma('dart2js:noInline')
   static SysMsgInterfaceLastMsgRsp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SysMsgInterfaceLastMsgRsp>(create);
@@ -4826,8 +4719,6 @@ class UpdateUserCosmoStateReq extends $pb.GeneratedMessage {
   static UpdateUserCosmoStateReq create() => UpdateUserCosmoStateReq._();
   @$core.override
   UpdateUserCosmoStateReq createEmptyInstance() => create();
-  static $pb.PbList<UpdateUserCosmoStateReq> createRepeated() =>
-      $pb.PbList<UpdateUserCosmoStateReq>();
   @$core.pragma('dart2js:noInline')
   static UpdateUserCosmoStateReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<UpdateUserCosmoStateReq>(create);
@@ -4911,8 +4802,6 @@ class UpdateUserCosmoStateRsp extends $pb.GeneratedMessage {
   static UpdateUserCosmoStateRsp create() => UpdateUserCosmoStateRsp._();
   @$core.override
   UpdateUserCosmoStateRsp createEmptyInstance() => create();
-  static $pb.PbList<UpdateUserCosmoStateRsp> createRepeated() =>
-      $pb.PbList<UpdateUserCosmoStateRsp>();
   @$core.pragma('dart2js:noInline')
   static UpdateUserCosmoStateRsp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<UpdateUserCosmoStateRsp>(create);

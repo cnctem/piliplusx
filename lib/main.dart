@@ -9,13 +9,15 @@ import 'package:PiliPlus/models/common/theme/theme_color_type.dart';
 import 'package:PiliPlus/plugin/pl_player/controller.dart';
 import 'package:PiliPlus/router/app_pages.dart';
 import 'package:PiliPlus/services/account_service.dart';
+import 'package:PiliPlus/services/download/download_service.dart';
 import 'package:PiliPlus/services/logger.dart';
 import 'package:PiliPlus/services/service_locator.dart';
 import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/cache_manage.dart';
+import 'package:PiliPlus/utils/cache_manager.dart';
 import 'package:PiliPlus/utils/calc_window_position.dart';
 import 'package:PiliPlus/utils/date_utils.dart';
 import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:PiliPlus/utils/path_utils.dart';
 import 'package:PiliPlus/utils/request_utils.dart';
 import 'package:PiliPlus/utils/storage.dart';
 import 'package:PiliPlus/utils/storage_key.dart';
@@ -44,6 +46,8 @@ WebViewEnvironment? webViewEnvironment;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MediaKit.ensureInitialized();
+  tmpDirPath = (await getTemporaryDirectory()).path;
+  appSupportDirPath = (await getApplicationSupportDirectory()).path;
   try {
     await GStorage.init();
   } catch (e) {
@@ -51,10 +55,39 @@ void main() async {
     if (kDebugMode) debugPrint('GStorage init error: $e');
     exit(0);
   }
-  Get.lazyPut(AccountService.new);
+  if (Utils.isDesktop) {
+    final customDownPath = Pref.downloadPath;
+    if (customDownPath != null && customDownPath.isNotEmpty) {
+      try {
+        final dir = Directory(customDownPath);
+        if (!dir.existsSync()) {
+          await dir.create(recursive: true);
+        }
+        downloadPath = customDownPath;
+      } catch (e) {
+        downloadPath = defDownloadPath;
+        await GStorage.setting.delete(SettingBoxKey.downloadPath);
+        if (kDebugMode) {
+          debugPrint('download path error: $e');
+        }
+      }
+    } else {
+      downloadPath = defDownloadPath;
+    }
+  } else if (Platform.isAndroid) {
+    final externalStorageDirPath = (await getExternalStorageDirectory())?.path;
+    downloadPath = externalStorageDirPath != null
+        ? path.join(externalStorageDirPath, PathUtils.downloadDir)
+        : defDownloadPath;
+  } else {
+    downloadPath = defDownloadPath;
+  }
+  Get
+    ..lazyPut(AccountService.new)
+    ..lazyPut(DownloadService.new);
   HttpOverrides.global = _CustomHttpOverrides();
 
-  CacheManage.autoClearCache();
+  CacheManager.autoClearCache();
 
   if (Utils.isMobile) {
     await Future.wait([
@@ -73,10 +106,9 @@ void main() async {
 
   if (Platform.isWindows) {
     if (await WebViewEnvironment.getAvailableVersion() != null) {
-      final dir = await getApplicationSupportDirectory();
       webViewEnvironment = await WebViewEnvironment.create(
         settings: WebViewEnvironmentSettings(
-          userDataFolder: path.join(dir.path, 'flutter_inappwebview'),
+          userDataFolder: path.join(appSupportDirPath, 'flutter_inappwebview'),
         ),
       );
     }

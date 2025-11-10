@@ -34,7 +34,7 @@ class _LiveAreaPageState extends State<LiveAreaPage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('全部标签'),
-        actions: _controller.accountService.isLogin.value
+        actions: _controller.isLogin
             ? [
                 TextButton(
                   onPressed: _controller.onEdit,
@@ -54,7 +54,7 @@ class _LiveAreaPageState extends State<LiveAreaPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (_controller.accountService.isLogin.value)
+            if (_controller.isLogin)
               Obx(() => _buildFavWidget(theme, _controller.favState.value)),
             Expanded(
               child: Obx(

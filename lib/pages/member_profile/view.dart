@@ -1,3 +1,5 @@
+import 'dart:io' show File;
+
 import 'package:PiliPlus/common/constants.dart';
 import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
 import 'package:PiliPlus/http/constants.dart';
@@ -488,10 +490,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
           SmartDialog.showToast('不能选GIF');
           return;
         }
-        String? imagePath;
+        String? imagePath = pickedFile.path;
         if (Utils.isMobile) {
-          CroppedFile? croppedFile = await ImageCropper.platform.cropImage(
-            sourcePath: pickedFile.path,
+          final croppedFile = await ImageCropper.platform.cropImage(
+            sourcePath: imagePath,
             uiSettings: [
               AndroidUiSettings(
                 toolbarTitle: '裁剪',
@@ -514,11 +516,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
             ],
           );
-          if (croppedFile != null) {
-            imagePath = croppedFile.path;
-          }
-        } else {
-          imagePath = pickedFile.path;
+          File(imagePath).tryDel();
+          imagePath = croppedFile?.path;
         }
         if (imagePath != null) {
           Request()
@@ -536,9 +535,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
               .then((res) {
                 if (res.data['code'] == 0) {
                   SmartDialog.showToast('修改成功');
-                  Future.delayed(const Duration(milliseconds: 500), _getInfo);
+                  Future.delayed(const Duration(milliseconds: 500), () {
+                    if (mounted) {
+                      _getInfo();
+                    }
+                  });
                 } else {
                   SmartDialog.showToast(res.data['message']);
+                }
+                if (Utils.isMobile && imagePath != null) {
+                  File(imagePath).tryDel();
                 }
               });
         }

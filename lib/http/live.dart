@@ -25,6 +25,7 @@ import 'package:PiliPlus/utils/accounts/account.dart';
 import 'package:PiliPlus/utils/app_sign.dart';
 import 'package:PiliPlus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 abstract final class LiveHttp {
   static Account get recommend => Accounts.get(AccountType.recommend);
@@ -659,8 +660,11 @@ abstract final class LiveHttp {
     if (res.data['code'] == 0) {
       try {
         return Success(SuperChatData.fromJson(res.data['data']));
-      } catch (e) {
-        return Error(e.toString());
+      } catch (e, s) {
+        if (kDebugMode) {
+          rethrow;
+        }
+        return Error('$e\n\n$s');
       }
     } else {
       return Error(res.data['message']);

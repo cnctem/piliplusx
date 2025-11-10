@@ -10,7 +10,7 @@ import 'package:PiliPlus/pages/common/common_list_controller.dart';
 import 'package:PiliPlus/pages/common/multi_select/base.dart';
 import 'package:PiliPlus/pages/common/multi_select/multi_select_controller.dart';
 import 'package:PiliPlus/pages/fav_sort/view.dart';
-import 'package:PiliPlus/services/account_service.dart';
+import 'package:PiliPlus/utils/accounts.dart';
 import 'package:PiliPlus/utils/extension.dart';
 import 'package:PiliPlus/utils/page_utils.dart';
 import 'package:PiliPlus/utils/storage.dart';
@@ -86,7 +86,7 @@ class FavDetailController
   @override
   bool get isOwner => _isOwner.value ?? false;
 
-  AccountService accountService = Get.find<AccountService>();
+  late final account = Accounts.main;
 
   late double dx = 0;
   late final RxBool isPlayAll = Pref.enablePlayAll.obs;
@@ -130,7 +130,7 @@ class FavDetailController
     if (isRefresh) {
       FavDetailData data = response.response;
       folderInfo.value = data.info!;
-      _isOwner.value = data.info?.mid == accountService.mid;
+      _isOwner.value = data.info?.mid == account.mid;
     }
     return false;
   }
@@ -173,7 +173,7 @@ class FavDetailController
   }
 
   Future<void> onFav(bool isFav) async {
-    if (!accountService.isLogin.value) {
+    if (!account.isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }

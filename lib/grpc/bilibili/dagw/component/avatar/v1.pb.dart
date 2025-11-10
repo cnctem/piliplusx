@@ -74,7 +74,6 @@ class AvatarItem extends $pb.GeneratedMessage {
   static AvatarItem create() => AvatarItem._();
   @$core.override
   AvatarItem createEmptyInstance() => create();
-  static $pb.PbList<AvatarItem> createRepeated() => $pb.PbList<AvatarItem>();
   @$core.pragma('dart2js:noInline')
   static AvatarItem getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<AvatarItem>(create);
@@ -183,8 +182,6 @@ class BasicLayerResource extends $pb.GeneratedMessage {
   static BasicLayerResource create() => BasicLayerResource._();
   @$core.override
   BasicLayerResource createEmptyInstance() => create();
-  static $pb.PbList<BasicLayerResource> createRepeated() =>
-      $pb.PbList<BasicLayerResource>();
   @$core.pragma('dart2js:noInline')
   static BasicLayerResource getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<BasicLayerResource>(create);
@@ -287,8 +284,6 @@ class GeneralConfig extends $pb.GeneratedMessage {
   static GeneralConfig create() => GeneralConfig._();
   @$core.override
   GeneralConfig createEmptyInstance() => create();
-  static $pb.PbList<GeneralConfig> createRepeated() =>
-      $pb.PbList<GeneralConfig>();
   @$core.pragma('dart2js:noInline')
   static GeneralConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<GeneralConfig>(create);
@@ -352,7 +347,6 @@ class Layer extends $pb.GeneratedMessage {
   static Layer create() => Layer._();
   @$core.override
   Layer createEmptyInstance() => create();
-  static $pb.PbList<Layer> createRepeated() => $pb.PbList<Layer>();
   @$core.pragma('dart2js:noInline')
   static Layer getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Layer>(create);
@@ -466,7 +460,6 @@ class LayerConfig extends $pb.GeneratedMessage {
   static LayerConfig create() => LayerConfig._();
   @$core.override
   LayerConfig createEmptyInstance() => create();
-  static $pb.PbList<LayerConfig> createRepeated() => $pb.PbList<LayerConfig>();
   @$core.pragma('dart2js:noInline')
   static LayerConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<LayerConfig>(create);
@@ -554,7 +547,6 @@ class LayerGroup extends $pb.GeneratedMessage {
   static LayerGroup create() => LayerGroup._();
   @$core.override
   LayerGroup createEmptyInstance() => create();
-  static $pb.PbList<LayerGroup> createRepeated() => $pb.PbList<LayerGroup>();
   @$core.pragma('dart2js:noInline')
   static LayerGroup getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<LayerGroup>(create);
@@ -689,8 +681,6 @@ class LayerTagConfig extends $pb.GeneratedMessage {
   static LayerTagConfig create() => LayerTagConfig._();
   @$core.override
   LayerTagConfig createEmptyInstance() => create();
-  static $pb.PbList<LayerTagConfig> createRepeated() =>
-      $pb.PbList<LayerTagConfig>();
   @$core.pragma('dart2js:noInline')
   static LayerTagConfig getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<LayerTagConfig>(create);
@@ -843,8 +833,6 @@ class ResAnimation extends $pb.GeneratedMessage {
   static ResAnimation create() => ResAnimation._();
   @$core.override
   ResAnimation createEmptyInstance() => create();
-  static $pb.PbList<ResAnimation> createRepeated() =>
-      $pb.PbList<ResAnimation>();
   @$core.pragma('dart2js:noInline')
   static ResAnimation getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ResAnimation>(create);
@@ -902,7 +890,6 @@ class ResImage extends $pb.GeneratedMessage {
   static ResImage create() => ResImage._();
   @$core.override
   ResImage createEmptyInstance() => create();
-  static $pb.PbList<ResImage> createRepeated() => $pb.PbList<ResImage>();
   @$core.pragma('dart2js:noInline')
   static ResImage getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ResImage>(create);
@@ -961,8 +948,6 @@ class ResNativeDraw extends $pb.GeneratedMessage {
   static ResNativeDraw create() => ResNativeDraw._();
   @$core.override
   ResNativeDraw createEmptyInstance() => create();
-  static $pb.PbList<ResNativeDraw> createRepeated() =>
-      $pb.PbList<ResNativeDraw>();
   @$core.pragma('dart2js:noInline')
   static ResNativeDraw getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ResNativeDraw>(create);

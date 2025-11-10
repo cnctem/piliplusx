@@ -67,8 +67,6 @@ class SailingEquipMultiReply extends $pb.GeneratedMessage {
   static SailingEquipMultiReply create() => SailingEquipMultiReply._();
   @$core.override
   SailingEquipMultiReply createEmptyInstance() => create();
-  static $pb.PbList<SailingEquipMultiReply> createRepeated() =>
-      $pb.PbList<SailingEquipMultiReply>();
   @$core.pragma('dart2js:noInline')
   static SailingEquipMultiReply getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SailingEquipMultiReply>(create);
@@ -134,8 +132,6 @@ class SailingEquipMultiReq extends $pb.GeneratedMessage {
   static SailingEquipMultiReq create() => SailingEquipMultiReq._();
   @$core.override
   SailingEquipMultiReq createEmptyInstance() => create();
-  static $pb.PbList<SailingEquipMultiReq> createRepeated() =>
-      $pb.PbList<SailingEquipMultiReq>();
   @$core.pragma('dart2js:noInline')
   static SailingEquipMultiReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SailingEquipMultiReq>(create);
@@ -266,7 +262,6 @@ class UserCard extends $pb.GeneratedMessage {
   static UserCard create() => UserCard._();
   @$core.override
   UserCard createEmptyInstance() => create();
-  static $pb.PbList<UserCard> createRepeated() => $pb.PbList<UserCard>();
   @$core.pragma('dart2js:noInline')
   static UserCard getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserCard>(create);
@@ -431,8 +426,6 @@ class UserCardMultiReply extends $pb.GeneratedMessage {
   static UserCardMultiReply create() => UserCardMultiReply._();
   @$core.override
   UserCardMultiReply createEmptyInstance() => create();
-  static $pb.PbList<UserCardMultiReply> createRepeated() =>
-      $pb.PbList<UserCardMultiReply>();
   @$core.pragma('dart2js:noInline')
   static UserCardMultiReply getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<UserCardMultiReply>(create);
@@ -486,8 +479,6 @@ class UserCardMultiReq extends $pb.GeneratedMessage {
   static UserCardMultiReq create() => UserCardMultiReq._();
   @$core.override
   UserCardMultiReq createEmptyInstance() => create();
-  static $pb.PbList<UserCardMultiReq> createRepeated() =>
-      $pb.PbList<UserCardMultiReq>();
   @$core.pragma('dart2js:noInline')
   static UserCardMultiReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<UserCardMultiReq>(create);

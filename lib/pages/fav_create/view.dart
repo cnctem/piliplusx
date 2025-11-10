@@ -1,3 +1,5 @@
+import 'dart:io' show File;
+
 import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
 import 'package:PiliPlus/http/fav.dart';
 import 'package:PiliPlus/http/msg.dart';
@@ -118,8 +120,8 @@ class _CreateFavPageState extends State<CreateFavPage> {
       if (pickedFile != null && mounted) {
         String imgPath = pickedFile.path;
         if (Utils.isMobile) {
-          CroppedFile? croppedFile = await ImageCropper.platform.cropImage(
-            sourcePath: pickedFile.path,
+          final croppedFile = await ImageCropper.platform.cropImage(
+            sourcePath: imgPath,
             uiSettings: [
               AndroidUiSettings(
                 toolbarTitle: '裁剪',
@@ -141,6 +143,7 @@ class _CreateFavPageState extends State<CreateFavPage> {
             ],
           );
           if (croppedFile != null) {
+            File(imgPath).tryDel();
             imgPath = croppedFile.path;
           }
         }
@@ -156,6 +159,9 @@ class _CreateFavPageState extends State<CreateFavPage> {
             } else {
               SmartDialog.showToast(res['msg']);
             }
+          }
+          if (Utils.isMobile) {
+            File(imgPath).tryDel();
           }
         });
       }

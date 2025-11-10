@@ -63,7 +63,6 @@ class Color extends $pb.GeneratedMessage {
   static Color create() => Color._();
   @$core.override
   Color createEmptyInstance() => create();
-  static $pb.PbList<Color> createRepeated() => $pb.PbList<Color>();
   @$core.pragma('dart2js:noInline')
   static Color getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Color>(create);
@@ -130,7 +129,6 @@ class ColorsInfo extends $pb.GeneratedMessage {
   static ColorsInfo create() => ColorsInfo._();
   @$core.override
   ColorsInfo createEmptyInstance() => create();
-  static $pb.PbList<ColorsInfo> createRepeated() => $pb.PbList<ColorsInfo>();
   @$core.pragma('dart2js:noInline')
   static ColorsInfo getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ColorsInfo>(create);
@@ -187,7 +185,6 @@ class NameRender extends $pb.GeneratedMessage {
   static NameRender create() => NameRender._();
   @$core.override
   NameRender createEmptyInstance() => create();
-  static $pb.PbList<NameRender> createRepeated() => $pb.PbList<NameRender>();
   @$core.pragma('dart2js:noInline')
   static NameRender getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<NameRender>(create);

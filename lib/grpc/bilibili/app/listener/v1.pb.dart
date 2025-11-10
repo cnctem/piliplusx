@@ -74,7 +74,6 @@ class Author extends $pb.GeneratedMessage {
   static Author create() => Author._();
   @$core.override
   Author createEmptyInstance() => create();
-  static $pb.PbList<Author> createRepeated() => $pb.PbList<Author>();
   @$core.pragma('dart2js:noInline')
   static Author getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Author>(create);
@@ -164,8 +163,6 @@ class BKArcDetailsReq extends $pb.GeneratedMessage {
   static BKArcDetailsReq create() => BKArcDetailsReq._();
   @$core.override
   BKArcDetailsReq createEmptyInstance() => create();
-  static $pb.PbList<BKArcDetailsReq> createRepeated() =>
-      $pb.PbList<BKArcDetailsReq>();
   @$core.pragma('dart2js:noInline')
   static BKArcDetailsReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<BKArcDetailsReq>(create);
@@ -227,8 +224,6 @@ class BKArcDetailsResp extends $pb.GeneratedMessage {
   static BKArcDetailsResp create() => BKArcDetailsResp._();
   @$core.override
   BKArcDetailsResp createEmptyInstance() => create();
-  static $pb.PbList<BKArcDetailsResp> createRepeated() =>
-      $pb.PbList<BKArcDetailsResp>();
   @$core.pragma('dart2js:noInline')
   static BKArcDetailsResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<BKArcDetailsResp>(create);
@@ -289,7 +284,6 @@ class BKArcPart extends $pb.GeneratedMessage {
   static BKArcPart create() => BKArcPart._();
   @$core.override
   BKArcPart createEmptyInstance() => create();
-  static $pb.PbList<BKArcPart> createRepeated() => $pb.PbList<BKArcPart>();
   @$core.pragma('dart2js:noInline')
   static BKArcPart getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BKArcPart>(create);
@@ -381,7 +375,6 @@ class BKArcRights extends $pb.GeneratedMessage {
   static BKArcRights create() => BKArcRights._();
   @$core.override
   BKArcRights createEmptyInstance() => create();
-  static $pb.PbList<BKArcRights> createRepeated() => $pb.PbList<BKArcRights>();
   @$core.pragma('dart2js:noInline')
   static BKArcRights getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<BKArcRights>(create);
@@ -467,7 +460,6 @@ class BKArchive extends $pb.GeneratedMessage {
   static BKArchive create() => BKArchive._();
   @$core.override
   BKArchive createEmptyInstance() => create();
-  static $pb.PbList<BKArchive> createRepeated() => $pb.PbList<BKArchive>();
   @$core.pragma('dart2js:noInline')
   static BKArchive getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BKArchive>(create);
@@ -644,7 +636,6 @@ class BKStat extends $pb.GeneratedMessage {
   static BKStat create() => BKStat._();
   @$core.override
   BKStat createEmptyInstance() => create();
-  static $pb.PbList<BKStat> createRepeated() => $pb.PbList<BKStat>();
   @$core.pragma('dart2js:noInline')
   static BKStat getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BKStat>(create);
@@ -812,7 +803,6 @@ class CardModule extends $pb.GeneratedMessage {
   static CardModule create() => CardModule._();
   @$core.override
   CardModule createEmptyInstance() => create();
-  static $pb.PbList<CardModule> createRepeated() => $pb.PbList<CardModule>();
   @$core.pragma('dart2js:noInline')
   static CardModule getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<CardModule>(create);
@@ -913,7 +903,6 @@ class ClickReq extends $pb.GeneratedMessage {
   static ClickReq create() => ClickReq._();
   @$core.override
   ClickReq createEmptyInstance() => create();
-  static $pb.PbList<ClickReq> createRepeated() => $pb.PbList<ClickReq>();
   @$core.pragma('dart2js:noInline')
   static ClickReq getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ClickReq>(create);
@@ -970,7 +959,6 @@ class ClickResp extends $pb.GeneratedMessage {
   static ClickResp create() => ClickResp._();
   @$core.override
   ClickResp createEmptyInstance() => create();
-  static $pb.PbList<ClickResp> createRepeated() => $pb.PbList<ClickResp>();
   @$core.pragma('dart2js:noInline')
   static ClickResp getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ClickResp>(create);
@@ -1023,7 +1011,6 @@ class CoinAddReq extends $pb.GeneratedMessage {
   static CoinAddReq create() => CoinAddReq._();
   @$core.override
   CoinAddReq createEmptyInstance() => create();
-  static $pb.PbList<CoinAddReq> createRepeated() => $pb.PbList<CoinAddReq>();
   @$core.pragma('dart2js:noInline')
   static CoinAddReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<CoinAddReq>(create);
@@ -1099,7 +1086,6 @@ class CoinAddResp extends $pb.GeneratedMessage {
   static CoinAddResp create() => CoinAddResp._();
   @$core.override
   CoinAddResp createEmptyInstance() => create();
-  static $pb.PbList<CoinAddResp> createRepeated() => $pb.PbList<CoinAddResp>();
   @$core.pragma('dart2js:noInline')
   static CoinAddResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<CoinAddResp>(create);
@@ -1182,7 +1168,6 @@ class DashItem extends $pb.GeneratedMessage {
   static DashItem create() => DashItem._();
   @$core.override
   DashItem createEmptyInstance() => create();
-  static $pb.PbList<DashItem> createRepeated() => $pb.PbList<DashItem>();
   @$core.pragma('dart2js:noInline')
   static DashItem getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DashItem>(create);
@@ -1318,8 +1303,6 @@ class DashSegmentBase extends $pb.GeneratedMessage {
   static DashSegmentBase create() => DashSegmentBase._();
   @$core.override
   DashSegmentBase createEmptyInstance() => create();
-  static $pb.PbList<DashSegmentBase> createRepeated() =>
-      $pb.PbList<DashSegmentBase>();
   @$core.pragma('dart2js:noInline')
   static DashSegmentBase getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<DashSegmentBase>(create);
@@ -1437,7 +1420,6 @@ class DetailItem extends $pb.GeneratedMessage {
   static DetailItem create() => DetailItem._();
   @$core.override
   DetailItem createEmptyInstance() => create();
-  static $pb.PbList<DetailItem> createRepeated() => $pb.PbList<DetailItem>();
   @$core.pragma('dart2js:noInline')
   static DetailItem getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<DetailItem>(create);
@@ -1625,7 +1607,6 @@ class EventReq extends $pb.GeneratedMessage {
   static EventReq create() => EventReq._();
   @$core.override
   EventReq createEmptyInstance() => create();
-  static $pb.PbList<EventReq> createRepeated() => $pb.PbList<EventReq>();
   @$core.pragma('dart2js:noInline')
   static EventReq getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EventReq>(create);
@@ -1684,7 +1665,6 @@ class EventResp extends $pb.GeneratedMessage {
   static EventResp create() => EventResp._();
   @$core.override
   EventResp createEmptyInstance() => create();
-  static $pb.PbList<EventResp> createRepeated() => $pb.PbList<EventResp>();
   @$core.pragma('dart2js:noInline')
   static EventResp getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EventResp>(create);
@@ -1746,8 +1726,6 @@ class EventTracking extends $pb.GeneratedMessage {
   static EventTracking create() => EventTracking._();
   @$core.override
   EventTracking createEmptyInstance() => create();
-  static $pb.PbList<EventTracking> createRepeated() =>
-      $pb.PbList<EventTracking>();
   @$core.pragma('dart2js:noInline')
   static EventTracking getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<EventTracking>(create);
@@ -1905,7 +1883,6 @@ class FavFolder extends $pb.GeneratedMessage {
   static FavFolder create() => FavFolder._();
   @$core.override
   FavFolder createEmptyInstance() => create();
-  static $pb.PbList<FavFolder> createRepeated() => $pb.PbList<FavFolder>();
   @$core.pragma('dart2js:noInline')
   static FavFolder getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FavFolder>(create);
@@ -2141,8 +2118,6 @@ class FavFolderAction extends $pb.GeneratedMessage {
   static FavFolderAction create() => FavFolderAction._();
   @$core.override
   FavFolderAction createEmptyInstance() => create();
-  static $pb.PbList<FavFolderAction> createRepeated() =>
-      $pb.PbList<FavFolderAction>();
   @$core.pragma('dart2js:noInline')
   static FavFolderAction getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderAction>(create);
@@ -2219,8 +2194,6 @@ class FavFolderAuthor extends $pb.GeneratedMessage {
   static FavFolderAuthor create() => FavFolderAuthor._();
   @$core.override
   FavFolderAuthor createEmptyInstance() => create();
-  static $pb.PbList<FavFolderAuthor> createRepeated() =>
-      $pb.PbList<FavFolderAuthor>();
   @$core.pragma('dart2js:noInline')
   static FavFolderAuthor getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderAuthor>(create);
@@ -2294,8 +2267,6 @@ class FavFolderCreateReq extends $pb.GeneratedMessage {
   static FavFolderCreateReq create() => FavFolderCreateReq._();
   @$core.override
   FavFolderCreateReq createEmptyInstance() => create();
-  static $pb.PbList<FavFolderCreateReq> createRepeated() =>
-      $pb.PbList<FavFolderCreateReq>();
   @$core.pragma('dart2js:noInline')
   static FavFolderCreateReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderCreateReq>(create);
@@ -2384,8 +2355,6 @@ class FavFolderCreateResp extends $pb.GeneratedMessage {
   static FavFolderCreateResp create() => FavFolderCreateResp._();
   @$core.override
   FavFolderCreateResp createEmptyInstance() => create();
-  static $pb.PbList<FavFolderCreateResp> createRepeated() =>
-      $pb.PbList<FavFolderCreateResp>();
   @$core.pragma('dart2js:noInline')
   static FavFolderCreateResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderCreateResp>(create);
@@ -2462,8 +2431,6 @@ class FavFolderDeleteReq extends $pb.GeneratedMessage {
   static FavFolderDeleteReq create() => FavFolderDeleteReq._();
   @$core.override
   FavFolderDeleteReq createEmptyInstance() => create();
-  static $pb.PbList<FavFolderDeleteReq> createRepeated() =>
-      $pb.PbList<FavFolderDeleteReq>();
   @$core.pragma('dart2js:noInline')
   static FavFolderDeleteReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderDeleteReq>(create);
@@ -2528,8 +2495,6 @@ class FavFolderDeleteResp extends $pb.GeneratedMessage {
   static FavFolderDeleteResp create() => FavFolderDeleteResp._();
   @$core.override
   FavFolderDeleteResp createEmptyInstance() => create();
-  static $pb.PbList<FavFolderDeleteResp> createRepeated() =>
-      $pb.PbList<FavFolderDeleteResp>();
   @$core.pragma('dart2js:noInline')
   static FavFolderDeleteResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderDeleteResp>(create);
@@ -2601,8 +2566,6 @@ class FavFolderDetailReq extends $pb.GeneratedMessage {
   static FavFolderDetailReq create() => FavFolderDetailReq._();
   @$core.override
   FavFolderDetailReq createEmptyInstance() => create();
-  static $pb.PbList<FavFolderDetailReq> createRepeated() =>
-      $pb.PbList<FavFolderDetailReq>();
   @$core.pragma('dart2js:noInline')
   static FavFolderDetailReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderDetailReq>(create);
@@ -2716,8 +2679,6 @@ class FavFolderDetailResp extends $pb.GeneratedMessage {
   static FavFolderDetailResp create() => FavFolderDetailResp._();
   @$core.override
   FavFolderDetailResp createEmptyInstance() => create();
-  static $pb.PbList<FavFolderDetailResp> createRepeated() =>
-      $pb.PbList<FavFolderDetailResp>();
   @$core.pragma('dart2js:noInline')
   static FavFolderDetailResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderDetailResp>(create);
@@ -2800,8 +2761,6 @@ class FavFolderListReq extends $pb.GeneratedMessage {
   static FavFolderListReq create() => FavFolderListReq._();
   @$core.override
   FavFolderListReq createEmptyInstance() => create();
-  static $pb.PbList<FavFolderListReq> createRepeated() =>
-      $pb.PbList<FavFolderListReq>();
   @$core.pragma('dart2js:noInline')
   static FavFolderListReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderListReq>(create);
@@ -2863,8 +2822,6 @@ class FavFolderListResp extends $pb.GeneratedMessage {
   static FavFolderListResp create() => FavFolderListResp._();
   @$core.override
   FavFolderListResp createEmptyInstance() => create();
-  static $pb.PbList<FavFolderListResp> createRepeated() =>
-      $pb.PbList<FavFolderListResp>();
   @$core.pragma('dart2js:noInline')
   static FavFolderListResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderListResp>(create);
@@ -2917,8 +2874,6 @@ class FavFolderMeta extends $pb.GeneratedMessage {
   static FavFolderMeta create() => FavFolderMeta._();
   @$core.override
   FavFolderMeta createEmptyInstance() => create();
-  static $pb.PbList<FavFolderMeta> createRepeated() =>
-      $pb.PbList<FavFolderMeta>();
   @$core.pragma('dart2js:noInline')
   static FavFolderMeta getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavFolderMeta>(create);
@@ -3001,7 +2956,6 @@ class FavItem extends $pb.GeneratedMessage {
   static FavItem create() => FavItem._();
   @$core.override
   FavItem createEmptyInstance() => create();
-  static $pb.PbList<FavItem> createRepeated() => $pb.PbList<FavItem>();
   @$core.pragma('dart2js:noInline')
   static FavItem getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FavItem>(create);
@@ -3135,8 +3089,6 @@ class FavItemAddReq extends $pb.GeneratedMessage {
   static FavItemAddReq create() => FavItemAddReq._();
   @$core.override
   FavItemAddReq createEmptyInstance() => create();
-  static $pb.PbList<FavItemAddReq> createRepeated() =>
-      $pb.PbList<FavItemAddReq>();
   @$core.pragma('dart2js:noInline')
   static FavItemAddReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavItemAddReq>(create);
@@ -3239,8 +3191,6 @@ class FavItemAddResp extends $pb.GeneratedMessage {
   static FavItemAddResp create() => FavItemAddResp._();
   @$core.override
   FavItemAddResp createEmptyInstance() => create();
-  static $pb.PbList<FavItemAddResp> createRepeated() =>
-      $pb.PbList<FavItemAddResp>();
   @$core.pragma('dart2js:noInline')
   static FavItemAddResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavItemAddResp>(create);
@@ -3299,8 +3249,6 @@ class FavItemAuthor extends $pb.GeneratedMessage {
   static FavItemAuthor create() => FavItemAuthor._();
   @$core.override
   FavItemAuthor createEmptyInstance() => create();
-  static $pb.PbList<FavItemAuthor> createRepeated() =>
-      $pb.PbList<FavItemAuthor>();
   @$core.pragma('dart2js:noInline')
   static FavItemAuthor getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavItemAuthor>(create);
@@ -3382,8 +3330,6 @@ class FavItemBatchReq extends $pb.GeneratedMessage {
   static FavItemBatchReq create() => FavItemBatchReq._();
   @$core.override
   FavItemBatchReq createEmptyInstance() => create();
-  static $pb.PbList<FavItemBatchReq> createRepeated() =>
-      $pb.PbList<FavItemBatchReq>();
   @$core.pragma('dart2js:noInline')
   static FavItemBatchReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavItemBatchReq>(create);
@@ -3463,8 +3409,6 @@ class FavItemBatchResp extends $pb.GeneratedMessage {
   static FavItemBatchResp create() => FavItemBatchResp._();
   @$core.override
   FavItemBatchResp createEmptyInstance() => create();
-  static $pb.PbList<FavItemBatchResp> createRepeated() =>
-      $pb.PbList<FavItemBatchResp>();
   @$core.pragma('dart2js:noInline')
   static FavItemBatchResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavItemBatchResp>(create);
@@ -3542,8 +3486,6 @@ class FavItemDelReq extends $pb.GeneratedMessage {
   static FavItemDelReq create() => FavItemDelReq._();
   @$core.override
   FavItemDelReq createEmptyInstance() => create();
-  static $pb.PbList<FavItemDelReq> createRepeated() =>
-      $pb.PbList<FavItemDelReq>();
   @$core.pragma('dart2js:noInline')
   static FavItemDelReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavItemDelReq>(create);
@@ -3646,8 +3588,6 @@ class FavItemDelResp extends $pb.GeneratedMessage {
   static FavItemDelResp create() => FavItemDelResp._();
   @$core.override
   FavItemDelResp createEmptyInstance() => create();
-  static $pb.PbList<FavItemDelResp> createRepeated() =>
-      $pb.PbList<FavItemDelResp>();
   @$core.pragma('dart2js:noInline')
   static FavItemDelResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavItemDelResp>(create);
@@ -3729,8 +3669,6 @@ class FavItemDetail extends $pb.GeneratedMessage {
   static FavItemDetail create() => FavItemDetail._();
   @$core.override
   FavItemDetail createEmptyInstance() => create();
-  static $pb.PbList<FavItemDetail> createRepeated() =>
-      $pb.PbList<FavItemDetail>();
   @$core.pragma('dart2js:noInline')
   static FavItemDetail getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavItemDetail>(create);
@@ -3873,7 +3811,6 @@ class FavItemStat extends $pb.GeneratedMessage {
   static FavItemStat create() => FavItemStat._();
   @$core.override
   FavItemStat createEmptyInstance() => create();
-  static $pb.PbList<FavItemStat> createRepeated() => $pb.PbList<FavItemStat>();
   @$core.pragma('dart2js:noInline')
   static FavItemStat getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavItemStat>(create);
@@ -3956,8 +3893,6 @@ class FavTabShowReq extends $pb.GeneratedMessage {
   static FavTabShowReq create() => FavTabShowReq._();
   @$core.override
   FavTabShowReq createEmptyInstance() => create();
-  static $pb.PbList<FavTabShowReq> createRepeated() =>
-      $pb.PbList<FavTabShowReq>();
   @$core.pragma('dart2js:noInline')
   static FavTabShowReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavTabShowReq>(create);
@@ -4013,8 +3948,6 @@ class FavTabShowResp extends $pb.GeneratedMessage {
   static FavTabShowResp create() => FavTabShowResp._();
   @$core.override
   FavTabShowResp createEmptyInstance() => create();
-  static $pb.PbList<FavTabShowResp> createRepeated() =>
-      $pb.PbList<FavTabShowResp>();
   @$core.pragma('dart2js:noInline')
   static FavTabShowResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavTabShowResp>(create);
@@ -4075,8 +4008,6 @@ class FavoredInAnyFoldersReq extends $pb.GeneratedMessage {
   static FavoredInAnyFoldersReq create() => FavoredInAnyFoldersReq._();
   @$core.override
   FavoredInAnyFoldersReq createEmptyInstance() => create();
-  static $pb.PbList<FavoredInAnyFoldersReq> createRepeated() =>
-      $pb.PbList<FavoredInAnyFoldersReq>();
   @$core.pragma('dart2js:noInline')
   static FavoredInAnyFoldersReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavoredInAnyFoldersReq>(create);
@@ -4143,8 +4074,6 @@ class FavoredInAnyFoldersResp extends $pb.GeneratedMessage {
   static FavoredInAnyFoldersResp create() => FavoredInAnyFoldersResp._();
   @$core.override
   FavoredInAnyFoldersResp createEmptyInstance() => create();
-  static $pb.PbList<FavoredInAnyFoldersResp> createRepeated() =>
-      $pb.PbList<FavoredInAnyFoldersResp>();
   @$core.pragma('dart2js:noInline')
   static FavoredInAnyFoldersResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FavoredInAnyFoldersResp>(create);
@@ -4206,8 +4135,6 @@ class FollowRelation extends $pb.GeneratedMessage {
   static FollowRelation create() => FollowRelation._();
   @$core.override
   FollowRelation createEmptyInstance() => create();
-  static $pb.PbList<FollowRelation> createRepeated() =>
-      $pb.PbList<FollowRelation>();
   @$core.pragma('dart2js:noInline')
   static FollowRelation getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FollowRelation>(create);
@@ -4275,8 +4202,6 @@ class FormatDescription extends $pb.GeneratedMessage {
   static FormatDescription create() => FormatDescription._();
   @$core.override
   FormatDescription createEmptyInstance() => create();
-  static $pb.PbList<FormatDescription> createRepeated() =>
-      $pb.PbList<FormatDescription>();
   @$core.pragma('dart2js:noInline')
   static FormatDescription getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FormatDescription>(create);
@@ -4372,8 +4297,6 @@ class MainFavMusicMenuListReq extends $pb.GeneratedMessage {
   static MainFavMusicMenuListReq create() => MainFavMusicMenuListReq._();
   @$core.override
   MainFavMusicMenuListReq createEmptyInstance() => create();
-  static $pb.PbList<MainFavMusicMenuListReq> createRepeated() =>
-      $pb.PbList<MainFavMusicMenuListReq>();
   @$core.pragma('dart2js:noInline')
   static MainFavMusicMenuListReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MainFavMusicMenuListReq>(create);
@@ -4449,8 +4372,6 @@ class MainFavMusicMenuListResp extends $pb.GeneratedMessage {
   static MainFavMusicMenuListResp create() => MainFavMusicMenuListResp._();
   @$core.override
   MainFavMusicMenuListResp createEmptyInstance() => create();
-  static $pb.PbList<MainFavMusicMenuListResp> createRepeated() =>
-      $pb.PbList<MainFavMusicMenuListResp>();
   @$core.pragma('dart2js:noInline')
   static MainFavMusicMenuListResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MainFavMusicMenuListResp>(create);
@@ -4521,8 +4442,6 @@ class MainFavMusicSubTabListReq extends $pb.GeneratedMessage {
   static MainFavMusicSubTabListReq create() => MainFavMusicSubTabListReq._();
   @$core.override
   MainFavMusicSubTabListReq createEmptyInstance() => create();
-  static $pb.PbList<MainFavMusicSubTabListReq> createRepeated() =>
-      $pb.PbList<MainFavMusicSubTabListReq>();
   @$core.pragma('dart2js:noInline')
   static MainFavMusicSubTabListReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MainFavMusicSubTabListReq>(create);
@@ -4587,8 +4506,6 @@ class MainFavMusicSubTabListResp extends $pb.GeneratedMessage {
   static MainFavMusicSubTabListResp create() => MainFavMusicSubTabListResp._();
   @$core.override
   MainFavMusicSubTabListResp createEmptyInstance() => create();
-  static $pb.PbList<MainFavMusicSubTabListResp> createRepeated() =>
-      $pb.PbList<MainFavMusicSubTabListResp>();
   @$core.pragma('dart2js:noInline')
   static MainFavMusicSubTabListResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MainFavMusicSubTabListResp>(create);
@@ -4690,8 +4607,6 @@ class MedialistItem extends $pb.GeneratedMessage {
   static MedialistItem create() => MedialistItem._();
   @$core.override
   MedialistItem createEmptyInstance() => create();
-  static $pb.PbList<MedialistItem> createRepeated() =>
-      $pb.PbList<MedialistItem>();
   @$core.pragma('dart2js:noInline')
   static MedialistItem getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MedialistItem>(create);
@@ -4863,8 +4778,6 @@ class MedialistReq extends $pb.GeneratedMessage {
   static MedialistReq create() => MedialistReq._();
   @$core.override
   MedialistReq createEmptyInstance() => create();
-  static $pb.PbList<MedialistReq> createRepeated() =>
-      $pb.PbList<MedialistReq>();
   @$core.pragma('dart2js:noInline')
   static MedialistReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MedialistReq>(create);
@@ -4952,8 +4865,6 @@ class MedialistResp extends $pb.GeneratedMessage {
   static MedialistResp create() => MedialistResp._();
   @$core.override
   MedialistResp createEmptyInstance() => create();
-  static $pb.PbList<MedialistResp> createRepeated() =>
-      $pb.PbList<MedialistResp>();
   @$core.pragma('dart2js:noInline')
   static MedialistResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MedialistResp>(create);
@@ -5050,8 +4961,6 @@ class MedialistUpInfo extends $pb.GeneratedMessage {
   static MedialistUpInfo create() => MedialistUpInfo._();
   @$core.override
   MedialistUpInfo createEmptyInstance() => create();
-  static $pb.PbList<MedialistUpInfo> createRepeated() =>
-      $pb.PbList<MedialistUpInfo>();
   @$core.pragma('dart2js:noInline')
   static MedialistUpInfo getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MedialistUpInfo>(create);
@@ -5134,8 +5043,6 @@ class MenuDeleteReq extends $pb.GeneratedMessage {
   static MenuDeleteReq create() => MenuDeleteReq._();
   @$core.override
   MenuDeleteReq createEmptyInstance() => create();
-  static $pb.PbList<MenuDeleteReq> createRepeated() =>
-      $pb.PbList<MenuDeleteReq>();
   @$core.pragma('dart2js:noInline')
   static MenuDeleteReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MenuDeleteReq>(create);
@@ -5191,8 +5098,6 @@ class MenuDeleteResp extends $pb.GeneratedMessage {
   static MenuDeleteResp create() => MenuDeleteResp._();
   @$core.override
   MenuDeleteResp createEmptyInstance() => create();
-  static $pb.PbList<MenuDeleteResp> createRepeated() =>
-      $pb.PbList<MenuDeleteResp>();
   @$core.pragma('dart2js:noInline')
   static MenuDeleteResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MenuDeleteResp>(create);
@@ -5257,7 +5162,6 @@ class MenuEditReq extends $pb.GeneratedMessage {
   static MenuEditReq create() => MenuEditReq._();
   @$core.override
   MenuEditReq createEmptyInstance() => create();
-  static $pb.PbList<MenuEditReq> createRepeated() => $pb.PbList<MenuEditReq>();
   @$core.pragma('dart2js:noInline')
   static MenuEditReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MenuEditReq>(create);
@@ -5340,8 +5244,6 @@ class MenuEditResp extends $pb.GeneratedMessage {
   static MenuEditResp create() => MenuEditResp._();
   @$core.override
   MenuEditResp createEmptyInstance() => create();
-  static $pb.PbList<MenuEditResp> createRepeated() =>
-      $pb.PbList<MenuEditResp>();
   @$core.pragma('dart2js:noInline')
   static MenuEditResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MenuEditResp>(create);
@@ -5401,8 +5303,6 @@ class MenuSubscribeReq extends $pb.GeneratedMessage {
   static MenuSubscribeReq create() => MenuSubscribeReq._();
   @$core.override
   MenuSubscribeReq createEmptyInstance() => create();
-  static $pb.PbList<MenuSubscribeReq> createRepeated() =>
-      $pb.PbList<MenuSubscribeReq>();
   @$core.pragma('dart2js:noInline')
   static MenuSubscribeReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MenuSubscribeReq>(create);
@@ -5467,8 +5367,6 @@ class MenuSubscribeResp extends $pb.GeneratedMessage {
   static MenuSubscribeResp create() => MenuSubscribeResp._();
   @$core.override
   MenuSubscribeResp createEmptyInstance() => create();
-  static $pb.PbList<MenuSubscribeResp> createRepeated() =>
-      $pb.PbList<MenuSubscribeResp>();
   @$core.pragma('dart2js:noInline')
   static MenuSubscribeResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MenuSubscribeResp>(create);
@@ -5558,7 +5456,6 @@ class MusicMenu extends $pb.GeneratedMessage {
   static MusicMenu create() => MusicMenu._();
   @$core.override
   MusicMenu createEmptyInstance() => create();
-  static $pb.PbList<MusicMenu> createRepeated() => $pb.PbList<MusicMenu>();
   @$core.pragma('dart2js:noInline')
   static MusicMenu getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MusicMenu>(create);
@@ -5723,8 +5620,6 @@ class MusicMenuAuthor extends $pb.GeneratedMessage {
   static MusicMenuAuthor create() => MusicMenuAuthor._();
   @$core.override
   MusicMenuAuthor createEmptyInstance() => create();
-  static $pb.PbList<MusicMenuAuthor> createRepeated() =>
-      $pb.PbList<MusicMenuAuthor>();
   @$core.pragma('dart2js:noInline')
   static MusicMenuAuthor getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MusicMenuAuthor>(create);
@@ -5801,8 +5696,6 @@ class MusicMenuStat extends $pb.GeneratedMessage {
   static MusicMenuStat create() => MusicMenuStat._();
   @$core.override
   MusicMenuStat createEmptyInstance() => create();
-  static $pb.PbList<MusicMenuStat> createRepeated() =>
-      $pb.PbList<MusicMenuStat>();
   @$core.pragma('dart2js:noInline')
   static MusicMenuStat getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MusicMenuStat>(create);
@@ -5873,7 +5766,6 @@ class MusicSubTab extends $pb.GeneratedMessage {
   static MusicSubTab create() => MusicSubTab._();
   @$core.override
   MusicSubTab createEmptyInstance() => create();
-  static $pb.PbList<MusicSubTab> createRepeated() => $pb.PbList<MusicSubTab>();
   @$core.pragma('dart2js:noInline')
   static MusicSubTab getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MusicSubTab>(create);
@@ -5954,7 +5846,6 @@ class PageOption extends $pb.GeneratedMessage {
   static PageOption create() => PageOption._();
   @$core.override
   PageOption createEmptyInstance() => create();
-  static $pb.PbList<PageOption> createRepeated() => $pb.PbList<PageOption>();
   @$core.pragma('dart2js:noInline')
   static PageOption getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PageOption>(create);
@@ -6065,7 +5956,6 @@ class PickArchive extends $pb.GeneratedMessage {
   static PickArchive create() => PickArchive._();
   @$core.override
   PickArchive createEmptyInstance() => create();
-  static $pb.PbList<PickArchive> createRepeated() => $pb.PbList<PickArchive>();
   @$core.pragma('dart2js:noInline')
   static PickArchive getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PickArchive>(create);
@@ -6227,8 +6117,6 @@ class PickArchiveAuthor extends $pb.GeneratedMessage {
   static PickArchiveAuthor create() => PickArchiveAuthor._();
   @$core.override
   PickArchiveAuthor createEmptyInstance() => create();
-  static $pb.PbList<PickArchiveAuthor> createRepeated() =>
-      $pb.PbList<PickArchiveAuthor>();
   @$core.pragma('dart2js:noInline')
   static PickArchiveAuthor getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PickArchiveAuthor>(create);
@@ -6302,7 +6190,6 @@ class PickCard extends $pb.GeneratedMessage {
   static PickCard create() => PickCard._();
   @$core.override
   PickCard createEmptyInstance() => create();
-  static $pb.PbList<PickCard> createRepeated() => $pb.PbList<PickCard>();
   @$core.pragma('dart2js:noInline')
   static PickCard getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PickCard>(create);
@@ -6382,8 +6269,6 @@ class PickCardDetailReq extends $pb.GeneratedMessage {
   static PickCardDetailReq create() => PickCardDetailReq._();
   @$core.override
   PickCardDetailReq createEmptyInstance() => create();
-  static $pb.PbList<PickCardDetailReq> createRepeated() =>
-      $pb.PbList<PickCardDetailReq>();
   @$core.pragma('dart2js:noInline')
   static PickCardDetailReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PickCardDetailReq>(create);
@@ -6455,8 +6340,6 @@ class PickCardDetailResp extends $pb.GeneratedMessage {
   static PickCardDetailResp create() => PickCardDetailResp._();
   @$core.override
   PickCardDetailResp createEmptyInstance() => create();
-  static $pb.PbList<PickCardDetailResp> createRepeated() =>
-      $pb.PbList<PickCardDetailResp>();
   @$core.pragma('dart2js:noInline')
   static PickCardDetailResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PickCardDetailResp>(create);
@@ -6524,7 +6407,6 @@ class PickFeedReq extends $pb.GeneratedMessage {
   static PickFeedReq create() => PickFeedReq._();
   @$core.override
   PickFeedReq createEmptyInstance() => create();
-  static $pb.PbList<PickFeedReq> createRepeated() => $pb.PbList<PickFeedReq>();
   @$core.pragma('dart2js:noInline')
   static PickFeedReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PickFeedReq>(create);
@@ -6584,8 +6466,6 @@ class PickFeedResp extends $pb.GeneratedMessage {
   static PickFeedResp create() => PickFeedResp._();
   @$core.override
   PickFeedResp createEmptyInstance() => create();
-  static $pb.PbList<PickFeedResp> createRepeated() =>
-      $pb.PbList<PickFeedResp>();
   @$core.pragma('dart2js:noInline')
   static PickFeedResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PickFeedResp>(create);
@@ -6648,7 +6528,6 @@ class PkcmArchive extends $pb.GeneratedMessage {
   static PkcmArchive create() => PkcmArchive._();
   @$core.override
   PkcmArchive createEmptyInstance() => create();
-  static $pb.PbList<PkcmArchive> createRepeated() => $pb.PbList<PkcmArchive>();
   @$core.pragma('dart2js:noInline')
   static PkcmArchive getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PkcmArchive>(create);
@@ -6724,8 +6603,6 @@ class PkcmCenterButton extends $pb.GeneratedMessage {
   static PkcmCenterButton create() => PkcmCenterButton._();
   @$core.override
   PkcmCenterButton createEmptyInstance() => create();
-  static $pb.PbList<PkcmCenterButton> createRepeated() =>
-      $pb.PbList<PkcmCenterButton>();
   @$core.pragma('dart2js:noInline')
   static PkcmCenterButton getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PkcmCenterButton>(create);
@@ -6819,7 +6696,6 @@ class PkcmHeader extends $pb.GeneratedMessage {
   static PkcmHeader create() => PkcmHeader._();
   @$core.override
   PkcmHeader createEmptyInstance() => create();
-  static $pb.PbList<PkcmHeader> createRepeated() => $pb.PbList<PkcmHeader>();
   @$core.pragma('dart2js:noInline')
   static PkcmHeader getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PkcmHeader>(create);
@@ -6915,8 +6791,6 @@ class PlayActionReportReq extends $pb.GeneratedMessage {
   static PlayActionReportReq create() => PlayActionReportReq._();
   @$core.override
   PlayActionReportReq createEmptyInstance() => create();
-  static $pb.PbList<PlayActionReportReq> createRepeated() =>
-      $pb.PbList<PlayActionReportReq>();
   @$core.pragma('dart2js:noInline')
   static PlayActionReportReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlayActionReportReq>(create);
@@ -6990,7 +6864,6 @@ class PlayDASH extends $pb.GeneratedMessage {
   static PlayDASH create() => PlayDASH._();
   @$core.override
   PlayDASH createEmptyInstance() => create();
-  static $pb.PbList<PlayDASH> createRepeated() => $pb.PbList<PlayDASH>();
   @$core.pragma('dart2js:noInline')
   static PlayDASH getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PlayDASH>(create);
@@ -7068,8 +6941,6 @@ class PlayHistoryAddReq extends $pb.GeneratedMessage {
   static PlayHistoryAddReq create() => PlayHistoryAddReq._();
   @$core.override
   PlayHistoryAddReq createEmptyInstance() => create();
-  static $pb.PbList<PlayHistoryAddReq> createRepeated() =>
-      $pb.PbList<PlayHistoryAddReq>();
   @$core.pragma('dart2js:noInline')
   static PlayHistoryAddReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlayHistoryAddReq>(create);
@@ -7158,8 +7029,6 @@ class PlayHistoryDelReq extends $pb.GeneratedMessage {
   static PlayHistoryDelReq create() => PlayHistoryDelReq._();
   @$core.override
   PlayHistoryDelReq createEmptyInstance() => create();
-  static $pb.PbList<PlayHistoryDelReq> createRepeated() =>
-      $pb.PbList<PlayHistoryDelReq>();
   @$core.pragma('dart2js:noInline')
   static PlayHistoryDelReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlayHistoryDelReq>(create);
@@ -7226,8 +7095,6 @@ class PlayHistoryReq extends $pb.GeneratedMessage {
   static PlayHistoryReq create() => PlayHistoryReq._();
   @$core.override
   PlayHistoryReq createEmptyInstance() => create();
-  static $pb.PbList<PlayHistoryReq> createRepeated() =>
-      $pb.PbList<PlayHistoryReq>();
   @$core.pragma('dart2js:noInline')
   static PlayHistoryReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlayHistoryReq>(create);
@@ -7316,8 +7183,6 @@ class PlayHistoryResp extends $pb.GeneratedMessage {
   static PlayHistoryResp create() => PlayHistoryResp._();
   @$core.override
   PlayHistoryResp createEmptyInstance() => create();
-  static $pb.PbList<PlayHistoryResp> createRepeated() =>
-      $pb.PbList<PlayHistoryResp>();
   @$core.pragma('dart2js:noInline')
   static PlayHistoryResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlayHistoryResp>(create);
@@ -7446,7 +7311,6 @@ class PlayInfo extends $pb.GeneratedMessage {
   static PlayInfo create() => PlayInfo._();
   @$core.override
   PlayInfo createEmptyInstance() => create();
-  static $pb.PbList<PlayInfo> createRepeated() => $pb.PbList<PlayInfo>();
   @$core.pragma('dart2js:noInline')
   static PlayInfo getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PlayInfo>(create);
@@ -7638,7 +7502,6 @@ class PlayItem extends $pb.GeneratedMessage {
   static PlayItem create() => PlayItem._();
   @$core.override
   PlayItem createEmptyInstance() => create();
-  static $pb.PbList<PlayItem> createRepeated() => $pb.PbList<PlayItem>();
   @$core.pragma('dart2js:noInline')
   static PlayItem getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PlayItem>(create);
@@ -7726,7 +7589,6 @@ class PlayURL extends $pb.GeneratedMessage {
   static PlayURL create() => PlayURL._();
   @$core.override
   PlayURL createEmptyInstance() => create();
-  static $pb.PbList<PlayURL> createRepeated() => $pb.PbList<PlayURL>();
   @$core.pragma('dart2js:noInline')
   static PlayURL getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PlayURL>(create);
@@ -7780,7 +7642,6 @@ class PlayURLReq extends $pb.GeneratedMessage {
   static PlayURLReq create() => PlayURLReq._();
   @$core.override
   PlayURLReq createEmptyInstance() => create();
-  static $pb.PbList<PlayURLReq> createRepeated() => $pb.PbList<PlayURLReq>();
   @$core.pragma('dart2js:noInline')
   static PlayURLReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlayURLReq>(create);
@@ -7865,7 +7726,6 @@ class PlayURLResp extends $pb.GeneratedMessage {
   static PlayURLResp create() => PlayURLResp._();
   @$core.override
   PlayURLResp createEmptyInstance() => create();
-  static $pb.PbList<PlayURLResp> createRepeated() => $pb.PbList<PlayURLResp>();
   @$core.pragma('dart2js:noInline')
   static PlayURLResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlayURLResp>(create);
@@ -7965,8 +7825,6 @@ class PlaylistAddReq extends $pb.GeneratedMessage {
   static PlaylistAddReq create() => PlaylistAddReq._();
   @$core.override
   PlaylistAddReq createEmptyInstance() => create();
-  static $pb.PbList<PlaylistAddReq> createRepeated() =>
-      $pb.PbList<PlaylistAddReq>();
   @$core.pragma('dart2js:noInline')
   static PlaylistAddReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlaylistAddReq>(create);
@@ -8058,8 +7916,6 @@ class PlaylistDelReq extends $pb.GeneratedMessage {
   static PlaylistDelReq create() => PlaylistDelReq._();
   @$core.override
   PlaylistDelReq createEmptyInstance() => create();
-  static $pb.PbList<PlaylistDelReq> createRepeated() =>
-      $pb.PbList<PlaylistDelReq>();
   @$core.pragma('dart2js:noInline')
   static PlaylistDelReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlaylistDelReq>(create);
@@ -8132,8 +7988,6 @@ class PlaylistOffset extends $pb.GeneratedMessage {
   static PlaylistOffset create() => PlaylistOffset._();
   @$core.override
   PlaylistOffset createEmptyInstance() => create();
-  static $pb.PbList<PlaylistOffset> createRepeated() =>
-      $pb.PbList<PlaylistOffset>();
   @$core.pragma('dart2js:noInline')
   static PlaylistOffset getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlaylistOffset>(create);
@@ -8250,7 +8104,6 @@ class PlaylistReq extends $pb.GeneratedMessage {
   static PlaylistReq create() => PlaylistReq._();
   @$core.override
   PlaylistReq createEmptyInstance() => create();
-  static $pb.PbList<PlaylistReq> createRepeated() => $pb.PbList<PlaylistReq>();
   @$core.pragma('dart2js:noInline')
   static PlaylistReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlaylistReq>(create);
@@ -8400,8 +8253,6 @@ class PlaylistResp extends $pb.GeneratedMessage {
   static PlaylistResp create() => PlaylistResp._();
   @$core.override
   PlaylistResp createEmptyInstance() => create();
-  static $pb.PbList<PlaylistResp> createRepeated() =>
-      $pb.PbList<PlaylistResp>();
   @$core.pragma('dart2js:noInline')
   static PlaylistResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlaylistResp>(create);
@@ -8510,8 +8361,6 @@ class RandomOrderStatus extends $pb.GeneratedMessage {
   static RandomOrderStatus create() => RandomOrderStatus._();
   @$core.override
   RandomOrderStatus createEmptyInstance() => create();
-  static $pb.PbList<RandomOrderStatus> createRepeated() =>
-      $pb.PbList<RandomOrderStatus>();
   @$core.pragma('dart2js:noInline')
   static RandomOrderStatus getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RandomOrderStatus>(create);
@@ -8572,7 +8421,6 @@ class RcmdOffset extends $pb.GeneratedMessage {
   static RcmdOffset create() => RcmdOffset._();
   @$core.override
   RcmdOffset createEmptyInstance() => create();
-  static $pb.PbList<RcmdOffset> createRepeated() => $pb.PbList<RcmdOffset>();
   @$core.pragma('dart2js:noInline')
   static RcmdOffset getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RcmdOffset>(create);
@@ -8689,8 +8537,6 @@ class RcmdPlaylistReq extends $pb.GeneratedMessage {
   static RcmdPlaylistReq create() => RcmdPlaylistReq._();
   @$core.override
   RcmdPlaylistReq createEmptyInstance() => create();
-  static $pb.PbList<RcmdPlaylistReq> createRepeated() =>
-      $pb.PbList<RcmdPlaylistReq>();
   @$core.pragma('dart2js:noInline')
   static RcmdPlaylistReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RcmdPlaylistReq>(create);
@@ -8810,8 +8656,6 @@ class RcmdPlaylistResp extends $pb.GeneratedMessage {
   static RcmdPlaylistResp create() => RcmdPlaylistResp._();
   @$core.override
   RcmdPlaylistResp createEmptyInstance() => create();
-  static $pb.PbList<RcmdPlaylistResp> createRepeated() =>
-      $pb.PbList<RcmdPlaylistResp>();
   @$core.pragma('dart2js:noInline')
   static RcmdPlaylistResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<RcmdPlaylistResp>(create);
@@ -8905,7 +8749,6 @@ class ResponseUrl extends $pb.GeneratedMessage {
   static ResponseUrl create() => ResponseUrl._();
   @$core.override
   ResponseUrl createEmptyInstance() => create();
-  static $pb.PbList<ResponseUrl> createRepeated() => $pb.PbList<ResponseUrl>();
   @$core.pragma('dart2js:noInline')
   static ResponseUrl getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ResponseUrl>(create);
@@ -9025,7 +8868,6 @@ class SortOption extends $pb.GeneratedMessage {
   static SortOption create() => SortOption._();
   @$core.override
   SortOption createEmptyInstance() => create();
-  static $pb.PbList<SortOption> createRepeated() => $pb.PbList<SortOption>();
   @$core.pragma('dart2js:noInline')
   static SortOption getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SortOption>(create);
@@ -9103,7 +8945,6 @@ class ThumbUpReq extends $pb.GeneratedMessage {
   static ThumbUpReq create() => ThumbUpReq._();
   @$core.override
   ThumbUpReq createEmptyInstance() => create();
-  static $pb.PbList<ThumbUpReq> createRepeated() => $pb.PbList<ThumbUpReq>();
   @$core.pragma('dart2js:noInline')
   static ThumbUpReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ThumbUpReq>(create);
@@ -9170,7 +9011,6 @@ class ThumbUpResp extends $pb.GeneratedMessage {
   static ThumbUpResp create() => ThumbUpResp._();
   @$core.override
   ThumbUpResp createEmptyInstance() => create();
-  static $pb.PbList<ThumbUpResp> createRepeated() => $pb.PbList<ThumbUpResp>();
   @$core.pragma('dart2js:noInline')
   static ThumbUpResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ThumbUpResp>(create);
@@ -9265,7 +9105,6 @@ class TopCard extends $pb.GeneratedMessage {
   static TopCard create() => TopCard._();
   @$core.override
   TopCard createEmptyInstance() => create();
-  static $pb.PbList<TopCard> createRepeated() => $pb.PbList<TopCard>();
   @$core.pragma('dart2js:noInline')
   static TopCard getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TopCard>(create);
@@ -9425,8 +9264,6 @@ class TpcdFavFolder extends $pb.GeneratedMessage {
   static TpcdFavFolder create() => TpcdFavFolder._();
   @$core.override
   TpcdFavFolder createEmptyInstance() => create();
-  static $pb.PbList<TpcdFavFolder> createRepeated() =>
-      $pb.PbList<TpcdFavFolder>();
   @$core.pragma('dart2js:noInline')
   static TpcdFavFolder getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<TpcdFavFolder>(create);
@@ -9527,7 +9364,6 @@ class TpcdHistory extends $pb.GeneratedMessage {
   static TpcdHistory create() => TpcdHistory._();
   @$core.override
   TpcdHistory createEmptyInstance() => create();
-  static $pb.PbList<TpcdHistory> createRepeated() => $pb.PbList<TpcdHistory>();
   @$core.pragma('dart2js:noInline')
   static TpcdHistory getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<TpcdHistory>(create);
@@ -9616,8 +9452,6 @@ class TpcdPickToday extends $pb.GeneratedMessage {
   static TpcdPickToday create() => TpcdPickToday._();
   @$core.override
   TpcdPickToday createEmptyInstance() => create();
-  static $pb.PbList<TpcdPickToday> createRepeated() =>
-      $pb.PbList<TpcdPickToday>();
   @$core.pragma('dart2js:noInline')
   static TpcdPickToday getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<TpcdPickToday>(create);
@@ -9727,8 +9561,6 @@ class TpcdUpRecall extends $pb.GeneratedMessage {
   static TpcdUpRecall create() => TpcdUpRecall._();
   @$core.override
   TpcdUpRecall createEmptyInstance() => create();
-  static $pb.PbList<TpcdUpRecall> createRepeated() =>
-      $pb.PbList<TpcdUpRecall>();
   @$core.pragma('dart2js:noInline')
   static TpcdUpRecall getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<TpcdUpRecall>(create);
@@ -9832,8 +9664,6 @@ class TripleLikeReq extends $pb.GeneratedMessage {
   static TripleLikeReq create() => TripleLikeReq._();
   @$core.override
   TripleLikeReq createEmptyInstance() => create();
-  static $pb.PbList<TripleLikeReq> createRepeated() =>
-      $pb.PbList<TripleLikeReq>();
   @$core.pragma('dart2js:noInline')
   static TripleLikeReq getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<TripleLikeReq>(create);
@@ -9900,8 +9730,6 @@ class TripleLikeResp extends $pb.GeneratedMessage {
   static TripleLikeResp create() => TripleLikeResp._();
   @$core.override
   TripleLikeResp createEmptyInstance() => create();
-  static $pb.PbList<TripleLikeResp> createRepeated() =>
-      $pb.PbList<TripleLikeResp>();
   @$core.pragma('dart2js:noInline')
   static TripleLikeResp getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<TripleLikeResp>(create);

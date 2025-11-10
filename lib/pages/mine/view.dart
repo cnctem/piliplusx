@@ -116,7 +116,7 @@ class _MediaPageState extends CommonPageState<MinePage, MineController>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          size: 22,
+                          size: e.size,
                           e.icon,
                           color: primary,
                         ),

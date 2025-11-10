@@ -576,16 +576,16 @@ class _MouseInteractiveViewerState extends State<MouseInteractiveViewer>
     final Offset global = event.position;
 
     if (_gestureIsSupported(_GestureType.scale)) {
-      late final shift = HardwareKeyboard.instance.isShiftPressed;
       if (HardwareKeyboard.instance.isControlPressed) {
         _handleMouseWheelScale(event, local, global);
         return;
-      } else if (shift || HardwareKeyboard.instance.isAltPressed) {
+      }
+      final shift = HardwareKeyboard.instance.isShiftPressed;
+      if (shift || HardwareKeyboard.instance.isAltPressed) {
         _handleMouseWheelPanAsScale(event, local, global, shift);
         return;
-      } else {
-        widget.pointerSignalFallback?.call(event);
       }
+      widget.pointerSignalFallback?.call(event);
     }
     widget.onInteractionUpdate?.call(
       ScaleUpdateDetails(

@@ -57,7 +57,7 @@ class _MediaListPanelState extends State<MediaListPanel>
     final bvid = widget.bvid;
     final bvIndex = widget.mediaList.indexWhere((item) => item.bvid == bvid);
     _controller = ScrollController(
-      initialScrollOffset: bvIndex == -1 ? 0 : bvIndex * 100.0 + 7,
+      initialScrollOffset: bvIndex <= 0 ? 0 : bvIndex * 100.0 + 7,
     );
   }
 

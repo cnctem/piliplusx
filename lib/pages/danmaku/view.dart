@@ -16,6 +16,7 @@ class PlDanmaku extends StatefulWidget {
   final PlPlayerController playerController;
   final bool isPipMode;
   final bool isFullScreen;
+  final bool isFileSource;
 
   const PlDanmaku({
     super.key,
@@ -23,6 +24,7 @@ class PlDanmaku extends StatefulWidget {
     required this.playerController,
     this.isPipMode = false,
     required this.isFullScreen,
+    required this.isFileSource,
   });
 
   @override
@@ -42,13 +44,18 @@ class _PlDanmakuState extends State<PlDanmaku> {
     _plDanmakuController = PlDanmakuController(
       widget.cid,
       playerController,
+      widget.isFileSource,
     );
     if (playerController.enableShowDanmaku.value) {
-      _plDanmakuController.queryDanmaku(
-        _plDanmakuController.calcSegment(
-          playerController.position.value.inMilliseconds,
-        ),
-      );
+      if (widget.isFileSource) {
+        _plDanmakuController.initXmlDmIfNeeded();
+      } else {
+        _plDanmakuController.queryDanmaku(
+          _plDanmakuController.calcSegment(
+            playerController.position.value.inMilliseconds,
+          ),
+        );
+      }
     }
     playerController
       ..addStatusLister(playerListener)

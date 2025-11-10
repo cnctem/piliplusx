@@ -67,8 +67,6 @@ class FanNumColorFormat extends $pb.GeneratedMessage {
   static FanNumColorFormat create() => FanNumColorFormat._();
   @$core.override
   FanNumColorFormat createEmptyInstance() => create();
-  static $pb.PbList<FanNumColorFormat> createRepeated() =>
-      $pb.PbList<FanNumColorFormat>();
   @$core.pragma('dart2js:noInline')
   static FanNumColorFormat getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FanNumColorFormat>(create);
@@ -143,8 +141,6 @@ class ImageGroup_VisualEffect extends $pb.GeneratedMessage {
   static ImageGroup_VisualEffect create() => ImageGroup_VisualEffect._();
   @$core.override
   ImageGroup_VisualEffect createEmptyInstance() => create();
-  static $pb.PbList<ImageGroup_VisualEffect> createRepeated() =>
-      $pb.PbList<ImageGroup_VisualEffect>();
   @$core.pragma('dart2js:noInline')
   static ImageGroup_VisualEffect getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ImageGroup_VisualEffect>(create);
@@ -212,7 +208,6 @@ class ImageGroup extends $pb.GeneratedMessage {
   static ImageGroup create() => ImageGroup._();
   @$core.override
   ImageGroup createEmptyInstance() => create();
-  static $pb.PbList<ImageGroup> createRepeated() => $pb.PbList<ImageGroup>();
   @$core.pragma('dart2js:noInline')
   static ImageGroup getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ImageGroup>(create);
@@ -298,7 +293,6 @@ class UserCardBG extends $pb.GeneratedMessage {
   static UserCardBG create() => UserCardBG._();
   @$core.override
   UserCardBG createEmptyInstance() => create();
-  static $pb.PbList<UserCardBG> createRepeated() => $pb.PbList<UserCardBG>();
   @$core.pragma('dart2js:noInline')
   static UserCardBG getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<UserCardBG>(create);
@@ -431,7 +425,6 @@ class UserFanShow extends $pb.GeneratedMessage {
   static UserFanShow create() => UserFanShow._();
   @$core.override
   UserFanShow createEmptyInstance() => create();
-  static $pb.PbList<UserFanShow> createRepeated() => $pb.PbList<UserFanShow>();
   @$core.pragma('dart2js:noInline')
   static UserFanShow getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<UserFanShow>(create);
@@ -561,7 +554,6 @@ class UserPendant extends $pb.GeneratedMessage {
   static UserPendant create() => UserPendant._();
   @$core.override
   UserPendant createEmptyInstance() => create();
-  static $pb.PbList<UserPendant> createRepeated() => $pb.PbList<UserPendant>();
   @$core.pragma('dart2js:noInline')
   static UserPendant getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<UserPendant>(create);
@@ -680,7 +672,6 @@ class UserSailing extends $pb.GeneratedMessage {
   static UserSailing create() => UserSailing._();
   @$core.override
   UserSailing createEmptyInstance() => create();
-  static $pb.PbList<UserSailing> createRepeated() => $pb.PbList<UserSailing>();
   @$core.pragma('dart2js:noInline')
   static UserSailing getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<UserSailing>(create);

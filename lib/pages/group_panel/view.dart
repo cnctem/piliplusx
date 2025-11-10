@@ -122,6 +122,7 @@ class _GroupPanelState extends State<GroupPanel> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         AppBar(
           backgroundColor: Colors.transparent,
@@ -139,22 +140,16 @@ class _GroupPanelState extends State<GroupPanel> {
         ),
         Padding(
           padding: EdgeInsets.only(
-            left: 20,
             right: 20,
             top: 12,
             bottom: MediaQuery.viewPaddingOf(context).bottom + 12,
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              FilledButton.tonal(
-                onPressed: onSave,
-                style: FilledButton.styleFrom(
-                  visualDensity: VisualDensity.compact,
-                ),
-                child: Obx(() => Text(showDefaultBtn.value ? '保存至默认分组' : '保存')),
-              ),
-            ],
+          child: FilledButton.tonal(
+            onPressed: onSave,
+            style: FilledButton.styleFrom(
+              visualDensity: VisualDensity.compact,
+            ),
+            child: Obx(() => Text(showDefaultBtn.value ? '保存至默认分组' : '保存')),
           ),
         ),
       ],

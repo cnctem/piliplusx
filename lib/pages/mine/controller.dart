@@ -36,49 +36,45 @@ class MineController
   ThemeType get nextThemeType =>
       ThemeType.values[(themeType.value.index + 1) % ThemeType.values.length];
 
-  late final list = <({IconData icon, String title, VoidCallback onTap})>[
-    (
-      icon: Icons.history,
-      title: '观看记录',
-      onTap: () {
-        if (isLogin) {
-          Get.toNamed('/history');
-        }
-      },
-    ),
-    (
-      icon: Icons.subscriptions_outlined,
-      title: '我的订阅',
-      onTap: () {
-        if (isLogin) {
-          Get.toNamed('/subscription');
-        }
-      },
-    ),
-    (
-      icon: Icons.watch_later_outlined,
-      title: '稍后再看',
-      onTap: () {
-        if (isLogin) {
-          Get.toNamed('/later');
-        }
-      },
-    ),
-    (
-      icon: Icons.create_outlined,
-      title: '创作中心',
-      onTap: () {
-        if (isLogin) {
-          Get.toNamed(
-            '/webview',
-            parameters: {
-              'url': 'https://member.bilibili.com/platform/home',
-            },
-          );
-        }
-      },
-    ),
-  ];
+  late final list =
+      <({IconData icon, double size, String title, VoidCallback onTap})>[
+        (
+          size: 23,
+          icon: MdiIcons.folderDownloadOutline,
+          title: '离线缓存',
+          onTap: () => Get.toNamed('/download'),
+        ),
+        (
+          size: 23,
+          icon: Icons.history,
+          title: '观看记录',
+          onTap: () {
+            if (isLogin) {
+              Get.toNamed('/history');
+            }
+          },
+        ),
+        (
+          size: 20,
+          icon: Icons.subscriptions_outlined,
+          title: '我的订阅',
+          onTap: () {
+            if (isLogin) {
+              Get.toNamed('/subscription');
+            }
+          },
+        ),
+        (
+          size: 22,
+          icon: Icons.watch_later_outlined,
+          title: '稍后再看',
+          onTap: () {
+            if (isLogin) {
+              Get.toNamed('/later');
+            }
+          },
+        ),
+      ];
 
   @override
   void onInit() {

@@ -14,6 +14,7 @@ import 'package:PiliPlus/utils/utils.dart';
 import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:encrypt/encrypt.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 class LoginHttp {
   static final String deviceId = LoginUtils.genDeviceId();
@@ -46,8 +47,11 @@ class LoginHttp {
       try {
         final Map<String, dynamic> data = res.data['data'];
         return Success((authCode: data['auth_code'], url: data['url']));
-      } catch (e) {
-        return Error(e.toString());
+      } catch (e, s) {
+        if (kDebugMode) {
+          rethrow;
+        }
+        return Error('$e\n\n$s');
       }
     } else {
       return Error(res.data['message']);

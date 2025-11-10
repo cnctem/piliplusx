@@ -67,7 +67,6 @@ class Earphone extends $pb.GeneratedMessage {
   static Earphone create() => Earphone._();
   @$core.override
   Earphone createEmptyInstance() => create();
-  static $pb.PbList<Earphone> createRepeated() => $pb.PbList<Earphone>();
   @$core.pragma('dart2js:noInline')
   static Earphone getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Earphone>(create);
@@ -151,8 +150,6 @@ class EarphoneConf extends $pb.GeneratedMessage {
   static EarphoneConf create() => EarphoneConf._();
   @$core.override
   EarphoneConf createEmptyInstance() => create();
-  static $pb.PbList<EarphoneConf> createRepeated() =>
-      $pb.PbList<EarphoneConf>();
   @$core.pragma('dart2js:noInline')
   static EarphoneConf getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<EarphoneConf>(create);
@@ -205,8 +202,6 @@ class MultiViewInfo extends $pb.GeneratedMessage {
   static MultiViewInfo create() => MultiViewInfo._();
   @$core.override
   MultiViewInfo createEmptyInstance() => create();
-  static $pb.PbList<MultiViewInfo> createRepeated() =>
-      $pb.PbList<MultiViewInfo>();
   @$core.pragma('dart2js:noInline')
   static MultiViewInfo getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MultiViewInfo>(create);
@@ -364,7 +359,6 @@ class OgvData extends $pb.GeneratedMessage {
   static OgvData create() => OgvData._();
   @$core.override
   OgvData createEmptyInstance() => create();
-  static $pb.PbList<OgvData> createRepeated() => $pb.PbList<OgvData>();
   @$core.pragma('dart2js:noInline')
   static OgvData getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OgvData>(create);
@@ -696,7 +690,6 @@ class OgvSwitch extends $pb.GeneratedMessage {
   static OgvSwitch create() => OgvSwitch._();
   @$core.override
   OgvSwitch createEmptyInstance() => create();
-  static $pb.PbList<OgvSwitch> createRepeated() => $pb.PbList<OgvSwitch>();
   @$core.pragma('dart2js:noInline')
   static OgvSwitch getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OgvSwitch>(create);
@@ -824,8 +817,6 @@ class PlayFloatLayerActivity extends $pb.GeneratedMessage {
   static PlayFloatLayerActivity create() => PlayFloatLayerActivity._();
   @$core.override
   PlayFloatLayerActivity createEmptyInstance() => create();
-  static $pb.PbList<PlayFloatLayerActivity> createRepeated() =>
-      $pb.PbList<PlayFloatLayerActivity>();
   @$core.pragma('dart2js:noInline')
   static PlayFloatLayerActivity getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlayFloatLayerActivity>(create);
@@ -962,8 +953,6 @@ class PlayStrategy extends $pb.GeneratedMessage {
   static PlayStrategy create() => PlayStrategy._();
   @$core.override
   PlayStrategy createEmptyInstance() => create();
-  static $pb.PbList<PlayStrategy> createRepeated() =>
-      $pb.PbList<PlayStrategy>();
   @$core.pragma('dart2js:noInline')
   static PlayStrategy getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlayStrategy>(create);
@@ -1054,7 +1043,6 @@ class Publish extends $pb.GeneratedMessage {
   static Publish create() => Publish._();
   @$core.override
   Publish createEmptyInstance() => create();
-  static $pb.PbList<Publish> createRepeated() => $pb.PbList<Publish>();
   @$core.pragma('dart2js:noInline')
   static Publish getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Publish>(create);
@@ -1185,7 +1173,6 @@ class Reserve extends $pb.GeneratedMessage {
   static Reserve create() => Reserve._();
   @$core.override
   Reserve createEmptyInstance() => create();
-  static $pb.PbList<Reserve> createRepeated() => $pb.PbList<Reserve>();
   @$core.pragma('dart2js:noInline')
   static Reserve getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Reserve>(create);
@@ -1288,7 +1275,6 @@ class Rights extends $pb.GeneratedMessage {
   static Rights create() => Rights._();
   @$core.override
   Rights createEmptyInstance() => create();
-  static $pb.PbList<Rights> createRepeated() => $pb.PbList<Rights>();
   @$core.pragma('dart2js:noInline')
   static Rights getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Rights>(create);
@@ -1522,7 +1508,6 @@ class Skin extends $pb.GeneratedMessage {
   static Skin create() => Skin._();
   @$core.override
   Skin createEmptyInstance() => create();
-  static $pb.PbList<Skin> createRepeated() => $pb.PbList<Skin>();
   @$core.pragma('dart2js:noInline')
   static Skin getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Skin>(create);
@@ -1698,7 +1683,6 @@ class Stat extends $pb.GeneratedMessage {
   static Stat create() => Stat._();
   @$core.override
   Stat createEmptyInstance() => create();
-  static $pb.PbList<Stat> createRepeated() => $pb.PbList<Stat>();
   @$core.pragma('dart2js:noInline')
   static Stat getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Stat>(create);
@@ -1786,7 +1770,6 @@ class UserStatus extends $pb.GeneratedMessage {
   static UserStatus create() => UserStatus._();
   @$core.override
   UserStatus createEmptyInstance() => create();
-  static $pb.PbList<UserStatus> createRepeated() => $pb.PbList<UserStatus>();
   @$core.pragma('dart2js:noInline')
   static UserStatus getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<UserStatus>(create);
@@ -1917,7 +1900,6 @@ class ViewPgcAny extends $pb.GeneratedMessage {
   static ViewPgcAny create() => ViewPgcAny._();
   @$core.override
   ViewPgcAny createEmptyInstance() => create();
-  static $pb.PbList<ViewPgcAny> createRepeated() => $pb.PbList<ViewPgcAny>();
   @$core.pragma('dart2js:noInline')
   static ViewPgcAny getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ViewPgcAny>(create);
@@ -1984,8 +1966,6 @@ class WatchProgress extends $pb.GeneratedMessage {
   static WatchProgress create() => WatchProgress._();
   @$core.override
   WatchProgress createEmptyInstance() => create();
-  static $pb.PbList<WatchProgress> createRepeated() =>
-      $pb.PbList<WatchProgress>();
   @$core.pragma('dart2js:noInline')
   static WatchProgress getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<WatchProgress>(create);

@@ -92,15 +92,17 @@ abstract class LoginUtils {
         } catch (_) {}
 
         try {
-          Get.find<PgcController>(
-            tag: HomeTabType.bangumi.name,
-          ).queryPgcFollow();
+          Get.find<PgcController>(tag: HomeTabType.bangumi.name)
+            ..followPage = 1
+            ..followEnd = false
+            ..queryPgcFollow();
         } catch (_) {}
 
         try {
-          Get.find<PgcController>(
-            tag: HomeTabType.cinema.name,
-          ).queryPgcFollow();
+          Get.find<PgcController>(tag: HomeTabType.cinema.name)
+            ..followPage = 1
+            ..followEnd = false
+            ..queryPgcFollow();
         } catch (_) {}
       }
     } else {

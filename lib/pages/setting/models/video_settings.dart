@@ -83,7 +83,7 @@ List<SettingsModel> get videoSettings => [
     subtitle: '直接采用备用 URL，可解决部分视频无声',
     leading: const Icon(MdiIcons.musicNotePlus),
     setKey: SettingBoxKey.disableAudioCDN,
-    defaultVal: true,
+    defaultVal: false,
     onChanged: (value) {
       VideoUtils.disableAudioCDN = value;
     },

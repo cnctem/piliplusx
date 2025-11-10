@@ -82,6 +82,14 @@ List<SettingsModel> get playSettings => [
     setKey: SettingBoxKey.enableSlideVolumeBrightness,
     defaultVal: true,
   ),
+  if (Platform.isAndroid)
+    const SettingsModel(
+      settingsType: SettingsType.sw1tch,
+      title: '调节系统亮度',
+      leading: Icon(Icons.brightness_6_outlined),
+      setKey: SettingBoxKey.setSystemBrightness,
+      defaultVal: false,
+    ),
   const SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '中间滑动进入/退出全屏',

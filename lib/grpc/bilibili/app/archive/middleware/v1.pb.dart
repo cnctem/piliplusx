@@ -76,7 +76,6 @@ class PlayerArgs extends $pb.GeneratedMessage {
   static PlayerArgs create() => PlayerArgs._();
   @$core.override
   PlayerArgs createEmptyInstance() => create();
-  static $pb.PbList<PlayerArgs> createRepeated() => $pb.PbList<PlayerArgs>();
   @$core.pragma('dart2js:noInline')
   static PlayerArgs getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<PlayerArgs>(create);

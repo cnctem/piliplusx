@@ -19,6 +19,7 @@ import 'package:PiliPlus/models/common/sponsor_block/segment_type.dart';
 import 'package:PiliPlus/models/common/super_resolution_type.dart';
 import 'package:PiliPlus/models/common/video/video_quality.dart';
 import 'package:PiliPlus/models/video/play/url.dart';
+import 'package:PiliPlus/models_new/video/video_detail/episode.dart' as ugc;
 import 'package:PiliPlus/models_new/video/video_detail/episode.dart';
 import 'package:PiliPlus/models_new/video/video_detail/section.dart';
 import 'package:PiliPlus/models_new/video/video_detail/ugc_season.dart';
@@ -51,6 +52,7 @@ import 'package:PiliPlus/utils/duration_utils.dart';
 import 'package:PiliPlus/utils/extension.dart';
 import 'package:PiliPlus/utils/id_utils.dart';
 import 'package:PiliPlus/utils/image_utils.dart';
+import 'package:PiliPlus/utils/path_utils.dart';
 import 'package:PiliPlus/utils/storage.dart';
 import 'package:PiliPlus/utils/storage_key.dart';
 import 'package:PiliPlus/utils/utils.dart';
@@ -98,7 +100,14 @@ class PLVideoPlayer extends StatefulWidget {
   final Widget headerControl;
   final Widget? bottomControl;
   final Widget? danmuWidget;
-  final void Function([int?, UgcSeason?, dynamic, String?, int?, int?])?
+  final void Function([
+    int?,
+    UgcSeason?,
+    List<ugc.BaseEpisodeItem>?,
+    String?,
+    int?,
+    int?,
+  ])?
   showEpisodes;
   final VoidCallback? showViewPoints;
   final Color fill;
@@ -204,14 +213,22 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
         try {
           _brightnessValue.value =
               await ScreenBrightnessPlatform.instance.application;
-          _listener = ScreenBrightnessPlatform
-              .instance
-              .onApplicationScreenBrightnessChanged
-              .listen((double value) {
-                if (mounted) {
-                  _brightnessValue.value = value;
-                }
-              });
+
+          void listener(double value) {
+            if (mounted) {
+              _brightnessValue.value = value;
+            }
+          }
+
+          _listener = Platform.isIOS || plPlayerController.setSystemBrightness
+              ? ScreenBrightnessPlatform
+                    .instance
+                    .onSystemScreenBrightnessChanged
+                    .listen(listener)
+              : ScreenBrightnessPlatform
+                    .instance
+                    .onApplicationScreenBrightnessChanged
+                    .listen(listener);
         } catch (_) {}
       });
     }
@@ -264,9 +281,15 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
 
   Future<void> setBrightness(double value) async {
     try {
-      await ScreenBrightnessPlatform.instance.setApplicationScreenBrightness(
-        value,
-      );
+      if (Platform.isIOS || plPlayerController.setSystemBrightness) {
+        await ScreenBrightnessPlatform.instance.setSystemScreenBrightness(
+          value,
+        );
+      } else {
+        await ScreenBrightnessPlatform.instance.setApplicationScreenBrightness(
+          value,
+        );
+      }
     } catch (_) {}
     _brightnessIndicator.value = true;
     _brightnessTimer?.cancel();
@@ -503,6 +526,10 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
           color: Colors.white,
         ),
         onTap: () {
+          if (videoDetailController.isFileSource) {
+            // TODO
+            return;
+          }
           // part -> playAll -> season(pgc)
           if (isPlayAll && !isPart) {
             widget.showEpisodes?.call();
@@ -511,7 +538,7 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
           int? index;
           int currentCid = plPlayerController.cid!;
           String bvid = plPlayerController.bvid;
-          List episodes = [];
+          List<ugc.BaseEpisodeItem> episodes = [];
           if (isSeason) {
             final List<SectionItem> sections = videoDetail.ugcSeason!.sections!;
             for (int i = 0; i < sections.length; i++) {
@@ -639,20 +666,30 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
                   return [
                     PopupMenuItem<int>(
                       value: 0,
+                      height: 35,
                       onTap: () => videoDetailController.setSubtitle(0),
                       child: const Text(
                         "关闭字幕",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                        ),
                       ),
                     ),
                     ...videoDetailController.subtitles.indexed.map((e) {
                       return PopupMenuItem<int>(
                         value: e.$1 + 1,
+                        height: 35,
                         onTap: () =>
                             videoDetailController.setSubtitle(e.$1 + 1),
                         child: Text(
                           "${e.$2.lanDoc}",
-                          style: const TextStyle(color: Colors.white),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                          ),
                         ),
                       );
                     }),
@@ -822,10 +859,12 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
       ),
     };
 
+    final isNotFileSource = !plPlayerController.isFileSource;
+
     List<BottomControlType> userSpecifyItemLeft = [
       BottomControlType.playOrPause,
       BottomControlType.time,
-      if (anySeason) ...[
+      if (!isNotFileSource || anySeason) ...[
         BottomControlType.pre,
         BottomControlType.next,
       ],
@@ -834,15 +873,17 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
     final flag =
         isFullScreen || plPlayerController.isDesktopPip || maxWidth >= 500;
     List<BottomControlType> userSpecifyItemRight = [
-      if (plPlayerController.showDmChart) BottomControlType.dmChart,
+      if (isNotFileSource && plPlayerController.showDmChart)
+        BottomControlType.dmChart,
       if (plPlayerController.isAnim) BottomControlType.superResolution,
-      if (plPlayerController.showViewPoints) BottomControlType.viewPoints,
-      if (anySeason) BottomControlType.episode,
+      if (isNotFileSource && plPlayerController.showViewPoints)
+        BottomControlType.viewPoints,
+      if (isNotFileSource || anySeason) BottomControlType.episode,
       if (flag) BottomControlType.fit,
-      BottomControlType.aiTranslate,
+      if (isNotFileSource) BottomControlType.aiTranslate,
       BottomControlType.subtitle,
       BottomControlType.speed,
-      if (flag) BottomControlType.qa,
+      if (isNotFileSource && flag) BottomControlType.qa,
       if (!plPlayerController.isDesktopPip) BottomControlType.fullscreen,
     ];
 
@@ -1020,7 +1061,8 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
       plPlayerController
         ..onUpdatedSliderProgress(result)
         ..onChangedSliderStart();
-      if (plPlayerController.showSeekPreview &&
+      if (!plPlayerController.isFileSource &&
+          plPlayerController.showSeekPreview &&
           plPlayerController.cancelSeek != true) {
         plPlayerController.updatePreviewIndex(newPos ~/ 1000);
       }
@@ -1271,7 +1313,8 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
       plPlayerController
         ..onUpdatedSliderProgress(result)
         ..onChangedSliderStart();
-      if (plPlayerController.showSeekPreview &&
+      if (!plPlayerController.isFileSource &&
+          plPlayerController.showSeekPreview &&
           plPlayerController.cancelSeek != true) {
         plPlayerController.updatePreviewIndex(newPos ~/ 1000);
       }
@@ -2172,7 +2215,7 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
     final progress = 0.0.obs;
     final name =
         '${ctr.cid}-${segment.first.toStringAsFixed(3)}_${segment.second.toStringAsFixed(3)}.webp';
-    final file = '${await Utils.temporaryDirectory}/$name';
+    final file = '$tmpDirPath/$name';
 
     final mpv = MpvConvertWebp(
       url!,

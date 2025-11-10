@@ -144,11 +144,9 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
       clipBehavior: Clip.none,
       children: [
         GestureDetector(
-          onTap: () {
-            PageUtils.imageView(
-              imgList: [SourceModel(url: item.cover!)],
-            );
-          },
+          onTap: () => PageUtils.imageView(
+            imgList: [SourceModel(url: item.cover!)],
+          ),
           child: Hero(
             tag: item.cover!,
             child: NetworkImgLayer(

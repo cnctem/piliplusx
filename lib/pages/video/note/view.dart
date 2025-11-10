@@ -132,7 +132,7 @@ class _NoteListPageState extends State<NoteListPage>
             bottom: MediaQuery.viewPaddingOf(context).bottom + 6,
           ),
           decoration: BoxDecoration(
-            color: theme.colorScheme.onInverseSurface,
+            color: theme.hoverColor,
             border: Border(
               top: BorderSide(
                 width: 0.5,

@@ -62,7 +62,6 @@ class FawkesReply extends $pb.GeneratedMessage {
   static FawkesReply create() => FawkesReply._();
   @$core.override
   FawkesReply createEmptyInstance() => create();
-  static $pb.PbList<FawkesReply> createRepeated() => $pb.PbList<FawkesReply>();
   @$core.pragma('dart2js:noInline')
   static FawkesReply getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<FawkesReply>(create);
@@ -141,7 +140,6 @@ class FawkesReq extends $pb.GeneratedMessage {
   static FawkesReq create() => FawkesReq._();
   @$core.override
   FawkesReq createEmptyInstance() => create();
-  static $pb.PbList<FawkesReq> createRepeated() => $pb.PbList<FawkesReq>();
   @$core.pragma('dart2js:noInline')
   static FawkesReq getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FawkesReq>(create);

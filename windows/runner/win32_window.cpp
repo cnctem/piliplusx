@@ -60,7 +60,7 @@ class WindowClassRegistrar {
  public:
   ~WindowClassRegistrar() = default;
 
-  // Returns the singleton registar instance.
+  // Returns the singleton registrar instance.
   static WindowClassRegistrar* GetInstance() {
     if (!instance_) {
       instance_ = new WindowClassRegistrar();
@@ -179,6 +179,12 @@ Win32Window::MessageHandler(HWND hwnd,
                             WPARAM const wparam,
                             LPARAM const lparam) noexcept {
   switch (message) {
+    case WM_SYSCOMMAND:
+      if (wparam == SC_KEYMENU && (lparam >> 16) <= 0) {
+        return 0;
+      }
+    break;
+
     case WM_DESTROY:
       window_handle_ = nullptr;
       Destroy();

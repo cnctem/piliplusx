@@ -6,7 +6,7 @@ import 'package:PiliPlus/models_new/dynamic/dyn_topic_feed/topic_card_list.dart'
 import 'package:PiliPlus/models_new/dynamic/dyn_topic_feed/topic_sort_by_conf.dart';
 import 'package:PiliPlus/models_new/dynamic/dyn_topic_top/top_details.dart';
 import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
+import 'package:PiliPlus/utils/accounts.dart';
 import 'package:PiliPlus/utils/extension.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -28,7 +28,7 @@ class DynTopicController
   Rx<LoadingState<TopDetails?>> topState =
       LoadingState<TopDetails?>.loading().obs;
 
-  AccountService accountService = Get.find<AccountService>();
+  late final isLogin = Accounts.main.isLogin;
 
   @override
   void onInit() {
@@ -92,7 +92,7 @@ class DynTopicController
   }
 
   Future<void> onFav() async {
-    if (!accountService.isLogin.value) {
+    if (!isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }
@@ -113,7 +113,7 @@ class DynTopicController
   }
 
   Future<void> onLike() async {
-    if (!accountService.isLogin.value) {
+    if (!isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }

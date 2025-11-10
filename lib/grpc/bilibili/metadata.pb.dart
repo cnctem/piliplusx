@@ -73,7 +73,6 @@ class Metadata extends $pb.GeneratedMessage {
   static Metadata create() => Metadata._();
   @$core.override
   Metadata createEmptyInstance() => create();
-  static $pb.PbList<Metadata> createRepeated() => $pb.PbList<Metadata>();
   @$core.pragma('dart2js:noInline')
   static Metadata getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Metadata>(create);

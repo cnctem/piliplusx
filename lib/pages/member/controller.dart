@@ -10,7 +10,7 @@ import 'package:PiliPlus/models_new/space/space/live.dart';
 import 'package:PiliPlus/models_new/space/space/setting.dart';
 import 'package:PiliPlus/models_new/space/space/tab2.dart';
 import 'package:PiliPlus/pages/common/common_data_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
+import 'package:PiliPlus/utils/accounts.dart';
 import 'package:PiliPlus/utils/request_utils.dart';
 import 'package:PiliPlus/utils/storage_pref.dart';
 import 'package:PiliPlus/utils/utils.dart';
@@ -26,7 +26,7 @@ class MemberController extends CommonDataController<SpaceData, SpaceData?>
   int mid;
   String? username;
 
-  AccountService accountService = Get.find<AccountService>();
+  late final account = Accounts.main;
 
   Live? live;
   int? silence;
@@ -105,7 +105,7 @@ class MemberController extends CommonDataController<SpaceData, SpaceData?>
         );
       }
     }
-    if (mid == accountService.mid) {
+    if (mid == account.mid) {
       spaceSetting = data.setting;
     }
     loadingState.value = response;
@@ -142,7 +142,7 @@ class MemberController extends CommonDataController<SpaceData, SpaceData?>
   );
 
   void blockUser(BuildContext context) {
-    if (!accountService.isLogin.value) {
+    if (!account.isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }
@@ -190,12 +190,12 @@ class MemberController extends CommonDataController<SpaceData, SpaceData?>
   }
 
   void onFollow(BuildContext context) {
-    if (mid == accountService.mid) {
+    if (mid == account.mid) {
       Get.toNamed('/editProfile');
     } else if (relation.value == 128) {
       _onBlock();
     } else {
-      if (!accountService.isLogin.value) {
+      if (!account.isLogin) {
         SmartDialog.showToast('账号未登录');
         return;
       }

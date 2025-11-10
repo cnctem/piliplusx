@@ -17,6 +17,17 @@ class FollowPage extends StatefulWidget {
 
   @override
   State<FollowPage> createState() => _FollowPageState();
+
+  static void toFollowPage({dynamic mid, String? name}) {
+    if (mid == null) return;
+    Get.toNamed(
+      '/follow',
+      arguments: {
+        'mid': Utils.safeToInt(mid),
+        'name': name,
+      },
+    );
+  }
 }
 
 class _FollowPageState extends State<FollowPage> {

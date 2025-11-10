@@ -66,7 +66,6 @@ class ItemWHRatio extends $pb.GeneratedMessage {
   static ItemWHRatio create() => ItemWHRatio._();
   @$core.override
   ItemWHRatio createEmptyInstance() => create();
-  static $pb.PbList<ItemWHRatio> createRepeated() => $pb.PbList<ItemWHRatio>();
   @$core.pragma('dart2js:noInline')
   static ItemWHRatio getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ItemWHRatio>(create);

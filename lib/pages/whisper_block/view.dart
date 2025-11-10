@@ -183,6 +183,7 @@ class _WhisperBlockPageState extends State<WhisperBlockPage> {
                   ),
                   GestureDetector(
                     onTap: Get.back,
+                    behavior: HitTestBehavior.opaque,
                     child: Icon(
                       Icons.clear,
                       color: theme.colorScheme.onSurfaceVariant,

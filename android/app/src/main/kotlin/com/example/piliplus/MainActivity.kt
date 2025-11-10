@@ -43,7 +43,10 @@ class MainActivity : AudioServiceActivity() {
                         val cookies = call.argument<List<String>>("cookies") ?: emptyList<String>()
 
                         val intent = Intent().apply {
-                            component = ComponentName("icu.freedomIntrovert.biliSendCommAntifraud", "icu.freedomIntrovert.biliSendCommAntifraud.ByXposedLaunchedActivity")
+                            component = ComponentName(
+                                "icu.freedomIntrovert.biliSendCommAntifraud",
+                                "icu.freedomIntrovert.biliSendCommAntifraud.ByXposedLaunchedActivity"
+                            )
                             putExtra("action", action)
                             putExtra("oid", oid.toLong())
                             putExtra("type", type)
@@ -52,23 +55,27 @@ class MainActivity : AudioServiceActivity() {
                             putExtra("parent", parent.toLong())
                             putExtra("ctime", ctime.toLong())
                             putExtra("comment_text", commentText)
-                            if(pictures != null)
+                            if (pictures != null)
                                 putExtra("pictures", pictures)
                             putExtra("source_id", sourceId)
                             putExtra("uid", uid.toLong())
                             putStringArrayListExtra("cookies", ArrayList(cookies))
                         }
                         startActivity(intent)
-                    } catch (_: Exception) {}
+                    } catch (_: Exception) {
+                    }
                 }
+
                 "linkVerifySettings" -> {
                     val uri = ("package:" + context.packageName).toUri()
                     try {
                         val intent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                             Intent(Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS, uri)
                         } else {
-                            Intent("android.intent.action.MAIN", uri).setClassName("com.android.settings",
-                                "com.android.settings.applications.InstalledAppOpenByDefaultActivity")
+                            Intent("android.intent.action.MAIN", uri).setClassName(
+                                "com.android.settings",
+                                "com.android.settings.applications.InstalledAppOpenByDefaultActivity"
+                            )
                         }
                         context.startActivity(intent)
                     } catch (_: Throwable) {
@@ -76,33 +83,47 @@ class MainActivity : AudioServiceActivity() {
                         context.startActivity(intent)
                     }
                 }
+
                 "music" -> {
                     val title = call.argument<String>("title")
                     val intent = Intent(MediaStore.INTENT_ACTION_MEDIA_SEARCH).apply {
                         putExtra(SearchManager.QUERY, title)
                         putExtra(MediaStore.EXTRA_MEDIA_TITLE, title)
-                        call.argument<String?>("artist")?.let { putExtra(MediaStore.EXTRA_MEDIA_ARTIST, it) }
-                        call.argument<String?>("album")?.let { putExtra(MediaStore.EXTRA_MEDIA_ALBUM, it) }
+                        call.argument<String?>("artist")
+                            ?.let { putExtra(MediaStore.EXTRA_MEDIA_ARTIST, it) }
+                        call.argument<String?>("album")
+                            ?.let { putExtra(MediaStore.EXTRA_MEDIA_ALBUM, it) }
 
                         addCategory(Intent.CATEGORY_DEFAULT)
                     }
                     try {
-                        if (packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
+                        if (packageManager.resolveActivity(
+                                intent,
+                                PackageManager.MATCH_DEFAULT_ONLY
+                            ) != null
+                        ) {
                             startActivity(intent)
                             result.success(true)
                             return@setMethodCallHandler
                         }
-                    } catch (_: Throwable) {}
+                    } catch (_: Throwable) {
+                    }
                     try {
                         intent.action = MediaStore.INTENT_ACTION_MEDIA_PLAY_FROM_SEARCH
-                        if (packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
+                        if (packageManager.resolveActivity(
+                                intent,
+                                PackageManager.MATCH_DEFAULT_ONLY
+                            ) != null
+                        ) {
                             startActivity(intent)
                             result.success(true)
                             return@setMethodCallHandler
                         }
-                    } catch (_: Throwable) {}
+                    } catch (_: Throwable) {
+                    }
                     result.success(false)
                 }
+
                 "setPipAutoEnterEnabled" -> {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                         val params = PictureInPictureParams.Builder()
@@ -111,6 +132,7 @@ class MainActivity : AudioServiceActivity() {
                         setPictureInPictureParams(params)
                     }
                 }
+
                 else -> result.notImplemented()
             }
         }
@@ -133,6 +155,7 @@ class MainActivity : AudioServiceActivity() {
     }
 
     override fun onDestroy() {
+        stopService(Intent(this, com.ryanheise.audioservice.AudioService::class.java))
         super.onDestroy()
         android.os.Process.killProcess(android.os.Process.myPid())
         exitProcess(0)
@@ -143,7 +166,10 @@ class MainActivity : AudioServiceActivity() {
         methodChannel.invokeMethod("onUserLeaveHint", null)
     }
 
-    override fun onPictureInPictureModeChanged(isInPictureInPictureMode: Boolean, newConfig: Configuration?) {
+    override fun onPictureInPictureModeChanged(
+        isInPictureInPictureMode: Boolean,
+        newConfig: Configuration?
+    ) {
         super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
         MethodChannel(
             flutterEngine!!.dartExecutor.binaryMessenger,

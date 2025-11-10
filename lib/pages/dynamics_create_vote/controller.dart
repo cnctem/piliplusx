@@ -7,7 +7,6 @@ import 'package:PiliPlus/utils/accounts.dart';
 import 'package:PiliPlus/utils/utils.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 class CreateVoteController extends GetxController {
   CreateVoteController(this.voteId);
@@ -109,9 +108,9 @@ class CreateVoteController extends GetxController {
     }
   }
 
-  Future<void> onUpload(int index, XFile pickedFile) async {
+  Future<void> onUpload(int index, String path) async {
     var res = await MsgHttp.uploadBfs(
-      path: pickedFile.path,
+      path: path,
       category: 'daily',
       biz: 'vote',
     );

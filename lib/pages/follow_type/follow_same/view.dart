@@ -1,6 +1,7 @@
 import 'package:PiliPlus/pages/follow_type/follow_same/controller.dart';
 import 'package:PiliPlus/pages/follow_type/view.dart';
 import 'package:PiliPlus/utils/extension.dart';
+import 'package:PiliPlus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,13 +10,24 @@ class FollowSamePage extends StatefulWidget {
 
   @override
   State<FollowSamePage> createState() => _FollowSamePageState();
+
+  static void toFollowSamePage({dynamic mid, String? name}) {
+    if (mid == null) return;
+    Get.toNamed(
+      '/sameFollowing',
+      arguments: {
+        'mid': Utils.safeToInt(mid),
+        'name': name,
+      },
+    );
+  }
 }
 
 class _FollowSamePageState extends FollowTypePageState<FollowSamePage> {
   @override
   final controller = Get.putOrFind(
     FollowSameController.new,
-    tag: Get.parameters['mid'],
+    tag: Get.arguments?['mid']?.toString() ?? Utils.generateRandomString(8),
   );
 
   @override

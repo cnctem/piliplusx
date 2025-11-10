@@ -24,7 +24,6 @@ import 'package:PiliPlus/models_new/video/video_detail/stat_detail.dart';
 import 'package:PiliPlus/models_new/video/video_detail/ugc_season.dart';
 import 'package:PiliPlus/pages/common/common_intro_controller.dart';
 import 'package:PiliPlus/pages/dynamics_repost/view.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
 import 'package:PiliPlus/pages/video/pay_coins/view.dart';
 import 'package:PiliPlus/pages/video/related/controller.dart';
 import 'package:PiliPlus/pages/video/reply/controller.dart';
@@ -104,15 +103,12 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
       }
       videoDetail.value = data;
       try {
-        final videoDetailController = Get.find<VideoDetailController>(
-          tag: heroTag,
-        );
-        if (videoDetailController.cover.value.isEmpty ||
-            (videoDetailController.videoUrl.isNullOrEmpty &&
-                !videoDetailController.isQuerying)) {
-          videoDetailController.cover.value = data.pic ?? '';
+        if (videoDetailCtr.cover.value.isEmpty ||
+            (videoDetailCtr.videoUrl.isNullOrEmpty &&
+                !videoDetailCtr.isQuerying)) {
+          videoDetailCtr.cover.value = data.pic ?? '';
         }
-        if (videoDetailController.showReply) {
+        if (videoDetailCtr.showReply) {
           try {
             Get.find<VideoReplyController>(tag: heroTag).count.value =
                 data.stat?.reply ?? 0;
@@ -129,7 +125,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
       status.value = false;
     }
 
-    if (accountService.isLogin.value) {
+    if (isLogin) {
       queryAllStatus();
       queryFollowStatus();
     }
@@ -184,7 +180,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
   @override
   Future<void> actionTriple() async {
     feedBack();
-    if (!accountService.isLogin.value) {
+    if (!isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }
@@ -224,7 +220,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
   // （取消）点赞
   @override
   Future<void> actionLikeVideo() async {
-    if (!accountService.isLogin.value) {
+    if (!isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }
@@ -246,7 +242,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
   }
 
   Future<void> actionDislikeVideo() async {
-    if (!accountService.isLogin.value) {
+    if (!isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }
@@ -274,7 +270,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
   // 投币
   @override
   void actionCoinVideo() {
-    if (!accountService.isLogin.value) {
+    if (!isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }
@@ -426,7 +422,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
 
   // 关注/取关up
   Future<void> actionRelationMod(BuildContext context) async {
-    if (!accountService.isLogin.value) {
+    if (!isLogin) {
       SmartDialog.showToast('账号未登录');
       return;
     }
@@ -479,7 +475,6 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
       final String? cover = episode.cover;
 
       // 重新获取视频资源
-      final videoDetailCtr = Get.find<VideoDetailController>(tag: heroTag);
 
       if (videoDetailCtr.isPlayAll) {
         if (videoDetailCtr.mediaList.indexWhere((item) => item.bvid == bvid) ==
@@ -566,7 +561,6 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
     final List<BaseEpisodeItem> episodes = <BaseEpisodeItem>[];
     bool isPart = false;
 
-    final videoDetailCtr = Get.find<VideoDetailController>(tag: heroTag);
     final videoDetail = this.videoDetail.value;
 
     if (!skipPart && (videoDetail.pages?.length ?? 0) > 1) {
@@ -632,7 +626,6 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
     try {
       final List<BaseEpisodeItem> episodes = <BaseEpisodeItem>[];
       bool isPart = false;
-      final videoDetailCtr = Get.find<VideoDetailController>(tag: heroTag);
       final videoDetail = this.videoDetail.value;
 
       // part -> playall -> season

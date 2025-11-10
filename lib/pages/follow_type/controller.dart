@@ -20,9 +20,9 @@ abstract class FollowTypeController
 
   void init() {
     final ownerMid = Accounts.main.mid;
-    final mid = Get.parameters['mid'];
-    this.mid = mid != null ? int.parse(mid) : ownerMid;
-    final name = Get.parameters['name'];
+    final Map? args = Get.arguments;
+    mid = args?['mid'] ?? ownerMid;
+    final String? name = args?['name'];
     this.name = RxnString(name);
     if (name == null) {
       queryUserName();

@@ -17,7 +17,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
 # update when release
-version: 1.1.4+1
+version: 1.1.5+1
 
 environment:
   sdk: ">=3.9.0 <4.0.0"
@@ -211,11 +211,16 @@ dependencies:
       path: packages/window_manager
       ref: main
   tray_manager: ^0.5.1
-  file_picker: ^10.3.3
+  # file_picker: ^10.3.3
+  file_picker:
+    git:
+      url: https://github.com/bggRGjQaUbCoE/flutter_file_picker.git
+      ref: mod
   super_sliver_list:
     git:
       url: https://github.com/bggRGjQaUbCoE/super_sliver_list.git
       ref: mod
+  xml: ^6.6.1
 
   vector_math: any
   fixnum: any

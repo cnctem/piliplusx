@@ -59,7 +59,6 @@ class Exp extends $pb.GeneratedMessage {
   static Exp create() => Exp._();
   @$core.override
   Exp createEmptyInstance() => create();
-  static $pb.PbList<Exp> createRepeated() => $pb.PbList<Exp>();
   @$core.pragma('dart2js:noInline')
   static Exp getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Exp>(create);
@@ -123,7 +122,6 @@ class Exps extends $pb.GeneratedMessage {
   static Exps create() => Exps._();
   @$core.override
   Exps createEmptyInstance() => create();
-  static $pb.PbList<Exps> createRepeated() => $pb.PbList<Exps>();
   @$core.pragma('dart2js:noInline')
   static Exps getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Exps>(create);

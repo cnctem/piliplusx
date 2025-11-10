@@ -42,6 +42,10 @@ export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 ///     if (any.is(Foo.class)) {
 ///       foo = any.unpack(Foo.class);
 ///     }
+///     // or ...
+///     if (any.isSameTypeAs(Foo.getDefaultInstance())) {
+///       foo = any.unpack(Foo.getDefaultInstance());
+///     }
 ///
 ///  Example 3: Pack and unpack a message in Python.
 ///
@@ -56,10 +60,13 @@ export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 ///  Example 4: Pack and unpack a message in Go
 ///
 ///      foo := &pb.Foo{...}
-///      any, err := ptypes.MarshalAny(foo)
+///      any, err := anypb.New(foo)
+///      if err != nil {
+///        ...
+///      }
 ///      ...
 ///      foo := &pb.Foo{}
-///      if err := ptypes.UnmarshalAny(any, foo); err != nil {
+///      if err := any.UnmarshalTo(foo); err != nil {
 ///        ...
 ///      }
 ///
@@ -68,7 +75,6 @@ export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 /// methods only use the fully qualified type name after the last '/'
 /// in the type URL, for example "foo.bar.com/x/y.z" will yield type
 /// name "y.z".
-///
 ///
 /// JSON
 /// ====
@@ -141,14 +147,14 @@ class Any extends $pb.GeneratedMessage with $mixin.AnyMixin {
   static Any create() => Any._();
   @$core.override
   Any createEmptyInstance() => create();
-  static $pb.PbList<Any> createRepeated() => $pb.PbList<Any>();
   @$core.pragma('dart2js:noInline')
   static Any getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Any>(create);
   static Any? _defaultInstance;
 
   /// A URL/resource name that uniquely identifies the type of the serialized
-  /// protocol buffer message. The last segment of the URL's path must represent
+  /// protocol buffer message. This string must contain at least
+  /// one "/" character. The last segment of the URL's path must represent
   /// the fully qualified name of the type (as in
   /// `path/google.protobuf.Duration`). The name should be in a canonical form
   /// (e.g., leading "." is not accepted).
@@ -169,7 +175,8 @@ class Any extends $pb.GeneratedMessage with $mixin.AnyMixin {
   ///
   /// Note: this functionality is not currently available in the official
   /// protobuf release, and it is not used for type URLs beginning with
-  /// type.googleapis.com.
+  /// type.googleapis.com. As of May 2023, there are no widely used type server
+  /// implementations and no plans to implement one.
   ///
   /// Schemes other than `http`, `https` (or the empty scheme) might be
   /// used with implementation specific semantics.

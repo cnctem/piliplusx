@@ -20,7 +20,7 @@ mixin TripleMixin on GetxController, TickerProvider {
   bool get hasTriple => hasLike.value && hasCoin && hasFav.value;
 
   void actionTriple();
-  Future<void> actionLikeVideo();
+  void actionLikeVideo();
 
   // no need for pugv
   AnimationController? _tripleAnimCtr;

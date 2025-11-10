@@ -50,7 +50,6 @@ class GrpcReq {
         platform: _device,
       ).writeToBuffer(),
     );
-    options = Options(headers: headers, responseType: ResponseType.bytes);
   }
 
   static final Map<String, String> headers = {
@@ -112,7 +111,7 @@ class GrpcReq {
     'x-bili-exps-bin': '',
   };
 
-  static Options options = Options(
+  static final Options options = Options(
     headers: headers,
     responseType: ResponseType.bytes,
   );
@@ -147,8 +146,8 @@ class GrpcReq {
       options: options,
     );
 
-    if (response.data is Map) {
-      return Error(response.data['message']);
+    if (response.data case final Map map) {
+      return Error(map['message']);
     }
 
     if (response.headers.value('Grpc-Status') == '0') {
@@ -171,9 +170,9 @@ class GrpcReq {
           final msgBytes = base64Decode(msg);
           try {
             final grpcMsg = Status.fromBuffer(msgBytes);
-            final details = grpcMsg.details.map(
-              (e) => Status.fromBuffer(e.value),
-            );
+            final details = grpcMsg.details
+                .map((e) => Status.fromBuffer(e.value))
+                .toList();
             code = details.firstOrNull?.code;
             // UNKNOWN : -400 : msg
             final errMsg = details.map((e) => e.message).join('\n');

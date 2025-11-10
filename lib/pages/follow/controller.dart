@@ -18,14 +18,15 @@ class FollowController extends GetxController with GetTickerProviderStateMixin {
   @override
   void onInit() {
     super.onInit();
+    final Map? args = Get.arguments;
     final ownerMid = Accounts.main.mid;
-    final mid = Get.parameters['mid'];
-    this.mid = mid != null ? int.parse(mid) : ownerMid;
+    final int? mid = args?['mid'];
+    this.mid = mid ?? ownerMid;
     isOwner = ownerMid == this.mid;
     if (isOwner) {
       queryFollowUpTags();
     } else {
-      final name = Get.parameters['name'];
+      final String? name = args?['name'];
       this.name = RxnString(name);
       if (name == null) {
         _queryUserName();

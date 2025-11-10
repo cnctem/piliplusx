@@ -69,7 +69,6 @@ class NetQuality extends $pb.GeneratedMessage {
   static NetQuality create() => NetQuality._();
   @$core.override
   NetQuality createEmptyInstance() => create();
-  static $pb.PbList<NetQuality> createRepeated() => $pb.PbList<NetQuality>();
   @$core.pragma('dart2js:noInline')
   static NetQuality getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<NetQuality>(create);
@@ -158,7 +157,6 @@ class Network extends $pb.GeneratedMessage {
   static Network create() => Network._();
   @$core.override
   Network createEmptyInstance() => create();
-  static $pb.PbList<Network> createRepeated() => $pb.PbList<Network>();
   @$core.pragma('dart2js:noInline')
   static Network getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Network>(create);

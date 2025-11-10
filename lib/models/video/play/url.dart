@@ -199,9 +199,7 @@ class Durl {
       ahead: json['ahead'],
       vhead: json['vhead'],
       url: json['url'],
-      backupUrl: json['backup_url'] != null
-          ? List<String>.from(json['backup_url'])
-          : [],
+      backupUrl: (json['backup_url'] as List?)?.fromCast<String>(),
     );
   }
 }
@@ -248,11 +246,9 @@ abstract class BaseItem {
   BaseItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     baseUrl = json['baseUrl'] ?? json['base_url'];
-    final backupUrls =
-        ((json['backupUrl'] ?? json['backup_url']) as List?)
-            ?.fromCast<String>() ??
-        <String>[];
-    backupUrl = backupUrls.isNotEmpty
+    final backupUrls = ((json['backupUrl'] ?? json['backup_url']) as List?)
+        ?.fromCast<String>();
+    backupUrl = backupUrls != null && backupUrls.isNotEmpty
         ? backupUrls.firstWhere(
             (i) => !_isMCDNorPCDN(i),
             orElse: () => backupUrls.first,

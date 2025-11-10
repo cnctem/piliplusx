@@ -246,6 +246,9 @@ class AccountManager extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
+    if (err.requestOptions.responseType == ResponseType.stream) {
+      return handler.next(err);
+    }
     if (err.requestOptions.method != 'POST') {
       toast(err);
     }

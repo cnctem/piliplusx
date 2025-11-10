@@ -9,6 +9,9 @@ import 'package:PiliPlus/models_new/space/space/followings_followed_upper.dart';
 import 'package:PiliPlus/models_new/space/space/images.dart';
 import 'package:PiliPlus/models_new/space/space/live.dart';
 import 'package:PiliPlus/models_new/space/space/pr_info.dart';
+import 'package:PiliPlus/pages/fan/view.dart';
+import 'package:PiliPlus/pages/follow/view.dart';
+import 'package:PiliPlus/pages/follow_type/followed/view.dart';
 import 'package:PiliPlus/utils/accounts.dart';
 import 'package:PiliPlus/utils/app_scheme.dart';
 import 'package:PiliPlus/utils/context_ext.dart';
@@ -330,9 +333,9 @@ class UserInfoCard extends StatelessWidget {
                       : card.likes?.likeNum,
                   onTap: () {
                     if (index == 0) {
-                      Get.toNamed('/fan?mid=${card.mid}&name=${card.name}');
+                      FansPage.toFansPage(mid: card.mid, name: card.name);
                     } else if (index == 2) {
-                      Get.toNamed('/follow?mid=${card.mid}&name=${card.name}');
+                      FollowPage.toFollowPage(mid: card.mid, name: card.name);
                     }
                   },
                 )
@@ -653,7 +656,7 @@ class UserInfoCard extends StatelessWidget {
       ],
     );
     return GestureDetector(
-      onTap: () => Get.toNamed('/followed?mid=${card.mid}&name=${card.name}'),
+      onTap: () => FollowedPage.toFollowedPage(mid: card.mid, name: card.name),
       child: child,
     );
   }

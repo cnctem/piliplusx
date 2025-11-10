@@ -29,6 +29,7 @@ import 'package:PiliPlus/utils/app_sign.dart';
 import 'package:PiliPlus/utils/utils.dart';
 import 'package:PiliPlus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 class MemberHttp {
   static Future reportMember(
@@ -430,8 +431,11 @@ class MemberHttp {
           return memberDynamic(offset: data.offset, mid: mid);
         }
         return Success(data);
-      } catch (err) {
-        return Error(err.toString());
+      } catch (e, s) {
+        if (kDebugMode) {
+          rethrow;
+        }
+        return Error('$e\n\n$s');
       }
     } else {
       Map errMap = const {

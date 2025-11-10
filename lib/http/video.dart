@@ -33,7 +33,7 @@ import 'package:PiliPlus/utils/recommend_filter.dart';
 import 'package:PiliPlus/utils/storage_pref.dart';
 import 'package:PiliPlus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show kDebugMode, compute;
 
 /// view层根据 status 判断渲染逻辑
 class VideoHttp {
@@ -229,18 +229,19 @@ class VideoHttp {
         switch (videoType) {
           case VideoType.ugc:
             data = PlayUrlModel.fromJson(res.data['data']);
-
+            break;
           case VideoType.pugv:
-            var result = res.data['data'];
+            final result = res.data['data'];
             data = PlayUrlModel.fromJson(result)
               ..lastPlayTime =
                   result?['play_view_business_info']?['user_status']?['watch_progress']?['current_watch_progress'];
-
+            break;
           case VideoType.pgc:
-            var result = res.data['result'];
+            final result = res.data['result'];
             data = PlayUrlModel.fromJson(result['video_info'])
               ..lastPlayTime =
                   result?['play_view_business_info']?['user_status']?['watch_progress']?['current_watch_progress'];
+            break;
         }
         return Success(data);
       } else if (epid != null && videoType == VideoType.ugc) {
@@ -256,8 +257,11 @@ class VideoHttp {
         );
       }
       return Error(_parseVideoErr(res.data['code'], res.data['message']));
-    } catch (err) {
-      return Error(err.toString());
+    } catch (e, s) {
+      if (kDebugMode) {
+        rethrow;
+      }
+      return Error('$e\n\n$s');
     }
   }
 
@@ -824,7 +828,13 @@ class VideoHttp {
     }
   }
 
-  static Future playInfo({String? aid, String? bvid, required int cid}) async {
+  static Future playInfo({
+    String? aid,
+    String? bvid,
+    required int cid,
+    dynamic seasonId,
+    dynamic epId,
+  }) async {
     assert(aid != null || bvid != null);
     var res = await Request().get(
       Api.playInfo,
@@ -832,6 +842,8 @@ class VideoHttp {
         'aid': ?aid,
         'bvid': ?bvid,
         'cid': cid,
+        'season_id': ?seasonId,
+        'ep_id': ?epId,
       }),
     );
     if (res.data['code'] == 0) {
@@ -844,32 +856,31 @@ class VideoHttp {
     }
   }
 
+  static String _subtitleTimecode(num seconds) {
+    int h = seconds ~/ 3600;
+    seconds %= 3600;
+    int m = seconds ~/ 60;
+    seconds %= 60;
+    String sms = seconds.toStringAsFixed(3).padLeft(6, '0');
+    return h == 0
+        ? "${m.toString().padLeft(2, '0')}:$sms"
+        : "${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}:$sms";
+  }
+
+  static String processList(List list) {
+    final sb = StringBuffer('WEBVTT\n\n')
+      ..writeAll(
+        list.map(
+          (item) =>
+              '${item?['sid'] ?? 0}\n${_subtitleTimecode(item['from'])} --> ${_subtitleTimecode(item['to'])}\n${item['content'].trim()}',
+        ),
+        '\n\n',
+      );
+    return sb.toString();
+  }
+
   static Future<String?> vttSubtitles(String subtitleUrl) async {
-    String subtitleTimecode(num seconds) {
-      int h = seconds ~/ 3600;
-      seconds %= 3600;
-      int m = seconds ~/ 60;
-      seconds %= 60;
-      String sms = seconds.toStringAsFixed(3).padLeft(6, '0');
-      return h == 0
-          ? "${m.toString().padLeft(2, '0')}:$sms"
-          : "${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}:$sms";
-    }
-
-    String processList(List list) {
-      final sb = StringBuffer('WEBVTT\n\n')
-        ..writeAll(
-          list.map(
-            (item) =>
-                '${item?['sid'] ?? 0}\n${subtitleTimecode(item['from'])} --> ${subtitleTimecode(item['to'])}\n${item['content'].trim()}',
-          ),
-          '\n\n',
-        );
-      return sb.toString();
-    }
-
     var res = await Request().get("https:$subtitleUrl");
-
     if (res.data?['body'] case List list) {
       return compute<List, String>(processList, list);
     }

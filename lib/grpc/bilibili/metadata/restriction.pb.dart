@@ -79,7 +79,6 @@ class Restriction extends $pb.GeneratedMessage {
   static Restriction create() => Restriction._();
   @$core.override
   Restriction createEmptyInstance() => create();
-  static $pb.PbList<Restriction> createRepeated() => $pb.PbList<Restriction>();
   @$core.pragma('dart2js:noInline')
   static Restriction getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<Restriction>(create);

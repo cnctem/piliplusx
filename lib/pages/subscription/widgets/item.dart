@@ -108,21 +108,27 @@ class SubItem extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Column(
-            spacing: 4,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                item.title!,
-                textAlign: TextAlign.start,
-                style: const TextStyle(
-                  letterSpacing: 0.3,
+              Expanded(
+                child: Text(
+                  item.title!,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.start,
+                  style: const TextStyle(
+                    letterSpacing: 0.3,
+                  ),
                 ),
               ),
               Text(
                 'UP主: ${item.upper!.name!}',
                 textAlign: TextAlign.start,
                 style: style,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
+              const SizedBox(height: 4),
               Text(
                 '${item.mediaCount}个视频',
                 textAlign: TextAlign.start,

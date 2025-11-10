@@ -254,6 +254,14 @@ extension FileExt on File {
   }
 }
 
+extension DirectoryExt on Directory {
+  Future<void> tryDel({bool recursive = false}) async {
+    try {
+      await delete(recursive: recursive);
+    } catch (_) {}
+  }
+}
+
 extension SizeExt on Size {
   bool get isPortrait => width < 600 || height >= width;
 }

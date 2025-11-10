@@ -23,6 +23,7 @@ import 'package:PiliPlus/utils/accounts.dart';
 import 'package:PiliPlus/utils/utils.dart';
 import 'package:PiliPlus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 class DynamicsHttp {
   static Future<LoadingState<DynamicsDataModel>> followDynamic({
@@ -59,8 +60,11 @@ class DynamicsHttp {
           );
         }
         return Success(data);
-      } catch (err) {
-        return Error(err.toString());
+      } catch (e, s) {
+        if (kDebugMode) {
+          rethrow;
+        }
+        return Error('$e\n\n$s');
       }
     } else {
       return Error(code == 4101132 ? '没有数据' : res.data['message']);
@@ -267,8 +271,11 @@ class DynamicsHttp {
     if (res.data['code'] == 0) {
       try {
         return Success(DynamicItemModel.fromJson(res.data['data']['item']));
-      } catch (err) {
-        return Error(err.toString());
+      } catch (e, s) {
+        if (kDebugMode) {
+          rethrow;
+        }
+        return Error('$e\n\n$s');
       }
     } else {
       return Error(res.data['message']);

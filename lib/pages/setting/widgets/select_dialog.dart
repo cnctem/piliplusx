@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:PiliPlus/http/constants.dart';
+import 'package:PiliPlus/http/ua_type.dart';
 import 'package:PiliPlus/http/video.dart';
 import 'package:PiliPlus/models/common/video/cdn_type.dart';
 import 'package:PiliPlus/models/common/video/video_type.dart';
@@ -80,18 +81,19 @@ class CdnSelectDialog extends StatefulWidget {
 
 class _CdnSelectDialogState extends State<CdnSelectDialog> {
   late final List<ValueNotifier<String?>> _cdnResList;
-  late final CancelToken _cancelToken;
+  late final List<CancelToken?> _tokens;
   late final bool _cdnSpeedTest;
 
   @override
   void initState() {
     _cdnSpeedTest = Pref.cdnSpeedTest;
     if (_cdnSpeedTest) {
+      final length = CDNService.values.length;
       _cdnResList = List.generate(
-        CDNService.values.length,
+        length,
         (_) => ValueNotifier<String?>(null),
       );
-      _cancelToken = CancelToken();
+      _tokens = List.generate(length, (_) => CancelToken());
       _startSpeedTest();
     }
     super.initState();
@@ -100,10 +102,13 @@ class _CdnSelectDialogState extends State<CdnSelectDialog> {
   @override
   void dispose() {
     if (_cdnSpeedTest) {
-      _cancelToken.cancel();
+      for (final e in _tokens) {
+        e?.cancel();
+      }
       for (final notifier in _cdnResList) {
         notifier.dispose();
       }
+      _dio.close(force: true);
     }
     super.dispose();
   }
@@ -145,26 +150,38 @@ class _CdnSelectDialogState extends State<CdnSelectDialog> {
     }
   }
 
+  late final _dio = Dio()
+    ..options.headers = {
+      'user-agent': UaType.pc.ua,
+      'referer': HttpString.baseUrl,
+    };
+
   Future<void> _measureDownloadSpeed(String url, int index) async {
     const maxSize = 8 * 1024 * 1024;
     int downloaded = 0;
-    final dio = Dio()..options.headers['referer'] = HttpString.baseUrl;
+
+    final cancelToken = _tokens[index];
     final start = DateTime.now().microsecondsSinceEpoch;
 
-    await dio.get(
+    void onClose() {
+      cancelToken?.cancel();
+      _tokens[index] = null;
+    }
+
+    await _dio.get(
       url,
-      cancelToken: _cancelToken,
+      cancelToken: cancelToken,
       onReceiveProgress: (count, total) {
         if (!mounted) {
-          dio.close(force: true);
           return;
         }
+
         final duration = DateTime.now().microsecondsSinceEpoch - start;
 
         downloaded += count;
 
         if (duration > 15000000) {
-          dio.close(force: true);
+          onClose();
           if (downloaded > 0) {
             _updateSpeedResult(index, downloaded, duration);
             downloaded = 0;
@@ -172,7 +189,7 @@ class _CdnSelectDialogState extends State<CdnSelectDialog> {
             throw TimeoutException('测速超时');
           }
         } else if (downloaded >= maxSize) {
-          dio.close(force: true);
+          onClose();
           _updateSpeedResult(index, downloaded, duration);
           downloaded = 0;
         }
@@ -186,6 +203,9 @@ class _CdnSelectDialogState extends State<CdnSelectDialog> {
   }
 
   void _handleSpeedTestError(dynamic error, int index) {
+    _tokens
+      ..[index]?.cancel()
+      ..[index] = null;
     final item = _cdnResList[index];
     if (item.value != null) return;
 

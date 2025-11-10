@@ -320,7 +320,7 @@ class _FavDetailPageState extends State<FavDetailPage> with GridMixin {
             isCopy: true,
             ctr: _favDetailController,
             mediaId: _favDetailController.mediaId,
-            mid: _favDetailController.accountService.mid,
+            mid: _favDetailController.account.mid,
           ),
       child: Text(
         '复制',
@@ -339,7 +339,7 @@ class _FavDetailPageState extends State<FavDetailPage> with GridMixin {
             isCopy: false,
             ctr: _favDetailController,
             mediaId: _favDetailController.mediaId,
-            mid: _favDetailController.accountService.mid,
+            mid: _favDetailController.account.mid,
           ),
       child: Text(
         '移动',

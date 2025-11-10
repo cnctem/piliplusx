@@ -137,9 +137,12 @@ class _ArticleListPageState extends State<ArticleListPage> with GridMixin {
                   if (_controller.author != null) ...[
                     const SizedBox(height: 10),
                     GestureDetector(
+                      behavior: HitTestBehavior.opaque,
                       onTap: () =>
                           Get.toNamed('/member?mid=${_controller.author!.mid}'),
                       child: Row(
+                        spacing: 10,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           NetworkImgLayer(
                             width: 30,
@@ -147,8 +150,7 @@ class _ArticleListPageState extends State<ArticleListPage> with GridMixin {
                             src: _controller.author!.face,
                             type: ImageType.avatar,
                           ),
-                          const SizedBox(width: 10),
-                          Text(_controller.author!.name!),
+                          Flexible(child: Text(_controller.author!.name!)),
                         ],
                       ),
                     ),

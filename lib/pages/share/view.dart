@@ -177,7 +177,7 @@ class _SharePanelState extends State<SharePanel> {
                 onTap: () async {
                   _focusNode.unfocus();
                   UserModel? userModel = await Navigator.of(context).push(
-                    GetPageRoute(page: () => const ContactPage()),
+                    GetPageRoute(page: ContactPage.new),
                   );
                   if (userModel != null) {
                     _userList

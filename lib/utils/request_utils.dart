@@ -176,9 +176,6 @@ abstract class RequestUtils {
                         context: context,
                         useSafeArea: true,
                         isScrollControlled: true,
-                        sheetAnimationStyle: const AnimationStyle(
-                          curve: Curves.ease,
-                        ),
                         constraints: BoxConstraints(
                           maxWidth: min(640, context.mediaQueryShortestSide),
                         ),

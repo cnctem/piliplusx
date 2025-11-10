@@ -169,7 +169,7 @@ class _AudioPageState extends State<AudioPage> {
           final theme = Theme.of(context);
           final colorScheme = theme.colorScheme;
           return FractionallySizedBox(
-            heightFactor: !context.mediaQuerySize.isPortrait && Utils.isMobile
+            heightFactor: Utils.isMobile && !context.mediaQuerySize.isPortrait
                 ? 1.0
                 : 0.7,
             alignment: Alignment.bottomCenter,

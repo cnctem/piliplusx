@@ -1,8 +1,11 @@
+import 'dart:io' show File;
+
 import 'package:PiliPlus/common/widgets/button/icon_button.dart';
 import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
 import 'package:PiliPlus/models/dynamics/vote_model.dart';
 import 'package:PiliPlus/pages/dynamics_create_vote/controller.dart';
 import 'package:PiliPlus/utils/date_utils.dart';
+import 'package:PiliPlus/utils/extension.dart';
 import 'package:PiliPlus/utils/utils.dart';
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
@@ -414,7 +417,12 @@ class _CreateVotePageState extends State<CreateVotePage> {
             source: ImageSource.gallery,
           );
           if (pickedFile != null) {
-            _controller.onUpload(index, pickedFile);
+            final path = pickedFile.path;
+            _controller.onUpload(index, path).whenComplete(() {
+              if (Utils.isMobile) {
+                File(path).tryDel();
+              }
+            });
           }
         } catch (e) {
           SmartDialog.showToast(e.toString());

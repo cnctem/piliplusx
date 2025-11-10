@@ -20,8 +20,8 @@ class _RankPageState extends State<RankPage>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     super.build(context);
+    final theme = Theme.of(context);
     return Row(
       children: [
         SizedBox(

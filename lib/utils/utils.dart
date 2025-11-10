@@ -6,11 +6,10 @@ import 'dart:math';
 import 'package:PiliPlus/common/constants.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 abstract class Utils {
@@ -24,6 +23,41 @@ abstract class Utils {
   @pragma("vm:platform-const")
   static final bool isDesktop =
       Platform.isWindows || Platform.isMacOS || Platform.isLinux;
+
+  static const jsonEncoder = JsonEncoder.withIndent('    ');
+
+  static Future<void> saveBytes2File({
+    required String name,
+    required Uint8List bytes,
+    required List<String> allowedExtensions,
+    FileType type = FileType.custom,
+  }) async {
+    try {
+      final path = await FilePicker.platform.saveFile(
+        allowedExtensions: allowedExtensions,
+        type: type,
+        fileName: name,
+        bytes: Utils.isDesktop ? null : bytes,
+      );
+      if (path == null) {
+        SmartDialog.showToast("取消保存");
+        return;
+      }
+      if (Utils.isDesktop) {
+        await File(path).writeAsBytes(bytes);
+      }
+      SmartDialog.showToast("已保存");
+    } catch (e) {
+      SmartDialog.showToast("保存失败: $e");
+    }
+  }
+
+  static int? safeToInt(dynamic value) => switch (value) {
+    int e => e,
+    String e => int.tryParse(e),
+    num e => e.toInt(),
+    _ => null,
+  };
 
   static Future<bool> get isWiFi async {
     try {
@@ -40,24 +74,16 @@ abstract class Utils {
       Color(int.parse(color.replaceFirst('#', 'FF'), radix: 16));
 
   static int? _sdkInt;
-
   static Future<int> get sdkInt async {
     return _sdkInt ??= (await DeviceInfoPlugin().androidInfo).version.sdkInt;
   }
 
   static bool? _isIpad;
-
   static Future<bool> get isIpad async {
     if (!Platform.isIOS) return false;
     return _isIpad ??= (await DeviceInfoPlugin().iosInfo).model
         .toLowerCase()
         .contains('ipad');
-  }
-
-  static String? _tempDir;
-
-  static Future<String> get temporaryDirectory async {
-    return _tempDir ??= (await getTemporaryDirectory()).path;
   }
 
   static Future<Rect?> get sharePositionOrigin async {
@@ -80,15 +106,6 @@ abstract class Utils {
     } catch (e) {
       SmartDialog.showToast(e.toString());
     }
-  }
-
-  static String buildShadersAbsolutePath(
-    String baseDirectory,
-    List<String> shaders,
-  ) {
-    return shaders
-        .map((shader) => path.join(baseDirectory, shader))
-        .join(Platform.isWindows ? ';' : ':');
   }
 
   static final numericRegex = RegExp(r'^[\d\.]+$');
@@ -120,13 +137,6 @@ abstract class Utils {
 
   static String makeHeroTag(v) {
     return v.toString() + random.nextInt(9999).toString();
-  }
-
-  static int findClosestNumber(int target, List<int> numbers) {
-    List<int> filterNums = numbers.where((number) => number <= target).toList();
-    return filterNums.isNotEmpty
-        ? filterNums.reduce((a, b) => a > b ? a : b)
-        : numbers.reduce((a, b) => a > b ? b : a);
   }
 
   static List<int> generateRandomBytes(int minLength, int maxLength) {

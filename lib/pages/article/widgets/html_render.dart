@@ -49,12 +49,10 @@ Widget htmlRender({
           return Hero(
             tag: imgUrl,
             child: GestureDetector(
-              onTap: () {
-                PageUtils.imageView(
-                  imgList: [SourceModel(url: imgUrl)],
-                  quality: 60,
-                );
-              },
+              onTap: () => PageUtils.imageView(
+                imgList: [SourceModel(url: imgUrl)],
+                quality: 60,
+              ),
               child: CachedNetworkImage(
                 width: size,
                 height: size,

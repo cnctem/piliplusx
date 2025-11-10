@@ -46,7 +46,7 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
       resizeToAvoidBottomInset: false,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          if (_controller.accountService.isLogin.value) {
+          if (_controller.isLogin) {
             CreateDynPanel.onCreateDyn(
               context,
               topic: Pair(
@@ -191,6 +191,7 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
                       '/member?mid=${response.topicCreator!.uid}',
                     ),
                     child: Row(
+                      spacing: 10,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         NetworkImgLayer(
@@ -199,7 +200,6 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
                           src: response.topicCreator!.face!,
                           type: ImageType.avatar,
                         ),
-                        const SizedBox(width: 10),
                         Flexible(
                           child: Text(
                             response.topicCreator!.name!,
@@ -321,7 +321,7 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
                   PopupMenuItem(
                     child: const Text('举报'),
                     onTap: () {
-                      if (!_controller.accountService.isLogin.value) {
+                      if (!_controller.isLogin) {
                         SmartDialog.showToast('账号未登录');
                         return;
                       }

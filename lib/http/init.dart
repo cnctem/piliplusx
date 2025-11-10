@@ -180,10 +180,11 @@ class Request {
       );
     }
 
-    dio.transformer = BackgroundTransformer();
-    dio.options.validateStatus = (int? status) {
-      return status! >= 200 && status < 300;
-    };
+    dio
+      ..transformer = BackgroundTransformer()
+      ..options.validateStatus = (int? status) {
+        return status != null && status >= 200 && status < 300;
+      };
   }
 
   /*

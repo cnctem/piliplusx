@@ -4,13 +4,13 @@ import 'package:PiliPlus/http/user.dart';
 import 'package:PiliPlus/models_new/sub/sub/data.dart';
 import 'package:PiliPlus/models_new/sub/sub/list.dart';
 import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
+import 'package:PiliPlus/utils/accounts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
 class SubController extends CommonListController<SubData, SubItemModel> {
-  AccountService accountService = Get.find<AccountService>();
+  late final account = Accounts.main;
 
   @override
   void onInit() {
@@ -20,7 +20,7 @@ class SubController extends CommonListController<SubData, SubItemModel> {
 
   @override
   Future<void> queryData([bool isRefresh = true]) {
-    if (!accountService.isLogin.value) {
+    if (!account.isLogin) {
       loadingState.value = const Error('账号未登录');
       return Future.value();
     }
@@ -77,6 +77,6 @@ class SubController extends CommonListController<SubData, SubItemModel> {
   Future<LoadingState<SubData>> customGetData() => UserHttp.userSubFolder(
     pn: page,
     ps: 20,
-    mid: accountService.mid,
+    mid: account.mid,
   );
 }

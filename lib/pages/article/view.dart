@@ -347,25 +347,28 @@ class _ArticlePageState extends CommonDynPageState<ArticlePage> {
                           src: controller.summary.author?.face,
                         ),
                         const SizedBox(width: 10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              controller.summary.author?.name ?? '',
-                              style: TextStyle(
-                                fontSize: theme.textTheme.titleSmall!.fontSize,
-                              ),
-                            ),
-                            if (pubTime != null)
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
                               Text(
-                                DateFormatUtils.format(pubTime),
+                                controller.summary.author?.name ?? '',
                                 style: TextStyle(
-                                  color: theme.colorScheme.outline,
                                   fontSize:
-                                      theme.textTheme.labelSmall!.fontSize,
+                                      theme.textTheme.titleSmall!.fontSize,
                                 ),
                               ),
-                          ],
+                              if (pubTime != null)
+                                Text(
+                                  DateFormatUtils.format(pubTime),
+                                  style: TextStyle(
+                                    color: theme.colorScheme.outline,
+                                    fontSize:
+                                        theme.textTheme.labelSmall!.fontSize,
+                                  ),
+                                ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

@@ -145,7 +145,7 @@ class VideoPlayerServiceHandler extends BaseAudioHandler with SeekHandler {
         );
         mediaItem = MediaItem(
           id: id,
-          title: current?.pagePart ?? '',
+          title: current?.part ?? '',
           artist: data.owner?.name,
           duration: Duration(seconds: current?.duration ?? 0),
           artUri: Uri.parse(data.pic ?? ''),
@@ -180,7 +180,7 @@ class VideoPlayerServiceHandler extends BaseAudioHandler with SeekHandler {
     } else if (data is Part) {
       mediaItem = MediaItem(
         id: id,
-        title: data.pagePart ?? '',
+        title: data.part ?? '',
         artist: artist,
         duration: Duration(seconds: data.duration ?? 0),
         artUri: Uri.parse(cover ?? ''),

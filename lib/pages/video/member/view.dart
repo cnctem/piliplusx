@@ -11,11 +11,13 @@ import 'package:PiliPlus/models/common/image_type.dart';
 import 'package:PiliPlus/models/member/info.dart';
 import 'package:PiliPlus/models_new/space/space_archive/item.dart';
 import 'package:PiliPlus/models_new/video/video_detail/episode.dart';
+import 'package:PiliPlus/pages/fan/view.dart';
+import 'package:PiliPlus/pages/follow/view.dart';
 import 'package:PiliPlus/pages/member_video/widgets/video_card_h_member_video.dart';
 import 'package:PiliPlus/pages/video/controller.dart';
 import 'package:PiliPlus/pages/video/introduction/ugc/controller.dart';
 import 'package:PiliPlus/pages/video/member/controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
+import 'package:PiliPlus/utils/accounts.dart';
 import 'package:PiliPlus/utils/extension.dart';
 import 'package:PiliPlus/utils/num_utils.dart';
 import 'package:PiliPlus/utils/page_utils.dart';
@@ -43,7 +45,7 @@ class HorizontalMemberPage extends StatefulWidget {
 
 class _HorizontalMemberPageState extends State<HorizontalMemberPage> {
   late final HorizontalMemberPageController _controller;
-  AccountService accountService = Get.find<AccountService>();
+  late final account = Accounts.main;
   late final String _bvid;
 
   @override
@@ -289,12 +291,14 @@ class _HorizontalMemberPageState extends State<HorizontalMemberPage> {
                     : '',
                 onTap: () {
                   if (index == 0) {
-                    Get.toNamed(
-                      '/fan?mid=${widget.mid}&name=${memberInfoModel.name}',
+                    FansPage.toFansPage(
+                      mid: widget.mid,
+                      name: memberInfoModel.name,
                     );
                   } else if (index == 2) {
-                    Get.toNamed(
-                      '/follow?mid=${widget.mid}&name=${memberInfoModel.name}',
+                    FollowPage.toFollowPage(
+                      mid: widget.mid,
+                      name: memberInfoModel.name,
                     );
                   }
                 },
@@ -328,10 +332,10 @@ class _HorizontalMemberPageState extends State<HorizontalMemberPage> {
                 visualDensity: const VisualDensity(vertical: -2),
               ),
               onPressed: () {
-                if (widget.mid == accountService.mid) {
+                if (widget.mid == account.mid) {
                   Get.toNamed('/editProfile');
                 } else {
-                  if (!accountService.isLogin.value) {
+                  if (!account.isLogin) {
                     SmartDialog.showToast('账号未登录');
                     return;
                   }
@@ -348,7 +352,7 @@ class _HorizontalMemberPageState extends State<HorizontalMemberPage> {
                 }
               },
               child: Text(
-                widget.mid == accountService.mid
+                widget.mid == account.mid
                     ? '编辑资料'
                     : memberInfoModel.isFollowed == true
                     ? '已关注'
@@ -397,11 +401,9 @@ class _HorizontalMemberPageState extends State<HorizontalMemberPage> {
   }
 
   Widget _buildAvatar(String face) => GestureDetector(
-    onTap: () {
-      PageUtils.imageView(
-        imgList: [SourceModel(url: face)],
-      );
-    },
+    onTap: () => PageUtils.imageView(
+      imgList: [SourceModel(url: face)],
+    ),
     child: NetworkImgLayer(
       src: face,
       type: ImageType.avatar,
