@@ -1,16 +1,14 @@
 <div align="center">
-    <img width="200" height="200" src="assets/images/logo/logo.png">
+    <img width="200" height="200" src="assets/images/logo/logo_X.png">
 </div>
 
 
 
 <div align="center">
-    <h1>PiliPlus</h1>
+    <h1>PiliPlusX</h1>
 <div align="center">
     
-![GitHub repo size](https://img.shields.io/github/repo-size/bggRGjQaUbCoE/PiliPlus) 
-![GitHub Repo stars](https://img.shields.io/github/stars/bggRGjQaUbCoE/PiliPlus) 
-![GitHub all releases](https://img.shields.io/github/downloads/bggRGjQaUbCoE/PiliPlus/total) 
+
 </div>
     <p>使用Flutter开发的BiliBili第三方客户端</p>
     
@@ -32,6 +30,7 @@
 - [x] Pad
 - [x] Windows
 - [x] Linux
+- [x] macOS
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/piliplus.svg)](https://repology.org/project/piliplus/versions)
 
