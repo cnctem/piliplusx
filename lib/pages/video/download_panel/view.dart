@@ -130,9 +130,10 @@ class _DownloadPanelState extends State<DownloadPanel> {
                       style: const TextStyle(height: 1),
                       strutStyle: const StrutStyle(height: 1, leading: 0),
                     ),
-                    const Icon(
+                    Icon(
                       size: 18,
                       Icons.keyboard_arrow_down,
+                      color: theme.colorScheme.onSurfaceVariant,
                     ),
                   ],
                 ),
@@ -528,7 +529,7 @@ class _DownloadPanelState extends State<DownloadPanel> {
           _buildBottomBtn(
             text: '查看缓存',
             onTap: () => Navigator.of(context).push(
-              GetPageRoute(page: DownloadPage.new),
+              GetPageRoute(page: () => const DownloadPage()),
             ),
           ),
         ],

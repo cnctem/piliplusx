@@ -118,22 +118,16 @@ class LanguageItem {
     this.lang,
     this.title,
     this.subtitleLang,
-    this.videoDetext,
-    this.videoMouthShapeChange,
   });
 
   String? lang;
   String? title;
   String? subtitleLang;
-  bool? videoDetext;
-  bool? videoMouthShapeChange;
 
   LanguageItem.fromJson(Map<String, dynamic> json) {
     lang = json['lang'];
-    title = json['title'];
+    title = '${json['title']}${json['production_type'] == 2 ? '（AI）' : ''}';
     subtitleLang = json['subtitle_lang'];
-    videoDetext = json['video_detext'];
-    videoMouthShapeChange = json['video_mouth_shape_change'];
   }
 }
 

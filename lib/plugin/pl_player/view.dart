@@ -608,27 +608,35 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
           final list = videoDetailController.languages.value;
           if (list != null && list.isNotEmpty) {
             return PopupMenuButton<String>(
-              tooltip: '原声翻译',
+              tooltip: '翻译',
               requestFocus: false,
               initialValue: videoDetailController.currLang.value,
               color: Colors.black.withValues(alpha: 0.8),
               itemBuilder: (context) {
                 return [
                   PopupMenuItem<String>(
+                    height: 35,
                     value: '',
                     onTap: () => videoDetailController.setLanguage(''),
                     child: const Text(
                       "关闭翻译",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 13,
+                      ),
                     ),
                   ),
                   ...list.map((e) {
                     return PopupMenuItem<String>(
+                      height: 35,
                       value: e.lang,
                       onTap: () => videoDetailController.setLanguage(e.lang!),
                       child: Text(
                         e.title!,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                        ),
                       ),
                     );
                   }),
@@ -878,7 +886,7 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
       if (plPlayerController.isAnim) BottomControlType.superResolution,
       if (isNotFileSource && plPlayerController.showViewPoints)
         BottomControlType.viewPoints,
-      if (isNotFileSource || anySeason) BottomControlType.episode,
+      if (isNotFileSource && anySeason) BottomControlType.episode,
       if (flag) BottomControlType.fit,
       if (isNotFileSource) BottomControlType.aiTranslate,
       BottomControlType.subtitle,

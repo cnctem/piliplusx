@@ -324,19 +324,19 @@ class HeaderControlState extends State<HeaderControl> {
                   leading: const Icon(Icons.hourglass_top_outlined, size: 20),
                   title: const Text('定时关闭', style: titleStyle),
                 ),
-                ListTile(
-                  dense: true,
-                  onTap: () {
-                    Get.back();
-                    videoDetailCtr.editPlayUrl();
-                  },
-                  leading: const Icon(
-                    Icons.link,
-                    size: 20,
+                if (!isFileSource) ...[
+                  ListTile(
+                    dense: true,
+                    onTap: () {
+                      Get.back();
+                      videoDetailCtr.editPlayUrl();
+                    },
+                    leading: const Icon(
+                      Icons.link,
+                      size: 20,
+                    ),
+                    title: const Text('播放地址', style: titleStyle),
                   ),
-                  title: const Text('播放地址', style: titleStyle),
-                ),
-                if (!isFileSource)
                   ListTile(
                     dense: true,
                     onTap: () {
@@ -349,6 +349,7 @@ class HeaderControlState extends State<HeaderControl> {
                     leading: const Icon(Icons.refresh_outlined, size: 20),
                     title: const Text('重载视频', style: titleStyle),
                   ),
+                ],
                 ListTile(
                   dense: true,
                   leading: const Icon(
@@ -2412,23 +2413,41 @@ class HeaderControlState extends State<HeaderControl> {
                 },
               ),
               if (!isFileSource) ...[
-                if ((!isFSOrPip && videoDetailCtr.isUgc))
+                if (!isFSOrPip) ...[
+                  if (videoDetailCtr.isUgc)
+                    SizedBox(
+                      width: 42,
+                      height: 34,
+                      child: IconButton(
+                        tooltip: '听音频',
+                        style: const ButtonStyle(
+                          padding: WidgetStatePropertyAll(EdgeInsets.zero),
+                        ),
+                        onPressed: videoDetailCtr.toAudioPage,
+                        icon: const Icon(
+                          Icons.headphones_outlined,
+                          size: 19,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   SizedBox(
                     width: 42,
                     height: 34,
                     child: IconButton(
-                      tooltip: '听音频',
+                      tooltip: '投屏',
                       style: const ButtonStyle(
                         padding: WidgetStatePropertyAll(EdgeInsets.zero),
                       ),
-                      onPressed: videoDetailCtr.toAudioPage,
+                      onPressed: videoDetailCtr.onCast,
                       icon: const Icon(
-                        Icons.headphones_outlined,
+                        Icons.cast,
                         size: 19,
                         color: Colors.white,
                       ),
                     ),
                   ),
+                ],
                 if (plPlayerController.enableSponsorBlock == true)
                   SizedBox(
                     width: 42,

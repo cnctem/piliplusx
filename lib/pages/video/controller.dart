@@ -1226,6 +1226,7 @@ class VideoDetailController extends GetxController
   final Rx<List<LanguageItem>?> languages = Rx<List<LanguageItem>?>(null);
   final Rx<String?> currLang = Rx<String?>(null);
   void setLanguage(String language) {
+    if (currLang.value == language) return;
     if (!isLoginVideo) {
       SmartDialog.showToast('账号未登录');
       return;
@@ -1989,5 +1990,51 @@ class VideoDetailController extends GetxController
         ],
       ),
     );
+  }
+
+  Future<void> onCast() async {
+    SmartDialog.showLoading();
+    final res = await VideoHttp.tvPlayUrl(
+      cid: cid.value,
+      objectId: epId ?? aid,
+      playurlType: epId != null ? 2 : 1,
+      qn: currentVideoQa.value?.code,
+    );
+    SmartDialog.dismiss();
+    if (res.isSuccess) {
+      final PlayUrlModel data = res.data;
+      final first = data.durl?.firstOrNull;
+      final url = first?.backupUrl?.lastOrNull ?? first?.url;
+      if (url == null || url.isEmpty) {
+        SmartDialog.showToast('不支持投屏');
+        return;
+      }
+      String? title;
+      try {
+        if (isUgc) {
+          title = Get.find<UgcIntroController>(
+            tag: heroTag,
+          ).videoDetail.value.title;
+        } else {
+          title = Get.find<PgcIntroController>(
+            tag: heroTag,
+          ).videoDetail.value.title;
+        }
+      } catch (_) {
+        if (kDebugMode) rethrow;
+      }
+      if (kDebugMode) {
+        debugPrint(title);
+      }
+      Get.toNamed(
+        '/dlna',
+        parameters: {
+          'url': url,
+          'title': ?title,
+        },
+      );
+    } else {
+      res.toast();
+    }
   }
 }

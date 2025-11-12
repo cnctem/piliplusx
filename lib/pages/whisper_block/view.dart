@@ -110,12 +110,13 @@ class _WhisperBlockPageState extends State<WhisperBlockPage> {
                   ),
                 ],
               )
-            : SizedBox.expand(
+            : Align(
+                alignment: const Alignment(0, -0.5),
                 child: Column(
+                  spacing: 6,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Spacer(),
                     SvgPicture.asset("assets/images/error.svg", height: 156),
-                    const SizedBox(height: 6),
                     const Text(
                       '还未添加屏蔽词',
                       style: TextStyle(
@@ -123,9 +124,7 @@ class _WhisperBlockPageState extends State<WhisperBlockPage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 6),
                     const Text('添加后，将不再接受包含屏蔽词的消息'),
-                    const SizedBox(height: 6),
                     FilledButton.tonal(
                       onPressed: _onAdd,
                       style: FilledButton.styleFrom(
@@ -139,7 +138,6 @@ class _WhisperBlockPageState extends State<WhisperBlockPage> {
                         ],
                       ),
                     ),
-                    const Spacer(flex: 2),
                   ],
                 ),
               ),

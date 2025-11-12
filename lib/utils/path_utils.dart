@@ -16,6 +16,8 @@ abstract final class PathUtils {
   static const _fileExt = '.m4s';
   static const audioNameType2 = 'audio$_fileExt';
   static const videoNameType2 = 'video$_fileExt';
+  static const coverName = 'cover.jpg';
+  static const danmakuName = 'danmaku.pb';
   static const downloadDir = 'download';
 
   static String buildShadersAbsolutePath(

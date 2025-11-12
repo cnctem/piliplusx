@@ -1,7 +1,8 @@
 import 'dart:async';
-import 'dart:convert' show jsonDecode, utf8;
-import 'dart:io' show Directory, File, FileSystemEntity;
+import 'dart:convert' show jsonDecode, jsonEncode;
+import 'dart:io' show Directory, File;
 
+import 'package:PiliPlus/grpc/dm.dart';
 import 'package:PiliPlus/http/download.dart';
 import 'package:PiliPlus/http/init.dart';
 import 'package:PiliPlus/models/common/video/video_quality.dart';
@@ -12,14 +13,13 @@ import 'package:PiliPlus/models_new/pgc/pgc_info_model/result.dart';
 import 'package:PiliPlus/models_new/video/video_detail/data.dart';
 import 'package:PiliPlus/models_new/video/video_detail/episode.dart' as ugc;
 import 'package:PiliPlus/models_new/video/video_detail/page.dart';
+import 'package:PiliPlus/pages/danmaku/controller.dart';
 import 'package:PiliPlus/services/download/download_manager.dart';
 import 'package:PiliPlus/utils/extension.dart';
 import 'package:PiliPlus/utils/id_utils.dart';
 import 'package:PiliPlus/utils/path_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
-import 'package:archive/archive.dart' show Inflate;
-import 'package:dio/dio.dart' show Options, ResponseType;
 import 'package:flutter/foundation.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart' as path;
@@ -30,12 +30,10 @@ import 'package:synchronized/synchronized.dart';
 class DownloadService extends GetxService {
   static const _entryFile = 'entry.json';
   static const _indexFile = 'index.json';
-  static const _danmakuFile = 'danmaku.xml';
-  static const _coverFile = 'cover.jpg';
 
   final _lock = Lock();
 
-  final downloaFlag = RxnInt();
+  final flagNotifier = <void Function()>{};
   final waitDownloadQueue = <BiliDownloadEntryInfo>[];
   final downloadList = RxList<BiliDownloadEntryInfo>();
 
@@ -51,41 +49,40 @@ class DownloadService extends GetxService {
   DownloadManager? _downloadManager;
   DownloadManager? _audioDownloadManager;
 
-  Completer? _completer;
-  Future<void>? get waitForInitialization => _completer?.future;
+  late Future<void> waitForInitialization;
 
   @override
   void onInit() {
     super.onInit();
-    readDownloadList();
+    initDownloadList();
   }
 
-  Future<void> readDownloadList() async {
-    _completer = Completer();
+  void initDownloadList() {
+    waitForInitialization = _readDownloadList();
+  }
+
+  Future<void> _readDownloadList() async {
     final downloadDir = Directory(await _getDownloadPath());
     final list = <BiliDownloadEntryInfo>[];
-    for (final dir in downloadDir.listSync()) {
+    await for (final dir in downloadDir.list()) {
       if (dir is Directory) {
         list.addAll(await _readDownloadDirectory(dir));
       }
     }
     downloadList.value = list
       ..sort((a, b) => b.timeUpdateStamp.compareTo(a.timeUpdateStamp));
-    if (!_completer!.isCompleted) {
-      _completer!.complete();
-    }
   }
 
   Future<List<BiliDownloadEntryInfo>> _readDownloadDirectory(
-    FileSystemEntity pageDir,
+    Directory pageDir,
   ) async {
     final result = <BiliDownloadEntryInfo>[];
 
-    if (!pageDir.existsSync() || pageDir is! Directory) {
+    if (!pageDir.existsSync()) {
       return result;
     }
 
-    for (final entryDir in pageDir.listSync()) {
+    await for (final entryDir in pageDir.list()) {
       if (entryDir is Directory) {
         final entryFile = File(path.join(entryDir.path, _entryFile));
         if (entryFile.existsSync()) {
@@ -96,7 +93,7 @@ class DownloadService extends GetxService {
               ..entryDirPath = entryDir.path;
             result.add(entry);
             if (!entry.isCompleted) {
-              waitDownloadQueue.add(entry);
+              waitDownloadQueue.add(entry..status = DownloadStatus.wait);
             }
           } catch (_) {
             if (kDebugMode) rethrow;
@@ -141,7 +138,7 @@ class DownloadService extends GetxService {
       downloadedBytes: 0,
       title: videoDetail?.title ?? videoArc!.title!,
       typeTag: videoQuality.code.toString(),
-      cover: videoDetail?.pic ?? videoArc!.cover!,
+      cover: (videoDetail?.pic ?? videoArc!.cover!).http2https,
       preferedVideoQuality: videoQuality.code,
       qualityPithyDescription: videoQuality.desc,
       guessedTotalBytes: 0,
@@ -234,14 +231,13 @@ class DownloadService extends GetxService {
   Future<void> _createDownload(BiliDownloadEntryInfo entry) async {
     final entryDir = await _getDownloadEntryDir(entry);
     final entryJsonFile = File(path.join(entryDir.path, _entryFile));
-    final entryJsonStr = Utils.jsonEncoder.convert(entry.toJson());
-    await entryJsonFile.writeAsBytes(utf8.encode(entryJsonStr));
+    await entryJsonFile.writeAsString(jsonEncode(entry.toJson()));
     entry
       ..pageDirPath = entryDir.parent.path
       ..entryDirPath = entryDir.path
       ..status = DownloadStatus.wait;
     downloadList.insert(0, entry);
-    downloaFlag.refresh();
+    flagNotifier.refresh();
     final currStatus = curDownload.value?.status?.index;
     if (currStatus == null || currStatus > 3) {
       startDownload(entry);
@@ -269,7 +265,7 @@ class DownloadService extends GetxService {
     return pageDir;
   }
 
-  Future<String> _getDownloadPath() async {
+  static Future<String> _getDownloadPath() async {
     final dir = Directory(downloadPath);
     if (!dir.existsSync()) {
       await dir.create(recursive: true);
@@ -301,26 +297,37 @@ class DownloadService extends GetxService {
     if (cid == null) {
       return false;
     }
-    final danmakuXMLFile = File(path.join(entry.entryDirPath, _danmakuFile));
-    if (isUpdate || !danmakuXMLFile.existsSync()) {
+    final danmakuFile = File(
+      path.join(entry.entryDirPath, PathUtils.danmakuName),
+    );
+    if (isUpdate || !danmakuFile.existsSync()) {
       try {
         if (!isUpdate) {
           _updateCurStatus(DownloadStatus.getDanmaku);
         }
-        final res = await Request().get(
-          'https://comment.bilibili.com/$cid.xml',
-          options: Options(responseType: ResponseType.bytes),
-        );
-        final xmlBytes = Inflate((res.data as Uint8List)).getBytes();
-        await danmakuXMLFile.writeAsBytes(xmlBytes);
+        final seg = (entry.totalTimeMilli / PlDanmakuController.segmentLength)
+            .ceil();
+
+        final res = await Future.wait([
+          for (var i = 1; i <= seg; i++)
+            DmGrpc.dmSegMobile(cid: cid, segmentIndex: i),
+        ]);
+
+        final danmaku = res.removeAt(0).data;
+        for (var i in res) {
+          if (i.isSuccess) {
+            danmaku.elems.addAll(i.data.elems);
+          }
+        }
+        res.clear();
+        await danmakuFile.writeAsBytes(danmaku.writeToBuffer());
+
         return true;
       } catch (e) {
         if (!isUpdate) {
           _updateCurStatus(DownloadStatus.failDanmaku);
         }
-        if (kDebugMode) {
-          SmartDialog.showToast(e.toString());
-        }
+        if (kDebugMode) SmartDialog.showToast(e.toString());
         return false;
       }
     }
@@ -331,13 +338,22 @@ class DownloadService extends GetxService {
     required BiliDownloadEntryInfo entry,
   }) async {
     try {
-      await Request.dio.download(
-        entry.cover.http2https,
-        path.join(entry.entryDirPath, _coverFile),
-      );
+      final filePath = path.join(entry.entryDirPath, PathUtils.coverName);
+      if (File(filePath).existsSync()) {
+        return true;
+      }
+      final file = (await DefaultCacheManager().getFileFromCache(
+        entry.cover,
+      ))?.file;
+      if (file != null) {
+        await file.copy(filePath);
+      } else {
+        await Request.dio.download(entry.cover, filePath);
+      }
       return true;
-    } catch (_) {}
-    return false;
+    } catch (_) {
+      return false;
+    }
   }
 
   Future<void> _startDownload(BiliDownloadEntryInfo entry) async {
@@ -357,18 +373,16 @@ class DownloadService extends GetxService {
         await videoDir.create(recursive: true);
       }
 
-      final res = await Future.wait([
-        downloadDanmaku(entry: entry),
-        _downloadCover(entry: entry),
-      ]);
+      final coverTask = _downloadCover(entry: entry);
 
-      if (!res.first) {
+      if (!await downloadDanmaku(entry: entry)) {
         return;
       }
-
       final mediaJsonFile = File(path.join(videoDir.path, _indexFile));
-      final mediaJsonStr = Utils.jsonEncoder.convert(mediaFileInfo.toJson());
-      await mediaJsonFile.writeAsString(mediaJsonStr);
+      await Future.wait([
+        mediaJsonFile.writeAsString(jsonEncode(mediaFileInfo.toJson())),
+        coverTask,
+      ]);
 
       if (curDownload.value?.cid != entry.cid) {
         return;
@@ -380,28 +394,25 @@ class DownloadService extends GetxService {
           _downloadManager = DownloadManager(
             url: first.url,
             path: path.join(videoDir.path, PathUtils.videoNameType1),
-            onTaskRunning: _onTaskRunning,
-            onTaskComplete: _onTaskComplete,
-            onTaskError: _onTaskError,
-          )..start();
+            onReceiveProgress: _onReceive,
+            onDone: _onDone,
+          );
           break;
         case Type2 mediaFileInfo:
           _downloadManager = DownloadManager(
             url: mediaFileInfo.video.first.baseUrl,
             path: path.join(videoDir.path, PathUtils.videoNameType2),
-            onTaskRunning: _onTaskRunning,
-            onTaskComplete: _onTaskComplete,
-            onTaskError: _onTaskError,
-          )..start();
+            onReceiveProgress: _onReceive,
+            onDone: _onDone,
+          );
           final audio = mediaFileInfo.audio;
           if (audio != null && audio.isNotEmpty) {
             _audioDownloadManager = DownloadManager(
               url: audio.first.baseUrl,
               path: path.join(videoDir.path, PathUtils.audioNameType2),
-              onTaskRunning: _onAudioTaskRunning,
-              onTaskComplete: _onAudioTaskComplete,
-              onTaskError: _onAudioTaskError,
-            )..start();
+              onReceiveProgress: null,
+              onDone: _onAudioDone,
+            );
           }
           late final first = mediaFileInfo.video.first;
           entry.pageData
@@ -425,17 +436,14 @@ class DownloadService extends GetxService {
 
   Future<void> _updateBiliDownloadEntryJson(BiliDownloadEntryInfo entry) async {
     final entryJsonFile = File(path.join(entry.entryDirPath, _entryFile));
-    final entryJsonStr = Utils.jsonEncoder.convert(entry.toJson());
-    await entryJsonFile.writeAsString(entryJsonStr);
+    await entryJsonFile.writeAsString(jsonEncode(entry.toJson()));
   }
 
-  void _onTaskRunning({required int progress, required int total}) {
-    if (progress == 0 && total != 0) {
-      if (curDownload.value case final curEntryInfo?) {
-        _updateBiliDownloadEntryJson(curEntryInfo..totalBytes = total);
-      }
-    }
+  void _onReceive(int progress, int total) {
     if (curDownload.value case final entry?) {
+      if (progress == 0 && total != 0) {
+        _updateBiliDownloadEntryJson(entry..totalBytes = total);
+      }
       entry
         ..downloadedBytes = progress
         ..status = DownloadStatus.downloading;
@@ -443,55 +451,38 @@ class DownloadService extends GetxService {
     }
   }
 
-  void _onTaskComplete() {
-    final audioStatus = _audioDownloadManager?.status;
-    final status = switch (audioStatus) {
+  void _onDone([Object? error]) {
+    final status = switch (_audioDownloadManager?.status) {
       DownloadStatus.downloading => DownloadStatus.audioDownloading,
       DownloadStatus.failDownload => DownloadStatus.failDownloadAudio,
-      null => DownloadStatus.completed,
-      _ => audioStatus,
+      _ => _downloadManager?.status ?? DownloadStatus.pause,
     };
     _updateCurStatus(status);
-    if (status == DownloadStatus.completed) {
-      _completeDownload();
-    } else {
-      if (curDownload.value case final curEntryInfo?) {
-        _updateBiliDownloadEntryJson(
-          curEntryInfo..downloadedBytes = curEntryInfo.totalBytes,
-        );
+
+    if (curDownload.value case final curEntryInfo?) {
+      if (error == null) {
+        curEntryInfo.downloadedBytes = curEntryInfo.totalBytes;
+      }
+      if (status == DownloadStatus.completed) {
+        _completeDownload();
+      } else {
+        _updateBiliDownloadEntryJson(curEntryInfo);
       }
     }
   }
 
-  void _onTaskError({
-    required int progress,
-    required int total,
-    required Object error,
-  }) {
-    _updateCurStatus(DownloadStatus.failDownload);
-    if (curDownload.value case final curEntryInfo?) {
-      curEntryInfo
-        ..totalBytes = total
-        ..downloadedBytes = progress;
-      _updateBiliDownloadEntryJson(curEntryInfo);
-    }
-  }
-
-  void _onAudioTaskRunning({required int progress, required int total}) {}
-
-  void _onAudioTaskComplete() {
+  void _onAudioDone([Object? error]) {
     if (_downloadManager?.status == DownloadStatus.completed) {
-      _completeDownload();
-    }
-  }
-
-  void _onAudioTaskError({
-    required int progress,
-    required int total,
-    required Object error,
-  }) {
-    if (_downloadManager?.status == DownloadStatus.completed) {
-      _updateCurStatus(DownloadStatus.failDownloadAudio);
+      if (error == null) {
+        _completeDownload();
+      } else {
+        final status = _audioDownloadManager?.status ?? DownloadStatus.pause;
+        _updateCurStatus(
+          status == DownloadStatus.failDownload
+              ? DownloadStatus.failDownloadAudio
+              : status,
+        );
+      }
     }
   }
 
@@ -504,7 +495,7 @@ class DownloadService extends GetxService {
       ..downloadedBytes = entry.totalBytes
       ..isCompleted = true;
     await _updateBiliDownloadEntryJson(entry);
-    downloaFlag.refresh();
+    flagNotifier.refresh();
     curDownload.value = null;
     _downloadManager = null;
     _audioDownloadManager = null;
@@ -514,7 +505,7 @@ class DownloadService extends GetxService {
   void _nextDownload() {
     if (waitDownloadQueue.isNotEmpty) {
       final next = waitDownloadQueue.removeAt(0);
-      if (downloadList.contains(next)) {
+      if (!next.isCompleted && downloadList.contains(next)) {
         startDownload(next);
       } else {
         _nextDownload();
@@ -530,7 +521,7 @@ class DownloadService extends GetxService {
     }
     final downloadDir = Directory(entry.pageDirPath);
     if (downloadDir.existsSync()) {
-      if (downloadDir.listSync().length <= 1) {
+      if (!await downloadDir.lengthGte(2)) {
         await downloadDir.tryDel(recursive: true);
       } else {
         final entryDir = Directory(entry.entryDirPath);
@@ -541,13 +532,13 @@ class DownloadService extends GetxService {
     }
     downloadList.remove(entry);
     waitDownloadQueue.remove(entry);
-    downloaFlag.refresh();
+    flagNotifier.refresh();
   }
 
   Future<void> deletePage({required String pageDirPath}) async {
     await Directory(pageDirPath).tryDel(recursive: true);
     downloadList.removeWhere((e) => e.pageDirPath == pageDirPath);
-    downloaFlag.refresh();
+    flagNotifier.refresh();
   }
 
   Future<void> cancelDownload({
@@ -571,6 +562,14 @@ class DownloadService extends GetxService {
     }
     if (downloadNext) {
       _nextDownload();
+    }
+  }
+}
+
+extension on Set<void Function()> {
+  void refresh() {
+    for (var i in this) {
+      i();
     }
   }
 }

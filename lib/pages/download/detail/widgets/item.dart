@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:PiliPlus/common/constants.dart';
 import 'package:PiliPlus/common/widgets/badge.dart';
 import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
@@ -10,12 +12,15 @@ import 'package:PiliPlus/models_new/download/bili_download_entry_info.dart';
 import 'package:PiliPlus/services/download/download_service.dart';
 import 'package:PiliPlus/utils/cache_manager.dart';
 import 'package:PiliPlus/utils/duration_utils.dart';
+import 'package:PiliPlus/utils/extension.dart';
 import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:PiliPlus/utils/path_utils.dart';
 import 'package:PiliPlus/utils/storage.dart';
 import 'package:PiliPlus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:path/path.dart' as path;
 
 class DetailItem extends StatelessWidget {
   const DetailItem({
@@ -71,6 +76,8 @@ class DetailItem extends StatelessWidget {
                   );
                   if (res) {
                     SmartDialog.showToast('更新成功');
+                  } else {
+                    SmartDialog.showToast('更新失败');
                   }
                 },
                 dense: true,
@@ -141,11 +148,35 @@ class DetailItem extends StatelessWidget {
                   AspectRatio(
                     aspectRatio: StyleString.aspectRatio,
                     child: LayoutBuilder(
-                      builder: (context, constraints) => NetworkImgLayer(
-                        src: entry.cover,
-                        width: constraints.maxWidth,
-                        height: constraints.maxHeight,
-                      ),
+                      builder: (context, constraints) {
+                        final cover = File(
+                          path.join(entry.entryDirPath, PathUtils.coverName),
+                        );
+                        return cover.existsSync()
+                            ? ClipRRect(
+                                borderRadius: StyleString.mdRadius,
+                                child: Image.file(
+                                  cover,
+                                  width: constraints.maxWidth,
+                                  height: constraints.maxHeight,
+                                  fit: BoxFit.cover,
+                                  cacheHeight: constraints.maxWidth.cacheSize(
+                                    context,
+                                  ),
+                                  colorBlendMode: NetworkImgLayer.reduce
+                                      ? BlendMode.modulate
+                                      : null,
+                                  color: NetworkImgLayer.reduce
+                                      ? NetworkImgLayer.reduceLuxColor
+                                      : null,
+                                ),
+                              )
+                            : NetworkImgLayer(
+                                src: entry.cover,
+                                width: constraints.maxWidth,
+                                height: constraints.maxHeight,
+                              );
+                      },
                     ),
                   ),
                   if (entry.videoQuality case final videoQuality?)
