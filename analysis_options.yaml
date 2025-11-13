@@ -18,7 +18,7 @@ analyzer:
     # argument_type_not_assignable: ignore
     # return_of_invalid_type: warning
     # undefined_identifier: ignore
-    # 环境错误
+    # 环境错误 
     no_leading_underscores_for_library_prefixes: ignore
 
 
