@@ -33,7 +33,7 @@ jobs:
       - name: Build Mac
         run: |
           flutter build macos --release --dart-define-from-file=pili_release.json
-          mv build/macos/Build/Products/Release/PiliPlus.app build/macos/Build/Products/Release/PiliPlusX.app
+          mv build/macos/Build/Products/Release/PiliPlusX.app build/macos/Build/Products/Release/PiliPlusX.app
 
       - name: Prepare Upload
         run: |
@@ -42,7 +42,7 @@ jobs:
         continue-on-error: true
 
       - name: Rename DMG
-        run: mv PiliPlus*.dmg PiliPlusX_macos_${{ env.version }}.dmg
+        run: mv PiliPlusX*.dmg PiliPlusX_macos_${{ env.version }}.dmg
 
       - name: Release
         if: ${{ github.event.inputs.tag != '' }}
