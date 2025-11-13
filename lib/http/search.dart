@@ -92,8 +92,7 @@ class SearchHttp {
         headers: {
           if (gaiaVtoken != null) 'cookie': 'x-bili-gaia-vtoken=$gaiaVtoken',
           'origin': 'https://search.bilibili.com',
-          'referer':
-              'https://search.bilibili.com/${searchType.name}?keyword=${Uri.encodeFull(keyword)}',
+          'referer':'https://search.bilibili.com/${params['search_type']}?keyword=${Uri.encodeFull(keyword)}',
         },
       ),
     );

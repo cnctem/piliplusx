@@ -300,7 +300,6 @@ class PlPlayerController {
     } else {
       size = Size(280.0 * width / height, 280.0);
     }
-    final aspectRatio = width / height;
 
     await windowManager.setMinimumSize(const Size(140, 140));
     windowManager
