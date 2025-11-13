@@ -33,7 +33,6 @@ jobs:
       - name: Build Mac
         run: |
           flutter build macos --release --dart-define-from-file=pili_release.json
-          mv build/macos/Build/Products/Release/PiliPlusX.app build/macos/Build/Products/Release/PiliPlusX.app
 
       - name: Prepare Upload
         run: |
