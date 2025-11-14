@@ -972,4 +972,6 @@ class Api {
   static const String followedUp = '/x/relation/followings/followed_upper';
 
   static const String sameFollowing = '/x/relation/same/followings';
+
+  static const String seasonStatus = '/pgc/view/web/season/user/status';
 }

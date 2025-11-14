@@ -39,9 +39,9 @@ class WebDav {
               password: webDavPassword,
             )
             ..setHeaders({'accept-charset': 'utf-8'})
-            ..setConnectTimeout(4000)
-            ..setReceiveTimeout(4000)
-            ..setSendTimeout(4000);
+            ..setConnectTimeout(12000)
+            ..setReceiveTimeout(12000)
+            ..setSendTimeout(12000);
 
       await client.mkdirAll(_webdavDirectory);
 

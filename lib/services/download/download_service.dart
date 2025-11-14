@@ -358,6 +358,10 @@ class DownloadService extends GetxService {
 
   Future<void> _startDownload(BiliDownloadEntryInfo entry) async {
     try {
+      if (!await downloadDanmaku(entry: entry)) {
+        return;
+      }
+
       _updateCurStatus(DownloadStatus.getPlayUrl);
 
       final BiliDownloadMediaInfo mediaFileInfo =
@@ -373,15 +377,10 @@ class DownloadService extends GetxService {
         await videoDir.create(recursive: true);
       }
 
-      final coverTask = _downloadCover(entry: entry);
-
-      if (!await downloadDanmaku(entry: entry)) {
-        return;
-      }
       final mediaJsonFile = File(path.join(videoDir.path, _indexFile));
       await Future.wait([
         mediaJsonFile.writeAsString(jsonEncode(mediaFileInfo.toJson())),
-        coverTask,
+        _downloadCover(entry: entry),
       ]);
 
       if (curDownload.value?.cid != entry.cid) {

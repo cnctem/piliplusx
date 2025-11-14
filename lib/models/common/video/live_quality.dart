@@ -6,7 +6,8 @@ enum LiveQuality {
   bluRay(400, '蓝光'),
   superHD(250, '超清'),
   smooth(150, '高清'),
-  flunt(80, '流畅');
+  flunt(80, '流畅')
+  ;
 
   final int code;
   final String desc;

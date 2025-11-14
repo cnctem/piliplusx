@@ -123,6 +123,11 @@ abstract class ThemeUtils {
           },
         ),
       ),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: ZoomPageTransitionsBuilder(),
+        },
+      ),
     );
     if (isDark) {
       if (Pref.isPureBlackTheme) {

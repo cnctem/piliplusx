@@ -289,8 +289,6 @@ class PlPlayerController {
 
     _lastWindowBounds = await windowManager.getBounds();
 
-    windowManager.setTitleBarStyle(TitleBarStyle.hidden);
-
     late final Size size;
     final state = videoController!.player.state;
     final width = state.width ?? this.width ?? 16;
@@ -301,10 +299,11 @@ class PlPlayerController {
       size = Size(280.0 * width / height, 280.0);
     }
 
-    await windowManager.setMinimumSize(const Size(140, 140));
     windowManager
       ..setSize(size)
       ..setAlwaysOnTop(true)
+      ..setMinimumSize(const Size(140, 140))
+      ..setTitleBarStyle(TitleBarStyle.hidden)
       ..setAspectRatio(width / height);
   }
 

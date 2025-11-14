@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'dart:math' show max;
 
-import 'package:PiliPlus/grpc/bilibili/app/viewunite/pgcanymodel.pb.dart'
-    show ViewPgcAny;
-import 'package:PiliPlus/grpc/view.dart';
 import 'package:PiliPlus/http/constants.dart';
 import 'package:PiliPlus/http/fav.dart';
+import 'package:PiliPlus/http/pgc.dart';
 import 'package:PiliPlus/http/search.dart';
 import 'package:PiliPlus/http/video.dart';
 import 'package:PiliPlus/models/common/video/source_type.dart';
@@ -448,7 +446,7 @@ class PgcIntroController extends CommonIntroController {
     }
   }
 
-  void queryIsFollowed() {
+  Future<void> queryIsFollowed() async {
     // try {
     //   var result = await Request().get(
     //     'https://www.bilibili.com/bangumi/play/ss$seasonId',
@@ -464,14 +462,22 @@ class PgcIntroController extends CommonIntroController {
     //         scriptContent['props']['pageProps']['followState']['followStatus'];
     //   }
     // } catch (_) {}
-    ViewGrpc.view(bvid: bvid).then((res) {
-      if (res.isSuccess) {
-        ViewPgcAny view = ViewPgcAny.fromBuffer(res.data.supplement.value);
-        var userStatus = view.ogvData.userStatus;
-        isFollowed.value = userStatus.follow == 1;
-        followStatus.value = userStatus.followStatus;
-      }
-    });
+
+    // ViewGrpc.view(bvid: bvid).then((res) {
+    //   if (res.isSuccess) {
+    //     ViewPgcAny view = ViewPgcAny.fromBuffer(res.data.supplement.value);
+    //     var userStatus = view.ogvData.userStatus;
+    //     isFollowed.value = userStatus.follow == 1;
+    //     followStatus.value = userStatus.followStatus;
+    //   }
+    // });
+
+    final res = await PgcHttp.seasonStatus(seasonId);
+    if (res['status']) {
+      final data = res['data'];
+      isFollowed.value = data['follow'] == 1;
+      followStatus.value = data['follow_status'];
+    }
   }
 
   @override
