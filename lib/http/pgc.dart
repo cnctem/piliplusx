@@ -245,4 +245,18 @@ class PgcHttp {
       return {'status': false, 'msg': res.data['message']};
     }
   }
+
+  static Future seasonStatus(dynamic seasonId) async {
+    var res = await Request().get(
+      Api.seasonStatus,
+      queryParameters: {
+        'season_id': seasonId,
+      },
+    );
+    if (res.data['code'] == 0) {
+      return {'status': true, 'data': res.data['result']};
+    } else {
+      return {'status': false, 'msg': res.data['message']};
+    }
+  }
 }

@@ -2,6 +2,7 @@ import 'package:PiliPlus/http/constants.dart';
 import 'package:PiliPlus/http/init.dart';
 import 'package:PiliPlus/utils/storage_pref.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 class HkApiRetryInterceptor extends Interceptor {
 
@@ -35,6 +36,7 @@ class HkApiRetryInterceptor extends Interceptor {
           final newResponse = await _retryWithNewDomain(originalOptions,newUrl);
           return handler.resolve(newResponse);
         } catch (e) {
+          SmartDialog.showToast('港澳台解析失败 url:${originalOptions.uri} body: ${response.data}');
           return handler.next(response);
         }
       }

@@ -1,3 +1,4 @@
+import 'package:PiliPlus/common/widgets/button/icon_button.dart';
 import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
 import 'package:PiliPlus/common/widgets/keep_alive_wrapper.dart';
 import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
@@ -71,6 +72,7 @@ class _DanmakuBlockPageState extends State<DanmakuBlockPage> {
             .toList(),
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: '添加',
         onPressed: () =>
             _showAddDialog(DmBlockType.values[_controller.tabController.index]),
         child: const Icon(Icons.add),
@@ -89,7 +91,9 @@ class _DanmakuBlockPageState extends State<DanmakuBlockPage> {
       ),
       itemBuilder: (context, itemIndex) {
         final SimpleRule item = list[itemIndex];
-        final child = IconButton(
+        final child = iconButton(
+          iconSize: 20,
+          tooltip: '删除',
           icon: const Icon(Icons.delete_outlined),
           onPressed: () => showConfirmDialog(
             context: context,
@@ -111,7 +115,9 @@ class _DanmakuBlockPageState extends State<DanmakuBlockPage> {
               : Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(
+                    iconButton(
+                      iconSize: 20,
+                      tooltip: '编辑',
                       icon: const Icon(Icons.edit_outlined),
                       onPressed: () => _showAddDialog(
                         DmBlockType.values[_controller.tabController.index],
@@ -172,7 +178,7 @@ class _DanmakuBlockPageState extends State<DanmakuBlockPage> {
               ),
             ),
             TextButton(
-              child: const Text('添加'),
+              child: const Text('确定'),
               onPressed: () async {
                 if (filter != initFilter) {
                   Get.back();
