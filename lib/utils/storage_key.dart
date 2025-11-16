@@ -213,6 +213,7 @@ abstract class SettingBoxKey {
       dynamicsShowAllFollowedUp = 'dynamicsShowAllFollowedUp',
       useSideBar = 'useSideBar',
       enableMYBar = 'enableMYBar',
+      useSystemFont = 'useSystemFont',
       hideSearchBar = 'hideSearchBar',
       hideTabBar = 'hideTabBar',
       scrollThreshold = 'scrollThreshold',

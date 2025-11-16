@@ -78,6 +78,15 @@ List<SettingsModel> get styleSettings => [
     defaultVal: false,
     needReboot: true,
   ),
+  const SettingsModel(
+    settingsType: SettingsType.sw1tch,
+    title: '使用系统字体',
+    subtitle: '默认为 HarmonyOS_Sans',
+    leading: Icon(Icons.font_download_outlined),
+    setKey: SettingBoxKey.useSystemFont,
+    defaultVal: false,
+    needReboot: true,
+  ),
   SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: 'App字体字重',

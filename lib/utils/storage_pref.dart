@@ -515,6 +515,11 @@ abstract class Pref {
     defaultValue: LiveQuality.superHD.code,
   );
 
+  static bool get useSystemFont => _setting.get(
+    SettingBoxKey.useSystemFont,
+    defaultValue: false,
+  );
+
   static int get appFontWeight =>
       _setting.get(SettingBoxKey.appFontWeight, defaultValue: -1);
 

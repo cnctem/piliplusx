@@ -20,44 +20,62 @@ abstract class ThemeUtils {
     final fontWeight = appFontWeight == -1
         ? null
         : FontWeight.values[appFontWeight];
+
+    // 根据设置决定使用系统字体还是 HarmonyOS_Sans
+    final fontFamilyFallback = Pref.useSystemFont ? null : ['HarmonyOS_Sans'];
     late final textStyle = TextStyle(fontWeight: fontWeight);
     ThemeData themeData = ThemeData(
       colorScheme: colorScheme,
       useMaterial3: true,
       textTheme: fontWeight == null
-          ? const TextTheme(
-              bodyLarge: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              bodyMedium: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              bodySmall: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              displayLarge: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              displayMedium: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              displaySmall: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              headlineLarge: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              headlineMedium: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              headlineSmall: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              titleLarge: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              titleMedium: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              titleSmall: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              labelLarge: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              labelMedium: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
-              labelSmall: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
+          ? TextTheme(
+              bodyLarge: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              bodyMedium: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              bodySmall: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              displayLarge: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              displayMedium: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              displaySmall: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              headlineLarge: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              headlineMedium: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              headlineSmall: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              titleLarge: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              titleMedium: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              titleSmall: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              labelLarge: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              labelMedium: TextStyle(fontFamilyFallback: fontFamilyFallback),
+              labelSmall: TextStyle(fontFamilyFallback: fontFamilyFallback),
             )
           : TextTheme(
-              displayLarge: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              displayMedium: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              displaySmall: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              headlineLarge: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              headlineMedium: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              headlineSmall: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              titleLarge: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              titleMedium: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              titleSmall: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              bodyLarge: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              bodyMedium: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              bodySmall: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              labelLarge: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              labelMedium: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-              labelSmall: textStyle.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
+              displayLarge:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              displayMedium:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              displaySmall:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              headlineLarge:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              headlineMedium:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              headlineSmall:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              titleLarge:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              titleMedium:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              titleSmall:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              bodyLarge:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              bodyMedium:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              bodySmall:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              labelLarge:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              labelMedium:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
+              labelSmall:
+                  textStyle.copyWith(fontFamilyFallback: fontFamilyFallback),
             ),
       tabBarTheme: fontWeight == null
           ? null
@@ -93,8 +111,8 @@ abstract class ThemeUtils {
         surfaceTintColor: isDynamic
             ? colorScheme.onSurfaceVariant
             : isDark
-            ? colorScheme.onSurfaceVariant
-            : null,
+                ? colorScheme.onSurfaceVariant
+                : null,
         shadowColor: Colors.transparent,
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
@@ -159,24 +177,43 @@ abstract class ThemeUtils {
   static ThemeData darkenTheme(ThemeData themeData) {
     final colorScheme = themeData.colorScheme;
     final color = colorScheme.surfaceContainerHighest.darken(0.7);
+
+    // 获取字体回退设置
+    final fontFamilyFallback = Pref.useSystemFont ? null : ['HarmonyOS_Sans'];
+
     return themeData.copyWith(
       scaffoldBackgroundColor: Colors.black,
       textTheme: themeData.textTheme.copyWith(
-        bodyLarge: themeData.textTheme.bodyLarge?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        bodyMedium: themeData.textTheme.bodyMedium?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        bodySmall: themeData.textTheme.bodySmall?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        displayLarge: themeData.textTheme.displayLarge?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        displayMedium: themeData.textTheme.displayMedium?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        displaySmall: themeData.textTheme.displaySmall?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        headlineLarge: themeData.textTheme.headlineLarge?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        headlineMedium: themeData.textTheme.headlineMedium?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        headlineSmall: themeData.textTheme.headlineSmall?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        titleLarge: themeData.textTheme.titleLarge?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        titleMedium: themeData.textTheme.titleMedium?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        titleSmall: themeData.textTheme.titleSmall?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        labelLarge: themeData.textTheme.labelLarge?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        labelMedium: themeData.textTheme.labelMedium?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
-        labelSmall: themeData.textTheme.labelSmall?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
+        bodyLarge: themeData.textTheme.bodyLarge
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        bodyMedium: themeData.textTheme.bodyMedium
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        bodySmall: themeData.textTheme.bodySmall
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        displayLarge: themeData.textTheme.displayLarge
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        displayMedium: themeData.textTheme.displayMedium
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        displaySmall: themeData.textTheme.displaySmall
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        headlineLarge: themeData.textTheme.headlineLarge
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        headlineMedium: themeData.textTheme.headlineMedium
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        headlineSmall: themeData.textTheme.headlineSmall
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        titleLarge: themeData.textTheme.titleLarge
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        titleMedium: themeData.textTheme.titleMedium
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        titleSmall: themeData.textTheme.titleSmall
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        labelLarge: themeData.textTheme.labelLarge
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        labelMedium: themeData.textTheme.labelMedium
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
+        labelSmall: themeData.textTheme.labelSmall
+            ?.copyWith(fontFamilyFallback: fontFamilyFallback),
       ),
       appBarTheme: themeData.appBarTheme.copyWith(
         backgroundColor: Colors.black,
