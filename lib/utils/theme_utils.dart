@@ -24,7 +24,6 @@ abstract class ThemeUtils {
     ThemeData themeData = ThemeData(
       colorScheme: colorScheme,
       useMaterial3: true,
-      fontFamily: 'Roboto',
       textTheme: fontWeight == null
           ? const TextTheme(
               bodyLarge: TextStyle(fontFamilyFallback: ['HarmonyOS_Sans']),
@@ -162,7 +161,6 @@ abstract class ThemeUtils {
     final color = colorScheme.surfaceContainerHighest.darken(0.7);
     return themeData.copyWith(
       scaffoldBackgroundColor: Colors.black,
-      fontFamily: 'Roboto',
       textTheme: themeData.textTheme.copyWith(
         bodyLarge: themeData.textTheme.bodyLarge?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
         bodyMedium: themeData.textTheme.bodyMedium?.copyWith(fontFamilyFallback: ['HarmonyOS_Sans']),
