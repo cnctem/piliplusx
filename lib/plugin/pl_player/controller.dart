@@ -267,9 +267,9 @@ class PlPlayerController {
     await Future.wait([
       windowManager.setTitleBarStyle(TitleBarStyle.normal),
       windowManager.setMinimumSize(const Size(140, 140)),
-      windowManager.setBounds(_lastWindowBounds),
       windowManager.setAlwaysOnTop(false),
       windowManager.setAspectRatio(0),
+      windowManager.setBounds(_lastWindowBounds),
       setting.putAll({
         SettingBoxKey.windowSize: [
           _lastWindowBounds.width,
