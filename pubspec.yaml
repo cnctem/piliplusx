@@ -356,7 +356,7 @@ flutter:
         - asset: assets/fonts/custom_icon.ttf
     - family: HarmonyOS_Sans
       fonts:
-        - asset: assets/fonts/HarmonyOS_Sans_SC_Regular.ttf
+        - asset: assets/fonts/HarmonyOS_SansSC_Regular.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
