@@ -9,12 +9,6 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
-analyzer:
-  exclude:
-    - lib/grpc/bilibili/**
-    - lib/grpc/google/**
-    - lib/common/widgets/flutter/**
-
 formatter:
   trailing_commas: preserve
 
@@ -72,6 +66,7 @@ analyzer:
   exclude:
     - lib/grpc/bilibili/**
     - lib/grpc/google/**
+    - lib/common/widgets/flutter/**
   errors: # 报错降级
     dot_shorthand_undefined_member: ignore
     implements_repeated: ignore
