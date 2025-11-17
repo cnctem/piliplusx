@@ -463,6 +463,7 @@ class PlPlayerController {
   late PlayRepeat playRepeat = PlayRepeat.values[Pref.playRepeat];
 
   TextStyle get subTitleStyle => TextStyle(
+    fontFamily: 'HarmonyOS_Sans',
     height: 1.5,
     fontSize:
         16 * (isFullScreen.value ? subtitleFontScaleFS : subtitleFontScale),
