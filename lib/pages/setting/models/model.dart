@@ -225,11 +225,12 @@ SettingsModel getVideoFilterSelectModel({
 SettingsModel getSaveImgPathModel({
   required BuildContext context,
   required String title,
-  required String key,
-  required String suffix, // 路径后缀
+  required String key1,
+  required String key2,
+  required String suffix, // 路径前缀
   String defaultValue = 'Pictures/${Constants.appName}',
 }) {
-  String value = GStorage.setting.get(key, defaultValue: defaultValue);
+  String value = GStorage.setting.get(key1, defaultValue: defaultValue);
   return SettingsModel(
     settingsType: SettingsType.normal,
     title: title,
@@ -249,10 +250,20 @@ SettingsModel getSaveImgPathModel({
           );
         },
       );
-      if (result != null) {
-        value = result!;
+      if (result == 'Pictures/$suffix') {
+        value = result;
         setState();
-        GStorage.setting.put(key, result);
+        GStorage.setting.put(key1, result);
+        result = 'Pictures/$suffix/screenshot';
+        GStorage.setting.put(key2, result);
+        return;
+      } else {
+        result = 'Pictures/${Constants.appName}';
+        value = result;
+        setState();
+        GStorage.setting.put(key1, result);
+        GStorage.setting.put(key2, result);
+        return;
       }
     },
   );

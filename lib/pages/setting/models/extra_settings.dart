@@ -469,15 +469,10 @@ List<SettingsModel> get extraSettings => [
   if (Platform.isAndroid) ...[
     getSaveImgPathModel(
       context: Get.context!,
-      title: '图片保存路径',
-      key: SettingBoxKey.saveImgPath,
+      title: '图片&截图 保存路径',
+      key1: SettingBoxKey.saveImgPath,
+      key2: SettingBoxKey.saveScreenshotPath,
       suffix: 'bili',
-    ),
-    getSaveImgPathModel(
-      context: Get.context!,
-      title: '截图保存路径',
-      key: SettingBoxKey.saveScreenshotPath,
-      suffix: 'bili/screenshot',
     ),
   ],
   const SettingsModel(
