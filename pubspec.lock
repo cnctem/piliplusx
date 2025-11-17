@@ -224,7 +224,7 @@ packages:
       path: "."
       ref: main
       resolved-ref: "7ab779b16f5221207c33c2f57badbb93f21f273b"
-      url: "https://github.com/bggRGjQaUbCoE/canvas_danmaku.git"
+      url: "https://github.com/cnctem/canvas_danmaku.git"
     source: git
     version: "0.2.6"
   catcher_2:

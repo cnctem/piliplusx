@@ -177,7 +177,6 @@ class _PlDanmakuState extends State<PlDanmaku> {
             playerController.danmakuController = _controller = e;
           },
           option: DanmakuOption(
-            fontFamily: 'HarmonyOS_Sans',
             fontSize: _fontSize,
             fontWeight: playerController.danmakuFontWeight,
             area: playerController.showArea,
