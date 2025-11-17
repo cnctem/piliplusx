@@ -29,7 +29,6 @@ import 'package:PiliPlus/utils/app_sign.dart';
 import 'package:PiliPlus/utils/utils.dart';
 import 'package:PiliPlus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart' show kDebugMode;
 
 class MemberHttp {
   static Future reportMember(
@@ -393,6 +392,7 @@ class MemberHttp {
   }
 
   // 用户动态
+  @pragma('vm:notify-debugger-on-exception')
   static Future<LoadingState<DynamicsDataModel>> memberDynamic({
     String? offset,
     int? mid,
@@ -425,10 +425,14 @@ class MemberHttp {
       ),
     );
     if (res.data['code'] == 0) {
-      // try {
-      DynamicsDataModel data = DynamicsDataModel.fromJson(res.data['data']);
-      if (data.loadNext == true) {
-        return memberDynamic(offset: data.offset, mid: mid);
+      try {
+        DynamicsDataModel data = DynamicsDataModel.fromJson(res.data['data']);
+        if (data.loadNext == true) {
+          return memberDynamic(offset: data.offset, mid: mid);
+        }
+        return Success(data);
+      } catch (e, s) {
+        return Error('$e\n\n$s');
       }
       return Success(data);
       // } catch (err) {

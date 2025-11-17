@@ -15,7 +15,6 @@ import 'package:PiliPlus/utils/request_utils.dart';
 import 'package:PiliPlus/utils/storage_pref.dart';
 import 'package:PiliPlus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
@@ -45,6 +44,7 @@ class SearchHttp {
   }
 
   // 分类搜索
+  @pragma('vm:notify-debugger-on-exception')
   static Future<LoadingState<R>> searchByType<R extends SearchNumData>({
     required SearchType searchType,
     required String keyword,
@@ -128,9 +128,6 @@ class SearchHttp {
           }
           return Success(data);
         } catch (e, s) {
-          if (kDebugMode) {
-            rethrow;
-          }
           return Error('$e\n\n$s');
         }
       } else {
@@ -141,6 +138,7 @@ class SearchHttp {
     }
   }
 
+  @pragma('vm:notify-debugger-on-exception')
   static Future<LoadingState<SearchAllData>> searchAll({
     required String keyword,
     required page,
@@ -176,9 +174,6 @@ class SearchHttp {
       try {
         return Success(SearchAllData.fromJson(res.data['data']));
       } catch (e, s) {
-        if (kDebugMode) {
-          rethrow;
-        }
         return Error('$e\n\n$s');
       }
     } else {
