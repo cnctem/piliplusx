@@ -23,6 +23,13 @@
 
 <br/>
 
+## 空降指挥部
+
+- [特色功能](#功能)
+- [快捷键功能说明](#快捷键功能)
+- [港澳台代理](#港澳台代理)
+- [致谢](#致谢)
+
 ## 适配平台
 
 - [x] Android
@@ -129,11 +136,14 @@
 - [x] 视频播放
 - [x] 视频staff
 - [x] 防止bottomsheet遮挡全屏视频
+- [x] 回车绑定发送
+- [x] 选择鸿蒙黑体/系统字体
 - [x] 其他
 
 ## fix
 
 - [x] 番剧分集点赞/投币/收藏
+- [x] 字体回调（Flutter 3.38 导致）
 - [x] bugs
 
 <br/>
@@ -249,7 +259,7 @@
 
 其他：
 
-- [键 - 上一集
+- \[ 键 - 上一集
 - ] 键 - 下一集
 - Enter键 - 私信发送
 
@@ -280,35 +290,20 @@
 ## 声明
 
 此项目（PiliPlus）是个人为了兴趣而开发, 仅用于学习和测试，请于下载后24小时内删除。
+
 所用API皆从官方网站收集, 不提供任何破解内容。
-在此致敬原作者：[guozhigq/pilipala](https://github.com/guozhigq/pilipala)
-在此致敬上游作者：[orz12/PiliPalaX](https://github.com/orz12/PiliPalaX)
-在此致敬上游作者：[bggRGjQaUbCoE/PiliPlus](https://github.com/bggRGjQaUbCoE/PiliPlus)
-在此致敬上游作者：[gucooing/PiliPlus](https://github.com/gucooing/PiliPlus)
 
-感谢使用
-
-
-<br/>
+**感谢使用**
 
 ## 致谢
+
+- 在此致敬原作者：[guozhigq/pilipala](https://github.com/guozhigq/pilipala)
+- 在此致敬上游作者：[orz12/PiliPalaX](https://github.com/orz12/PiliPalaX)
+- 在此致敬上游作者：[bggRGjQaUbCoE/PiliPlus](https://github.com/bggRGjQaUbCoE/PiliPlus)
+- 在此致敬上游作者：[gucooing/PiliPlus](https://github.com/gucooing/PiliPlus)
 
 - [bilibili-API-collect](https://github.com/SocialSisterYi/bilibili-API-collect)
 - [flutter_meedu_videoplayer](https://github.com/zezo357/flutter_meedu_videoplayer)
 - [media-kit](https://github.com/media-kit/media-kit)
 - [dio](https://pub.dev/packages/dio)
 - 等等
-
-<br/>
-<br/>
-<br/>
-
-## Star History
-
-<a href="https://www.star-history.com/#bggRGjQaUbCoE/PiliPlus&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=bggRGjQaUbCoE/PiliPlus&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=bggRGjQaUbCoE/PiliPlus&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=bggRGjQaUbCoE/PiliPlus&type=Date" />
- </picture>
-</a>
