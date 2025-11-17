@@ -466,6 +466,20 @@ List<SettingsModel> get extraSettings => [
       DynamicsDataModel.enableFilter = value.pattern.isNotEmpty;
     },
   ),
+  if (Platform.isAndroid) ...[
+    getSaveImgPathModel(
+      context: Get.context!,
+      title: '图片保存路径',
+      key: SettingBoxKey.saveImgPath,
+      suffix: 'bili',
+    ),
+    getSaveImgPathModel(
+      context: Get.context!,
+      title: '截图保存路径',
+      key: SettingBoxKey.saveScreenshotPath,
+      suffix: 'bili/screenshot',
+    ),
+  ],
   const SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '使用外部浏览器打开链接',
