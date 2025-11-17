@@ -88,14 +88,18 @@ jobs:
               continue-on-error: true
 
             - name: Write key
-              if: github.event_name == 'workflow_dispatch'
               run: |
                   if [ ! -z "${{ secrets.KEYSTORE_FILE }}" ]; then
                     echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > android/app/key.jks
-                    echo "export KEYSTORE_FILE=key.jks" >> $GITHUB_ENV
-                    echo "export KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
-                    echo "export KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
-                    echo "export KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
+                    echo "KEYSTORE_FILE=key.jks" >> $GITHUB_ENV
+                    echo "KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
+                    echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
+                    echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
+                  else
+                    echo "KEYSTORE_FILE=" >> $GITHUB_ENV
+                    echo "KEYSTORE_PASSWORD=" >> $GITHUB_ENV
+                    echo "KEY_ALIAS=" >> $GITHUB_ENV
+                    echo "KEY_PASSWORD=" >> $GITHUB_ENV
                   fi
 
             - name: Set and Extract version
