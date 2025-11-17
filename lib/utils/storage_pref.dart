@@ -881,5 +881,9 @@ abstract class Pref {
 
   static String? get downloadPath => _setting.get(SettingBoxKey.downloadPath);
 
+  static String? get saveImgPath => _setting.get(SettingBoxKey.saveImgPath);
+
+  static String? get saveScreenshotPath => _setting.get(SettingBoxKey.saveScreenshotPath);
+
   static String? get liveCdnUrl => _setting.get(SettingBoxKey.liveCdnUrl);
 }

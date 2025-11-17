@@ -1,3 +1,4 @@
+import 'package:PiliPlus/common/constants.dart';
 import 'package:PiliPlus/models/common/settings_type.dart';
 import 'package:PiliPlus/pages/setting/widgets/normal_item.dart';
 import 'package:PiliPlus/pages/setting/widgets/select_dialog.dart';
@@ -216,6 +217,42 @@ SettingsModel getVideoFilterSelectModel({
           onChanged?.call(result!);
           GStorage.setting.put(key, result);
         }
+      }
+    },
+  );
+}
+
+SettingsModel getSaveImgPathModel({
+  required BuildContext context,
+  required String title,
+  required String key,
+  required String suffix, // 路径后缀
+  String defaultValue = 'Pictures/${Constants.appName}',
+}) {
+  String value = GStorage.setting.get(key, defaultValue: defaultValue);
+  return SettingsModel(
+    settingsType: SettingsType.normal,
+    title: title,
+    leading: const Icon(Icons.folder),
+    getSubtitle: () => value,
+    onTap: (setState) async {
+      var result = await showDialog<String>(
+        context: context,
+        builder: (context) {
+          return SelectDialog<String>(
+            title: '选择$title',
+            value: value,
+            values: [
+              ('Pictures/${Constants.appName}', '默认路径'),
+              ('Pictures/$suffix', '官方版本路径'),
+            ],
+          );
+        },
+      );
+      if (result != null) {
+        value = result!;
+        setState();
+        GStorage.setting.put(key, result);
       }
     },
   );

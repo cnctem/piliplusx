@@ -23,7 +23,25 @@ abstract class ImageUtils {
   static String get time =>
       DateFormat('yyyy-MM-dd_HH-mm-ss').format(DateTime.now());
   static bool silentDownImg = Pref.silentDownImg;
-  static const _androidRelativePath = 'Pictures/${Constants.appName}';
+  static const _defaultAndroidRelativePath = 'Pictures/${Constants.appName}';
+  
+  // 获取图片保存路径
+  static String get _androidRelativePath {
+    final saveImgPath = Pref.saveImgPath;
+    if (saveImgPath != null && saveImgPath.isNotEmpty) {
+      return saveImgPath;
+    }
+    return _defaultAndroidRelativePath;
+  }
+  
+  // 获取截图保存路径
+  static String get _androidScreenshotPath {
+    final saveScreenshotPath = Pref.saveScreenshotPath;
+    if (saveScreenshotPath != null && saveScreenshotPath.isNotEmpty) {
+      return saveScreenshotPath;
+    }
+    return _defaultAndroidRelativePath;
+  }
 
   // 图片分享
   static Future<void> onShareImg(String url) async {

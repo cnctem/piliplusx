@@ -145,7 +145,9 @@ abstract class SettingBoxKey {
       enablePlayAll = 'enablePlayAll',
       enableTapDm = 'enableTapDm',
       setSystemBrightness = 'setSystemBrightness',
-      downloadPath = 'downloadPath';
+      downloadPath = 'downloadPath',
+      saveImgPath = 'saveImgPath',
+      saveScreenshotPath = 'saveScreenshotPath';
 
   static const String minimizeOnExit = 'minimizeOnExit',
       windowSize = 'windowSize',
