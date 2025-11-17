@@ -462,8 +462,10 @@ class PlPlayerController {
   // 播放顺序相关
   late PlayRepeat playRepeat = PlayRepeat.values[Pref.playRepeat];
 
+  // 字幕样式
   TextStyle get subTitleStyle => TextStyle(
     height: 1.5,
+    fontFamily: 'HarmonyOS_Sans',
     fontSize:
         16 * (isFullScreen.value ? subtitleFontScaleFS : subtitleFontScale),
     letterSpacing: 0.1,
