@@ -1815,6 +1815,7 @@ class VideoDetailController extends GetxController
     }
   }
 
+  @pragma('vm:notify-debugger-on-exception')
   bool onSkipSegment() {
     try {
       if (plPlayerController.enableSponsorBlock) {
@@ -1824,8 +1825,8 @@ class VideoDetailController extends GetxController
           return true;
         }
       }
-    } catch (_) {
-      if (kDebugMode) rethrow;
+    } catch (e, s) {
+      Utils.reportError(e, s);
     }
     return false;
   }
