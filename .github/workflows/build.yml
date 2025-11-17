@@ -88,10 +88,10 @@ jobs:
               continue-on-error: true
 
             - name: Write key
-              if: github.event_name == 'workflow_dispatch'
+              # if: github.event_name == 'workflow_dispatch'
               run: |
-                  if [ ! -z "${{ secrets.SIGN_KEYSTORE_BASE64 }}" ]; then
-                    echo "${{ secrets.SIGN_KEYSTORE_BASE64 }}" | base64 --decode > android/app/key.jks
+                  if [ ! -z "${{ secrets.KEYSTORE_FILE }}" ]; then
+                    echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > android/app/key.jks
                     echo storeFile='key.jks' >> android/key.properties
                     echo storePassword='${{ secrets.KEYSTORE_PASSWORD }}' >> android/key.properties
                     echo keyAlias='${{ secrets.KEY_ALIAS }}' >> android/key.properties
