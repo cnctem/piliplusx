@@ -341,6 +341,44 @@ abstract class ImageUtils {
     return result;
   }
 
+  static Future<SaveResult?> saveScreenShot({
+    required Uint8List bytes,
+    required String fileName,
+    String ext = 'png',
+  }) async {
+    SaveResult? result;
+    fileName += '.$ext';
+    if (Utils.isMobile) {
+      SmartDialog.showLoading(msg: '正在保存');
+      result = await SaverGallery.saveImage(
+        bytes,
+        fileName: fileName,
+        androidRelativePath: _androidScreenshotPath,
+        skipIfExists: false,
+      );
+      SmartDialog.dismiss();
+      if (result.isSuccess) {
+        SmartDialog.showToast(' 已保存 ');
+      } else {
+        SmartDialog.showToast('保存失败，${result.errorMessage}');
+      }
+    } else {
+      SmartDialog.dismiss();
+      final savePath = await FilePicker.platform.saveFile(
+        type: FileType.image,
+        fileName: fileName,
+      );
+      if (savePath == null) {
+        SmartDialog.showToast("取消保存");
+        return null;
+      }
+      await File(savePath).writeAsBytes(bytes);
+      SmartDialog.showToast(' 已保存 ');
+      result = SaveResult(true, null);
+    }
+    return result;
+  }
+
   static Future<void> saveFileImg({
     required String filePath,
     required String fileName,

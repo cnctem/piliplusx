@@ -1885,7 +1885,7 @@ class PlPlayerController {
           GestureDetector(
             onTap: () {
               Get.back();
-              ImageUtils.saveByteImg(
+              ImageUtils.saveScreenShot(
                 bytes: value,
                 fileName: 'screenshot_${ImageUtils.time}',
               );
