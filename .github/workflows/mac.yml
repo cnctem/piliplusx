@@ -37,7 +37,8 @@ jobs:
       - name: Prepare Upload
         run: |
           npm install --global create-dmg
-          create-dmg build/macos/Build/Products/Release/PiliPlusX.app
+          cd build/macos/Build/Products/Release
+          create-dmg --no-code-sign "PiliPlusX.app" .
         continue-on-error: true
 
       - name: Rename DMG
