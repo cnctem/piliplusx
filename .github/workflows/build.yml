@@ -90,12 +90,12 @@ jobs:
             - name: Write key
               if: github.event_name == 'workflow_dispatch'
               run: |
-                  if [ ! -z "${{ secrets.SIGN_KEYSTORE_BASE64 }}" ]; then
-                    echo "${{ secrets.SIGN_KEYSTORE_BASE64 }}" | base64 --decode > android/app/key.jks
-                    echo storeFile='key.jks' >> android/key.properties
-                    echo storePassword='${{ secrets.KEYSTORE_PASSWORD }}' >> android/key.properties
-                    echo keyAlias='${{ secrets.KEY_ALIAS }}' >> android/key.properties
-                    echo keyPassword='${{ secrets.KEY_PASSWORD }}' >> android/key.properties
+                  if [ ! -z "${{ secrets.KEYSTORE_FILE }}" ]; then
+                    echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > android/app/key.jks
+                    echo "export KEYSTORE_FILE=key.jks" >> $GITHUB_ENV
+                    echo "export KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
+                    echo "export KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
+                    echo "export KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
                   fi
 
             - name: Set and Extract version
@@ -103,6 +103,11 @@ jobs:
               run: lib/scripts/build.ps1 android
 
             - name: flutter build apk
+              env:
+                KEYSTORE_FILE: ${{ env.KEYSTORE_FILE }}
+                KEYSTORE_PASSWORD: ${{ env.KEYSTORE_PASSWORD }}
+                KEY_ALIAS: ${{ env.KEY_ALIAS }}
+                KEY_PASSWORD: ${{ env.KEY_PASSWORD }}
               run: flutter build apk --release --split-per-abi --dart-define-from-file=pili_release.json --pub
 
             - name: rename
