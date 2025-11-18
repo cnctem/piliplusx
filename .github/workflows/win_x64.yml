@@ -49,12 +49,12 @@ jobs:
           mkdir -p Release/PiliPlusX-Win
           mkdir -p PiliPlusX-Win-Setup
           mv build/windows/x64/runner/Release/* Release/PiliPlusX-Win/
-          mv dist/**/*.exe PiliPlusX-Win-Setup/PiliPlusX_windows_${{env.version}}_x64_setup.exe
+          mv dist/**/*.exe PiliPlusX-Win-Setup/PiliPlusX_windows_${{ inputs.tag }}_x64_setup.exe
 
       - name: Compress
-        if: ${{ github.event.inputs.tag != '' }}
+        if: ${{ inputs.tag != '' }}
         run: |
-          Compress-Archive -Path "Release/PiliPlusX-Win" -DestinationPath "PiliPlusX_windows_${{env.version}}_x64.zip"
+          Compress-Archive -Path "Release/PiliPlusX-Win" -DestinationPath "PiliPlusX_windows_${{ inputs.tag }}_x64.zip"
         shell: pwsh
 
       - name: Release
