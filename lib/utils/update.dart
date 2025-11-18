@@ -23,26 +23,24 @@ abstract class Update {
     SmartDialog.dismiss();
     try {
       // 根据是否是自动检查更新选择不同的API端点
-      final String apiUrl = isAuto 
-          ? Api.latestApp + '/latest'  // 只获取Latest release
-          : Api.latestApp;  // 获取所有releases
+      // final String apiUrl = isAuto 
+      //     ? Api.latestApp + '/latest'  // 只获取Latest release
+      //     : Api.latestApp;  // 获取所有releases
       final res = await Request().get(
-        apiUrl,
+        Api.latestApp,
         options: Options(
           headers: {'user-agent': UaType.mob.ua},
           extra: {'account': const NoAccount()},
         ),
       );
-      // 处理不同的响应格式
-      final List<dynamic> releases = isAuto ? [res.data] : res.data;
-      if (releases.isEmpty || (releases.length == 1 && releases[0] is Map && releases[0].isEmpty)) {
+      if (res.data is Map || res.data.isEmpty) {
         if (!isAuto) {
           SmartDialog.showToast('检查更新失败，GitHub接口未返回数据，请检查网络');
         }
         return;
       }
       int latest =
-          DateTime.parse(releases[0]['created_at']).millisecondsSinceEpoch ~/
+          DateTime.parse(res.data[0]['created_at']).millisecondsSinceEpoch ~/
           1000;
       if (BuildConfig.buildTime >= latest) {
         if (!isAuto) {
@@ -54,7 +52,7 @@ abstract class Update {
           builder: (context) {
             final ThemeData theme = Theme.of(context);
             Widget downloadBtn(String text, {String? ext}) => TextButton(
-              onPressed: () => onDownload(releases[0], ext: ext),
+              onPressed: () => onDownload(res.data[0], ext: ext),
               child: Text(text),
             );
             return AlertDialog(
@@ -66,11 +64,11 @@ abstract class Update {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${releases[0]['tag_name']}',
+                        '${res.data[0]['tag_name']}',
                         style: const TextStyle(fontSize: 20),
                       ),
                       const SizedBox(height: 8),
-                      Text('${releases[0]['body']}'),
+                      Text('${res.data[0]['body']}'),
                       TextButton(
                         onPressed: () => PageUtils.launchURL(
                           '${Constants.sourceCodeUrl}/commits/main',
