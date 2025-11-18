@@ -6,6 +6,7 @@ import 'package:PiliPlus/models/common/video/subtitle_pref_type.dart';
 import 'package:PiliPlus/pages/main/controller.dart';
 import 'package:PiliPlus/pages/setting/models/model.dart';
 import 'package:PiliPlus/pages/setting/widgets/select_dialog.dart';
+import 'package:PiliPlus/pages/setting/widgets/shortcut_keys_dialog.dart';
 import 'package:PiliPlus/plugin/pl_player/models/bottom_progress_behavior.dart';
 import 'package:PiliPlus/plugin/pl_player/models/fullscreen_mode.dart';
 import 'package:PiliPlus/plugin/pl_player/utils/fullscreen.dart'
@@ -161,12 +162,21 @@ List<SettingsModel> get playSettings => [
         } catch (_) {}
       },
     ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '启用键盘控制',
+    subtitle: '点击查看快捷键',
     leading: Icon(Icons.keyboard_alt_outlined),
     setKey: SettingBoxKey.keyboardControl,
     defaultVal: true,
+    onTap: () {
+      showDialog(
+        context: Get.context!,
+        builder: (context) {
+          return const ShortcutKeysDialog();
+        },
+      );
+    },
   ),
   const SettingsModel(
     settingsType: SettingsType.sw1tch,
