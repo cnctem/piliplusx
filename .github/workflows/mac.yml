@@ -41,7 +41,7 @@ jobs:
         continue-on-error: true
 
       - name: Rename DMG
-        run: mv PiliPlusX*.dmg PiliPlusX_macos_${{ env.version }}.dmg
+        run: mv PiliPlusX*.dmg PiliPlusX_macos_${{ inputs.tag }}.dmg
 
       - name: Release
         if: ${{ inputs.tag != '' }}
@@ -51,7 +51,7 @@ jobs:
           name: ${{ inputs.tag }}
           prerelease: true
           files: |
-            PiliPlusX_macos_${{ env.version }}.dmg
+            PiliPlusX_macos_${{ inputs.tag }}.dmg
 
       - name: Upload macos release
         uses: actions/upload-artifact@v4
