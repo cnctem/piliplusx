@@ -224,12 +224,12 @@ jobs:
         shell: bash
 
       - name: Release
-        if: ${{ inputs.tag != '' }}
+        if: ${{ inputs.tag != '' && !contains(inputs.tag, 'test') }}
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.tag }}
           name: ${{ inputs.tag }}
-          prerelease: ${{ !contains(inputs.tag, 'test') }}
+          prerelease: true
           files: |
             PiliPlus_linux_*.tar.gz
             PiliPlus_linux_*.deb

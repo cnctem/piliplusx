@@ -112,12 +112,12 @@ jobs:
               shell: bash
 
             - name: Release
-              if: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.tag != '') || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) }}
+              if: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.tag != '' && !contains(github.event.inputs.tag, 'test')) || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') && !contains(github.ref_name, 'test')) }}
               uses: softprops/action-gh-release@v2
               with:
                   tag_name: ${{ github.event_name == 'push' && github.ref_name || github.event.inputs.tag }}
                   name: ${{ github.event_name == 'push' && github.ref_name || github.event.inputs.tag }}
-                  prerelease: ${{ !contains((github.event_name == 'push' && github.ref_name) || github.event.inputs.tag, 'test') }}
+                  prerelease: true
                   files: |
                       PiliPlusX_android_*.apk
 

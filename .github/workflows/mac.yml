@@ -44,12 +44,12 @@ jobs:
         run: mv PiliPlusX*.dmg PiliPlusX_macos_${{ inputs.tag }}.dmg
 
       - name: Release
-        if: ${{ inputs.tag != '' }}
+        if: ${{ inputs.tag != '' && !contains(inputs.tag, 'test') }}
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.tag }}
           name: ${{ inputs.tag }}
-          prerelease: ${{ !contains(inputs.tag, 'test') }}
+          prerelease: true
           files: |
             PiliPlusX_macos_${{ inputs.tag }}.dmg
 
