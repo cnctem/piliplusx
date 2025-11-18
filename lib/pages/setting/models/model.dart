@@ -251,15 +251,15 @@ SettingsModel getSaveImgPathModel({
         },
       );
       if (result == 'Pictures/$suffix') {
-        value = result;
+        value = result!;
         setState();
         GStorage.setting.put(key1, result);
         result = 'Pictures/$suffix/screenshot';
         GStorage.setting.put(key2, result);
         return;
-      } else {
-        result = 'Pictures/${Constants.appName}';
-        value = result;
+      } 
+      if (result == 'Pictures/${Constants.appName}') {
+        value = result!;
         setState();
         GStorage.setting.put(key1, result);
         GStorage.setting.put(key2, result);
