@@ -229,7 +229,7 @@ jobs:
         with:
           tag_name: ${{ inputs.tag }}
           name: ${{ inputs.tag }}
-          prerelease: true
+          prerelease: ${{ !contains(inputs.tag, 'test') }}
           files: |
             PiliPlus_linux_*.tar.gz
             PiliPlus_linux_*.deb

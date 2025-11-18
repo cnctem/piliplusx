@@ -42,7 +42,7 @@ jobs:
         with:
           tag_name: ${{ inputs.tag }}
           name: ${{ inputs.tag }}
-          prerelease: true
+          prerelease: ${{ !contains(inputs.tag, 'test') }}
           files: |
             PiliPlusX_ios_*.ipa
 
