@@ -51,15 +51,19 @@ abstract class CommonController<R, T> extends GetxController
 
   @override
   Future<void> onRefresh() async {
-    await queryData();
-    // 刷新完成后显示提示消息
-    _showRefreshMessage();
+    return queryData();
   }
 
-  // 显示刷新完成消息，子类可以重写此方法来自定义消息
-  void _showRefreshMessage() {
-    SmartDialog.showToast('页面已刷新');
-  }
+  // Future<void> onRefreshWithMessage() async {
+  //   await queryData();
+  //   // 刷新完成后显示提示消息
+  //   _showRefreshMessage();
+  // }
+
+  // // 显示刷新完成消息，子类可以重写此方法来自定义消息
+  // void _showRefreshMessage() {
+  //   SmartDialog.showToast('页面已刷新');
+  // }
 
   Future<void> onLoadMore() {
     return queryData(false);
