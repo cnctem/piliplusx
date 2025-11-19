@@ -493,10 +493,10 @@ List<SettingsModel> get extraSettings => [
         context: Get.context!,
         builder: (context) {
           return SlideDialog(
-            title: '刷新滑动距离',
-            min: 0.1,
+            title: '刷新滑动距离(默认0.25)',
+            min: 0,
             max: 0.5,
-            divisions: 8,
+            divisions: 10,
             precise: 2,
             value: Pref.refreshDragPercentage,
             suffix: 'x',
