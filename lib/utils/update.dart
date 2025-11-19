@@ -33,14 +33,14 @@ abstract class Update {
           extra: {'account': const NoAccount()},
         ),
       );
-      // 处理不同的响应格式
-      final List<dynamic> releases = isAuto ? [res.data] : res.data;
-      if (releases.isEmpty || (releases.length == 1 && releases[0] is Map && releases[0].isEmpty)) {
-        if (!isAuto) {
+      if  (!isAuto) {
+        if (res.data is Map || res.data.isEmpty) {
           SmartDialog.showToast('检查更新失败，GitHub接口未返回数据，请检查网络');
         }
         return;
       }
+      // 处理不同的响应格式
+      final List<dynamic> releases = isAuto ? [res.data] : res.data;
       int latest =
           DateTime.parse(releases[0]['created_at']).millisecondsSinceEpoch ~/
           1000;
