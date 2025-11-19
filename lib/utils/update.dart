@@ -22,10 +22,7 @@ abstract class Update {
     if (kDebugMode) return;
     SmartDialog.dismiss();
     try {
-      // 根据是否是自动检查更新选择不同的API端点
-      final String apiUrl = isAuto 
-          ? Api.latestApp + '/latest'  // 只获取Latest release
-          : Api.latestApp;  // 获取所有releases
+      final String apiUrl = Api.latestApp + '/latest';
       final res = await Request().get(
         apiUrl,
         options: Options(
@@ -34,8 +31,9 @@ abstract class Update {
         ),
       );
       // 处理不同的响应格式
-      final List<dynamic> releases = isAuto ? [res.data] : res.data;
-      if (releases.isEmpty || (releases.length == 1 && releases[0] is Map && releases[0].isEmpty)) {
+      final List<dynamic> releases = [res.data];
+      if (releases.isEmpty ||
+          (releases.length == 1 && releases[0] is Map && releases[0].isEmpty)) {
         if (!isAuto) {
           SmartDialog.showToast('检查更新失败，GitHub接口未返回数据，请检查网络');
         }
@@ -43,7 +41,7 @@ abstract class Update {
       }
       int latest =
           DateTime.parse(releases[0]['created_at']).millisecondsSinceEpoch ~/
-          1000;
+              1000;
       if (BuildConfig.buildTime >= latest) {
         if (!isAuto) {
           SmartDialog.showToast('已是最新版本');
@@ -54,9 +52,9 @@ abstract class Update {
           builder: (context) {
             final ThemeData theme = Theme.of(context);
             Widget downloadBtn(String text, {String? ext}) => TextButton(
-              onPressed: () => onDownload(releases[0], ext: ext),
-              child: Text(text),
-            );
+                  onPressed: () => onDownload(releases[0], ext: ext),
+                  child: Text(text),
+                );
             return AlertDialog(
               title: const Text('🎉 发现新版本 '),
               content: SizedBox(
