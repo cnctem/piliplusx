@@ -33,16 +33,14 @@ abstract class Update {
           extra: {'account': const NoAccount()},
         ),
       );
-      if  (!isAuto) {
+      if (!isAuto) {
         if (res.data is Map || res.data.isEmpty) {
           SmartDialog.showToast('检查更新失败，GitHub接口未返回数据，请检查网络');
         }
         return;
       }
-      // 处理不同的响应格式
-      final List<dynamic> releases = isAuto ? [res.data] : res.data;
       int latest =
-          DateTime.parse(releases[0]['created_at']).millisecondsSinceEpoch ~/
+          DateTime.parse(res.data[0]['created_at']).millisecondsSinceEpoch ~/
           1000;
       if (BuildConfig.buildTime >= latest) {
         if (!isAuto) {
@@ -54,7 +52,7 @@ abstract class Update {
           builder: (context) {
             final ThemeData theme = Theme.of(context);
             Widget downloadBtn(String text, {String? ext}) => TextButton(
-              onPressed: () => onDownload(releases[0], ext: ext),
+              onPressed: () => onDownload(res.data[0], ext: ext),
               child: Text(text),
             );
             return AlertDialog(
@@ -66,11 +64,11 @@ abstract class Update {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${releases[0]['tag_name']}',
+                        '${res.data[0]['tag_name']}',
                         style: const TextStyle(fontSize: 20),
                       ),
                       const SizedBox(height: 8),
-                      Text('${releases[0]['body']}'),
+                      Text('${res.data[0]['body']}'),
                       TextButton(
                         onPressed: () => PageUtils.launchURL(
                           '${Constants.sourceCodeUrl}/commits/main',
