@@ -23,9 +23,9 @@ abstract class Update {
     SmartDialog.dismiss();
     try {
       // 根据是否是自动检查更新选择不同的API端点
-      final String apiUrl = isAuto 
-          ? Api.latestApp + '/latest'  // 只获取Latest release
-          : Api.latestApp;  // 获取所有releases
+      final String apiUrl = isAuto
+          ? Api.latestApp + '/latest' // 只获取Latest release
+          : Api.latestApp; // 获取所有releases
       final res = await Request().get(
         apiUrl,
         options: Options(
@@ -39,8 +39,9 @@ abstract class Update {
         }
         return;
       }
+      final List<dynamic> releases = [res.data];
       int latest =
-          DateTime.parse(res.data[0]['created_at']).millisecondsSinceEpoch ~/
+          DateTime.parse(releases[0]['created_at']).millisecondsSinceEpoch ~/
           1000;
       if (BuildConfig.buildTime >= latest) {
         if (!isAuto) {
@@ -52,9 +53,9 @@ abstract class Update {
           builder: (context) {
             final ThemeData theme = Theme.of(context);
             Widget downloadBtn(String text, {String? ext}) => TextButton(
-              onPressed: () => onDownload(res.data[0], ext: ext),
-              child: Text(text),
-            );
+                  onPressed: () => onDownload(releases[0], ext: ext),
+                  child: Text(text),
+                );
             return AlertDialog(
               title: const Text('🎉 发现新版本 '),
               content: SizedBox(
@@ -64,11 +65,11 @@ abstract class Update {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${res.data[0]['tag_name']}',
+                        '${releases[0]['tag_name']}',
                         style: const TextStyle(fontSize: 20),
                       ),
                       const SizedBox(height: 8),
-                      Text('${res.data[0]['body']}'),
+                      Text('${releases[0]['body']}'),
                       TextButton(
                         onPressed: () => PageUtils.launchURL(
                           '${Constants.sourceCodeUrl}/commits/main',
