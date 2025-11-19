@@ -1000,6 +1000,13 @@ List<SettingsModel> get extraSettings => [
       }
     },
   ),
+  const SettingsModel(
+    settingsType: SettingsType.sw1tch,
+    title: '"我的"页默认打开稍后再看',
+    leading: const Icon(Icons.watch_later_outlined),
+    setKey: SettingBoxKey.defaultShowWatchLater,
+    defaultVal: false,
+  ),
   SettingsModel(
     settingsType: SettingsType.normal,
     title: '评论展示',

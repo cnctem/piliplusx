@@ -58,6 +58,7 @@ abstract class SettingBoxKey {
       maxCacheSize = 'maxCacheSize',
       apiHKUrl = 'apiHKUrl',
       defaultShowComment = 'defaultShowComment',
+      defaultShowWatchLater = 'defaultShowWatchLater',
       replySortType = 'replySortType',
       defaultDynamicType = 'defaultDynamicType',
       enableHotKey = 'enableHotKey',
