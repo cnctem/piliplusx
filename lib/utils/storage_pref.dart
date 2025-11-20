@@ -771,7 +771,7 @@ abstract class Pref {
       _setting.get(SettingBoxKey.defaultShowComment, defaultValue: false);
 
   static bool get defaultShowWatchLater =>
-      _setting.get(SettingBoxKey.defaultShowWatchLater, defaultValue: true);
+      _setting.get(SettingBoxKey.defaultShowWatchLater, defaultValue: false);
 
   static bool get defaultAddWatchLater =>
       _setting.get(SettingBoxKey.defaultAddWatchLater, defaultValue: false);
