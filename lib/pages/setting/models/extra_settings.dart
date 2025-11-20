@@ -906,6 +906,72 @@ List<SettingsModel> get extraSettings => [
   ),
   SettingsModel(
     settingsType: SettingsType.sw1tch,
+    title: '快速分享给指定用户',
+    subtitle: '长按分享触发，点击指定用户',
+    leading: const Icon(FontAwesomeIcons.shareFromSquare),
+    setKey: SettingBoxKey.enableQuickShare,
+    defaultVal: false,
+    onChanged: (value) async {
+      if (value && Accounts.main.isLogin) {
+        final TextEditingController controller = TextEditingController();
+        final quickShareId = Pref.quickShareId;
+        if (quickShareId != null && quickShareId != 1004428694) {
+          controller.text = quickShareId.toString();
+        }
+        final result = await Get.dialog(
+          AlertDialog(
+            title: const Text('默认分享对象的mid'),
+            content: TextField(
+              controller: controller,
+              decoration: const InputDecoration(
+                hintText: '空白默认为开发者mid',
+              ),
+              keyboardType: TextInputType.number,
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Get.back(result: false);
+                },
+                child: const Text('取消'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Get.back(result: true);
+                },
+                child: const Text('确定'),
+              ),
+            ],
+          ),
+        );
+        
+        if (result == true) {
+          final inputText = controller.text.trim();
+          if (inputText.isEmpty) {
+            // 如果为空，使用默认值
+            await GStorage.setting.put(SettingBoxKey.quickShareId, 1004428694);
+            SmartDialog.showToast('设置成功');
+          } else {
+            final mid = int.tryParse(inputText);
+            if (mid != null) {
+              // 如果是有效的整数，保存
+              await GStorage.setting.put(SettingBoxKey.quickShareId, mid);
+              SmartDialog.showToast('设置成功');
+            } else {
+              // 如果不是有效的整数，显示错误并关闭选项
+              SmartDialog.showToast('请输入正确mid');
+              await GStorage.setting.put(SettingBoxKey.enableQuickShare, false);
+            }
+          }
+        } else {
+          // 用户点击取消，关闭选项
+          await GStorage.setting.put(SettingBoxKey.enableQuickShare, false);
+        }
+      }
+    },
+  ),
+  SettingsModel(
+    settingsType: SettingsType.sw1tch,
     title: '评论区搜索关键词',
     subtitle: '展示评论区搜索关键词',
     leading: const Icon(Icons.search_outlined),

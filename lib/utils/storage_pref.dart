@@ -657,6 +657,9 @@ abstract class Pref {
   static bool get enableQuickFav =>
       _setting.get(SettingBoxKey.enableQuickFav, defaultValue: false);
 
+  static bool get enableQuickShare =>
+      _setting.get(SettingBoxKey.enableQuickShare, defaultValue: false);
+
   static bool get p1080 =>
       _setting.get(SettingBoxKey.p1080, defaultValue: true);
 
@@ -802,6 +805,8 @@ abstract class Pref {
       _localCache.get(LocalCacheKey.historyPause, defaultValue: false);
 
   static int? get quickFavId => _setting.get(SettingBoxKey.quickFavId);
+
+  static int? get quickShareId => _setting.get(SettingBoxKey.quickShareId);
 
   static bool get tempPlayerConf =>
       _setting.get(SettingBoxKey.tempPlayerConf, defaultValue: false);
