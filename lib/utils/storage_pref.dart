@@ -770,6 +770,9 @@ abstract class Pref {
   static bool get defaultShowWatchLater =>
       _setting.get(SettingBoxKey.defaultShowWatchLater, defaultValue: true);
 
+  static bool get defaultAddWatchLater =>
+      _setting.get(SettingBoxKey.defaultAddWatchLater, defaultValue: false);
+
   static bool get enableTrending =>
       _setting.get(SettingBoxKey.enableHotKey, defaultValue: true);
 

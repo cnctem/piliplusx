@@ -1002,6 +1002,13 @@ List<SettingsModel> get extraSettings => [
   ),
   const SettingsModel(
     settingsType: SettingsType.sw1tch,
+    title: '长按展示视频卡片替换为加入稍后再看',
+    leading: const Icon(Icons.watch_later_outlined),
+    setKey: SettingBoxKey.defaultAddWatchLater,
+    defaultVal: false,
+  ),
+  const SettingsModel(
+    settingsType: SettingsType.sw1tch,
     title: '"我的"页默认打开稍后再看',
     leading: const Icon(Icons.watch_later_outlined),
     setKey: SettingBoxKey.defaultShowWatchLater,

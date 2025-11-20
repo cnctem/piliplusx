@@ -59,6 +59,7 @@ abstract class SettingBoxKey {
       apiHKUrl = 'apiHKUrl',
       defaultShowComment = 'defaultShowComment',
       defaultShowWatchLater = 'defaultShowWatchLater',
+      defaultAddWatchLater = 'defaultAddWatchLater',
       replySortType = 'replySortType',
       defaultDynamicType = 'defaultDynamicType',
       enableHotKey = 'enableHotKey',
