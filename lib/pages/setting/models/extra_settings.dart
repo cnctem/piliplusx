@@ -861,8 +861,9 @@ List<SettingsModel> get extraSettings => [
     subtitle: '点击设置默认收藏夹\n点按收藏至默认，长按选择文件夹',
     leading: const Icon(Icons.bookmark_add_outlined),
     setKey: SettingBoxKey.enableQuickFav,
-    onTap: () async {
-      if (Accounts.main.isLogin) {
+    defaultVal: false,
+    onChanged: (value) async {
+      if (value && Accounts.main.isLogin) {
         final res = await FavHttp.allFavFolders(Accounts.main.mid);
         if (res.isSuccess) {
           final list = res.data.list;
@@ -902,7 +903,6 @@ List<SettingsModel> get extraSettings => [
         }
       }
     },
-    defaultVal: false,
   ),
   SettingsModel(
     settingsType: SettingsType.sw1tch,
@@ -1098,82 +1098,6 @@ List<SettingsModel> get extraSettings => [
     defaultVal: false,
     onChanged: (value) => MemberTabType.showMemberShop = value,
   ),
-  SettingsModel(
-    settingsType: SettingsType.sw1tch,
-    onTap: () {
-      String systemProxyHost = Pref.systemProxyHost;
-      String systemProxyPort = Pref.systemProxyPort;
-
-      showDialog(
-        context: Get.context!,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text('设置代理'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(height: 6),
-                TextFormField(
-                  initialValue: systemProxyHost,
-                  decoration: const InputDecoration(
-                    isDense: true,
-                    labelText: '请输入Host，使用 . 分割',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(6)),
-                    ),
-                  ),
-                  onChanged: (e) => systemProxyHost = e,
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
-                  initialValue: systemProxyPort,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    isDense: true,
-                    labelText: '请输入Port',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(6)),
-                    ),
-                  ),
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  onChanged: (e) => systemProxyPort = e,
-                ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: Get.back,
-                child: Text(
-                  '取消',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.outline,
-                  ),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Get.back();
-                  GStorage.setting.put(
-                    SettingBoxKey.systemProxyHost,
-                    systemProxyHost,
-                  );
-                  GStorage.setting.put(
-                    SettingBoxKey.systemProxyPort,
-                    systemProxyPort,
-                  );
-                },
-                child: const Text('确认'),
-              ),
-            ],
-          );
-        },
-      );
-    },
-    leading: const Icon(Icons.airplane_ticket_outlined),
-    title: '设置代理',
-    subtitle: '设置代理 host:port',
-    setKey: SettingBoxKey.enableSystemProxy,
-  ),
   const SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '自动清除缓存',
@@ -1247,6 +1171,86 @@ List<SettingsModel> get extraSettings => [
       }
     },
   ),
+
+  SettingsModel(
+    settingsType: SettingsType.sw1tch,
+    title: '设置代理',
+    subtitle: '设置代理 host:port',
+    leading: const Icon(Icons.airplane_ticket_outlined),
+    setKey: SettingBoxKey.enableSystemProxy,
+    onChanged: (value) {
+      if (value) {
+        String systemProxyHost = Pref.systemProxyHost;
+        String systemProxyPort = Pref.systemProxyPort;
+
+        showDialog(
+          context: Get.context!,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('设置代理'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(height: 6),
+                  TextFormField(
+                    initialValue: systemProxyHost,
+                    decoration: const InputDecoration(
+                      isDense: true,
+                      labelText: '请输入Host，使用 . 分割',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(6)),
+                      ),
+                    ),
+                    onChanged: (e) => systemProxyHost = e,
+                  ),
+                  const SizedBox(height: 10),
+                  TextFormField(
+                    initialValue: systemProxyPort,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      isDense: true,
+                      labelText: '请输入Port',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(6)),
+                      ),
+                    ),
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    onChanged: (e) => systemProxyPort = e,
+                  ),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: Get.back,
+                  child: Text(
+                    '取消',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.outline,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Get.back();
+                    GStorage.setting.put(
+                      SettingBoxKey.systemProxyHost,
+                      systemProxyHost,
+                    );
+                    GStorage.setting.put(
+                      SettingBoxKey.systemProxyPort,
+                      systemProxyPort,
+                    );
+                  },
+                  child: const Text('确认'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    },
+  ),
+  
   SettingsModel(
     settingsType: SettingsType.normal,
     title: '设置港澳台代理',
