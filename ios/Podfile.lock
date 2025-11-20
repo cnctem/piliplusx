@@ -1,5 +1,5 @@
 PODS:
-  - app_links (6.4.1):
+  - app_links (7.0.0):
     - Flutter
   - audio_service (0.0.1):
     - Flutter
@@ -219,7 +219,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/wakelock_plus/ios"
 
 SPEC CHECKSUMS:
-  app_links: 585674be3c6661708e6cd794ab4f39fb9d8356f9
+  app_links: 6d01271b3907b0ee7325c5297c75d697c4226c4d
   audio_service: cab6c1a0eaf01b5a35b567e11fa67d3cc1956910
   audio_session: 19e9480dbdd4e5f6c4543826b2e8b0e4ab6145fe
   auto_orientation: 102ed811a5938d52c86520ddd7ecd3a126b5d39d

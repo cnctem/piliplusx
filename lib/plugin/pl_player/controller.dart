@@ -406,7 +406,6 @@ class PlPlayerController {
       .where((item) => item.second != SkipType.disable)
       .map((item) => item.first.name)
       .toSet();
-  late final blockServer = Pref.blockServer;
 
   // settings
   late final showFSActionItem = Pref.showFSActionItem;

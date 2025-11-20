@@ -22,26 +22,22 @@ abstract class Update {
     if (kDebugMode) return;
     SmartDialog.dismiss();
     try {
-      final String apiUrl = Api.latestApp + '/latest';
       final res = await Request().get(
-        apiUrl,
+        Api.latestApp,
         options: Options(
           headers: {'user-agent': UaType.mob.ua},
           extra: {'account': const NoAccount()},
         ),
       );
-      // 处理不同的响应格式
-      final List<dynamic> releases = [res.data];
-      if (releases.isEmpty ||
-          (releases.length == 1 && releases[0] is Map && releases[0].isEmpty)) {
+      if (res.data is Map || res.data.isEmpty) {
         if (!isAuto) {
           SmartDialog.showToast('检查更新失败，GitHub接口未返回数据，请检查网络');
         }
         return;
       }
-      int latest =
-          DateTime.parse(releases[0]['created_at']).millisecondsSinceEpoch ~/
-              1000;
+      final data = res.data[0];
+      final int latest =
+          DateTime.parse(data['created_at']).millisecondsSinceEpoch ~/ 1000;
       if (BuildConfig.buildTime >= latest) {
         if (!isAuto) {
           SmartDialog.showToast('已是最新版本');
@@ -52,9 +48,9 @@ abstract class Update {
           builder: (context) {
             final ThemeData theme = Theme.of(context);
             Widget downloadBtn(String text, {String? ext}) => TextButton(
-                  onPressed: () => onDownload(releases[0], ext: ext),
-                  child: Text(text),
-                );
+              onPressed: () => onDownload(data, ext: ext),
+              child: Text(text),
+            );
             return AlertDialog(
               title: const Text('🎉 发现新版本 '),
               content: SizedBox(
@@ -64,11 +60,11 @@ abstract class Update {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${releases[0]['tag_name']}',
+                        '${data['tag_name']}',
                         style: const TextStyle(fontSize: 20),
                       ),
                       const SizedBox(height: 8),
-                      Text('${releases[0]['body']}'),
+                      Text('${data['body']}'),
                       TextButton(
                         onPressed: () => PageUtils.launchURL(
                           '${Constants.sourceCodeUrl}/commits/main',
