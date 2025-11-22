@@ -9,9 +9,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       _In_ wchar_t *command_line, _In_ int show_command) {
   HWND hwnd = ::FindWindow(NULL, L"PiliPlusX");
   if (hwnd != NULL) {
-    ::ShowWindow(hwnd, SW_NORMAL);
+    // Restore the window if it's minimized
+    if (::IsIconic(hwnd)) {
+      ::ShowWindow(hwnd, SW_RESTORE);
+    } else {
+      ::ShowWindow(hwnd, SW_NORMAL);
+    }
     ::SetForegroundWindow(hwnd);
-    return EXIT_FAILURE;
+    // Bring window to top and activate it
+    ::SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+    ::SetWindowPos(hwnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+    return EXIT_SUCCESS;
   }
 
   // Attach to console when present (e.g., 'flutter run') or create a
