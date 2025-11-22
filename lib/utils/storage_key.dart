@@ -131,6 +131,7 @@ abstract class SettingBoxKey {
       liveQualityCellular = 'liveQualityCellular',
       appFontWeight = 'appFontWeight',
       fastForBackwardDuration = 'fastForBackwardDuration',
+      fastForBackwardDuration_ = 'fastForBackwardDuration_',
       recordSearchHistory = 'recordSearchHistory',
       showPgcTimeline = 'showPgcTimeline',
       pageTransition = 'pageTransition',
